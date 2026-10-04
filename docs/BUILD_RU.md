@@ -20,9 +20,12 @@
 ```sh
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub org.kde.Platform//6.10 org.kde.Sdk//6.10 org.freedesktop.Sdk.Extension.llvm21//25.08
+flatpak install --user flathub org.freedesktop.Platform.GL.default//25.08
 ```
 
 Для каждого из трёх ref выполни `flatpak update --user --commit=<коммит из sources.json> <ref>`. Сборка отказывает при другой ревизии SDK/runtime. Не обходи эту проверку.
+
+GL-расширение нужно для настоящего окна редактора. GUI-проверки используют runtime готового приложения и штатный путь загрузки драйверов Flatpak. Сохрани коммит установленного драйвера в доказательствах проверки.
 
 Склонируй репозиторий на файловую систему Linux и явно загрузи официальный архив редактора:
 

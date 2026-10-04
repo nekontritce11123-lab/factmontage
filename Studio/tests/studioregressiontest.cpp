@@ -5323,6 +5323,33 @@ TEST_CASE("Automatic native preview covers the cursor window at quarter size wit
     REQUIRE(scene.contains("sunimo:optimizationDefaultsVersion"));
 }
 
+TEST_CASE("Studio panel follows the host palette when its theme changes", "[StudioUI]")
+{
+    const QPalette original = QApplication::palette();
+    const auto restore = qScopeGuard([&] { QApplication::setPalette(original); });
+    StudioPanel panel;
+    panel.resize(440, 700);
+    panel.show();
+    QApplication::processEvents();
+    for (const QColor &background : {QColor(35, 38, 41), QColor(239, 240, 241)}) {
+        QPalette next = original;
+        next.setColor(QPalette::Window, background);
+        next.setColor(QPalette::Base, background);
+        next.setColor(QPalette::Midlight, background);
+        next.setColor(QPalette::Text, background.lightness() < 100 ? Qt::white : Qt::black);
+        next.setColor(QPalette::WindowText, next.color(QPalette::Text));
+        QApplication::setPalette(next);
+        QApplication::processEvents();
+        REQUIRE(panel.palette().color(QPalette::Window) == background);
+        auto *target = panel.findChild<QLabel *>(QStringLiteral("studioTarget"));
+        REQUIRE(target);
+        REQUIRE(target->palette().color(QPalette::Base) == background);
+        const QImage image = panel.grab().toImage();
+        REQUIRE_FALSE(image.isNull());
+        REQUIRE(image.pixelColor(2, 2).lightness() == Approx(background.lightness()).margin(2));
+    }
+}
+
 TEST_CASE("Eight Studio categories fit supported panel widths", "[StudioUI]")
 {
     const QByteArray previousPrefix = qgetenv("STUDIO_PREFIX");
@@ -5384,7 +5411,7 @@ TEST_CASE("Eight Studio categories fit supported panel widths", "[StudioUI]")
                     if (combo->accessibleName() == QStringLiteral("Выбрать звук")) source = combo;
                 REQUIRE(source);
                 REQUIRE(source->count() == 17); // automatic plus all 16 bundled WAVs
-                REQUIRE(source->itemText(0) == QStringLiteral("Автоматически — звук этого перехода"));
+                REQUIRE(source->itemText(0) == QStringLiteral("Автоматически: звук этого перехода"));
                 REQUIRE(source->currentData().toString().isEmpty());
                 REQUIRE(source->parentWidget()->isHidden());
                 QPushButton *browse = nullptr;

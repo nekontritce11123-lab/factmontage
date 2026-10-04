@@ -10,6 +10,7 @@
 #include <QMenu>
 #include <QScreen>
 #include <QJsonDocument>
+#include <kddockwidgets/DockWidget.h>
 #include <algorithm>
 
 TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontagePublication][.gui]")
@@ -24,12 +25,14 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
     const QString output = folder.filePath(QStringLiteral("screenshots"));
     REQUIRE(QDir().mkpath(output));
     REQUIRE(QGuiApplication::platformName() == QStringLiteral("xcb")); // Native screen capture, real X11 or Xvfb.
+    KdenliveSettings::setKdockLayout(QString());
     KdenliveSettings::setDefault_profile(QStringLiteral("atsc_1080p_60"));
     KdenliveSettings::setVideotodefaultfolder(KdenliveDoc::SaveToProjectFolder);
     if (!qgetenv("STUDIO_QA_PREFIX").isEmpty()) qputenv("STUDIO_PREFIX", qgetenv("STUDIO_QA_PREFIX"));
     pCore->initGUI(QString(), QUrl());
-    const auto closeDocument = qScopeGuard([] {
-        if (pCore->currentDoc()) pCore->projectManager()->closeCurrentDocument(false, false);
+    bool windowClosed = false;
+    const auto closeDocument = qScopeGuard([&] {
+        if (!windowClosed && pCore->currentDoc()) pCore->projectManager()->closeCurrentDocument(false, false);
     });
     REQUIRE(studioWait([] { return pCore->currentDoc() && pCore->window()->getCurrentTimeline()
         && pCore->window()->getCurrentTimeline()->model(); }, 15000));
@@ -60,7 +63,19 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
     for (auto *widget : window->findChildren<QWidget *>())
         if (auto *candidate = dynamic_cast<StudioPanel *>(widget)) panel = candidate;
     REQUIRE(panel);
+    REQUIRE(panel->palette().color(QPalette::Window).lightness() < 100);
     panel->setMinimumWidth(440);
+    KDDockWidgets::QtWidgets::DockWidget *studioDock = nullptr, *effectsDock = nullptr;
+    for (auto *widget : QApplication::allWidgets()) {
+        auto *dock = dynamic_cast<KDDockWidgets::QtWidgets::DockWidget *>(widget);
+        if (!dock) continue;
+        if (dock->objectName() == QLatin1String("video_studio")) studioDock = dock;
+        if (dock->objectName() == QLatin1String("effect_stack")) effectsDock = dock;
+    }
+    REQUIRE(studioDock); REQUIRE(effectsDock);
+    effectsDock->addDockWidgetAsTab(studioDock);
+    studioDock->open(); studioDock->setAsCurrentTab();
+    REQUIRE_FALSE(studioDock->isFloating());
     const auto raiseDock = [&](const QString &name) {
         auto *action = window->actionCollection()->action(QStringLiteral("raise_") + name);
         REQUIRE(action); action->trigger(); QApplication::processEvents();
@@ -93,17 +108,17 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
     const QString tone = import(QStringLiteral("tone.wav"), QStringLiteral("Original tone"));
     const QString base = KdenliveTests::createProducer(pCore->getProjectProfile(), "#1b3e78", pCore->projectItemModel(), 2160, true);
     int baseId = -1;
-    REQUIRE(model->requestClipInsertion(base, lower, 0, baseId));
+    REQUIRE(model->requestClipInsertion(base, lower, 0, baseId, true, true, false));
     QVector<int> clips;
     for (int slot = 0; slot < 9; ++slot) {
         const QString id = slot == 2 ? key : slot % 2 ? blue : warm;
         int clip = -1;
         // Four seconds with one second of available source on either side of the cut.
-        REQUIRE(model->requestClipInsertion(QStringLiteral("%1/60/299").arg(id), upper, slot * 240, clip));
+        REQUIRE(model->requestClipInsertion(QStringLiteral("%1/60/299").arg(id), upper, slot * 240, clip, true, true, false));
         clips << clip;
     }
     int audio = -1;
-    REQUIRE(model->requestClipInsertion(QStringLiteral("A") + tone, audioTracks.front(), 1680, audio));
+    REQUIRE(model->requestClipInsertion(QStringLiteral("A") + tone, audioTracks.front(), 1680, audio, true, true, false));
     REQUIRE(model->requestItemResize(audio, 240, true, true) == 240);
     REQUIRE(studioWait([] { return pCore->taskManager.backgroundIdle(); }, 20000));
     const QString project = folder.filePath(QStringLiteral("FactMontage-demo.kdenlive"));
@@ -227,6 +242,7 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
     REQUIRE(studioWait([] { return pCore->taskManager.backgroundIdle(); }, 15000));
     QPointer<MainWindow> closingWindow(window);
     REQUIRE(window->close());
+    windowClosed = true; // MainWindow has already destroyed ProjectManager; do not call it from the guard.
     QApplication::processEvents();
     REQUIRE((!closingWindow || !closingWindow->isVisible()));
     QFile manifest(folder.filePath(QStringLiteral("capture-evidence.json"))); REQUIRE(manifest.open(QIODevice::WriteOnly));

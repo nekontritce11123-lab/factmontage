@@ -825,7 +825,7 @@ void StudioAudioController::processFinished(int exitCode, QProcess::ExitStatus s
         return;
     }
     if (m_process->property("_sunimoTimedOut").toBool()) {
-        fail(QStringLiteral("Превышен лимит обработки звука — 30 минут; проект не изменён."));
+        fail(QStringLiteral("Превышен лимит обработки звука: 30 минут; проект не изменён."));
         return;
     }
     if (status != QProcess::NormalExit || exitCode != 0) {
@@ -1208,8 +1208,8 @@ StudioAudioPage::StudioAudioPage(StudioAudioController *controller, QWidget *par
     auto musicLayout = new QVBoxLayout(m_musicOptions);
     musicLayout->setContentsMargins(0, 0, 0, 0);
     auto roles = new QVBoxLayout;
-    m_voiceRole = new QPushButton(QStringLiteral("Выбранное — голос"), m_musicOptions);
-    m_musicRole = new QPushButton(QStringLiteral("Выбранное — музыка"), m_musicOptions);
+    m_voiceRole = new QPushButton(QStringLiteral("Выбранное: голос"), m_musicOptions);
+    m_musicRole = new QPushButton(QStringLiteral("Выбранное: музыка"), m_musicOptions);
     roles->addWidget(m_voiceRole);
     roles->addWidget(m_musicRole);
     musicLayout->addLayout(roles);

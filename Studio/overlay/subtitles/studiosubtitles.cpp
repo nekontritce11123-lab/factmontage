@@ -1115,7 +1115,7 @@ void StudioSubtitlePage::finished(int exitCode, QProcess::ExitStatus status)
         m_temporary.reset(); return;
     }
     m_stage = Stage::Idle; setBusy(false); m_progress->setRange(0, 100); m_progress->setValue(100);
-    QString message = added > 0 ? QStringLiteral("Добавлено блоков — %1. Проверьте слова и время; текст правится на дорожке субтитров.").arg(blocks.toArray().size())
+    QString message = added > 0 ? QStringLiteral("Добавлено блоков: %1. Проверьте слова и время; текст правится на дорожке субтитров.").arg(blocks.toArray().size())
                                 : QStringLiteral("Речь не добавлена: проверьте пересечения с существующими субтитрами.");
     if (added > 0 && conflicts > 0) message += QStringLiteral(" У %1 блоков пересекаются метки речи: исправьте их время на дорожке.").arg(conflicts);
     m_status->setText(message);

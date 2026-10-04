@@ -20,9 +20,12 @@ Install Git, Python 3, CMake, Ninja, a C/C++ compiler, pkg-config, Flatpak and f
 ```sh
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install --user flathub org.kde.Platform//6.10 org.kde.Sdk//6.10 org.freedesktop.Sdk.Extension.llvm21//25.08
+flatpak install --user flathub org.freedesktop.Platform.GL.default//25.08
 ```
 
 Use `flatpak update --user --commit=<commit from sources.json> <ref>` for each of those three refs. The build refuses a different SDK/runtime revision. Read the lock file; do not bypass that check.
+
+The GL extension is needed for the real editor window. GUI checks use the finished app's runtime and keep Flatpak's driver search path. Record its installed commit with the test evidence.
 
 Clone the public source repository onto the Linux filesystem, then download the official editor archive explicitly:
 

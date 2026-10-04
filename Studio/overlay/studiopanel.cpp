@@ -37,6 +37,7 @@ using StudioHelpers::appendParameterChange;
 #include "bin/clipcreator.hpp"
 
 #include <QButtonGroup>
+#include <QApplication>
 #include <QAction>
 #include <QActionGroup>
 #include <QComboBox>
@@ -395,6 +396,16 @@ int transitionSoundClip(const std::shared_ptr<TimelineItemModel> &model, const Q
     }
     return found;
 }
+}
+
+void StudioPanel::changeEvent(QEvent *event)
+{
+    QWidget::changeEvent(event);
+    if (event->type() == QEvent::ApplicationPaletteChange) {
+        setPalette(QApplication::palette());
+        // Qt stylesheets retain palette roles resolved before the host changed its theme.
+        setStyleSheet(styleSheet());
+    }
 }
 
 StudioPanel::StudioPanel(QWidget *parent) : QWidget(parent)
@@ -1619,7 +1630,7 @@ void StudioPanel::refreshSelection()
         for (const auto &stack : targets) if (effectsById(stack, m_assetId).size() > 1) ++ambiguous;
         const int applicable = targets.size() - ambiguous;
         m_batchApply->setText(QStringLiteral("Применить к %1 клипам").arg(applicable));
-        m_batchApply->setToolTip(QStringLiteral("Исключено: заблокировано — %1, только аудио — %2, несколько экземпляров — %3")
+        m_batchApply->setToolTip(QStringLiteral("Исключено: заблокировано: %1, только аудио: %2, несколько экземпляров: %3")
                                      .arg(locked).arg(audio).arg(ambiguous));
         m_batchApply->setVisible(m_presetTabs->currentIndex() == 1);
         m_batchApply->setEnabled(applicable > 0 && m_presets->currentIndex() >= 0);
@@ -1642,8 +1653,8 @@ void StudioPanel::refreshSelection()
         for (int i = 0; i < m_effects.size(); ++i) {
             const int slot = m_assetId == QLatin1String("studiofx") ? qRound(m_effects[i]->getParam(QStringLiteral("0")).toDouble() * 127.0) : -1;
             m_instances->addItem(m_assetId == QLatin1String("studiofx")
-                                     ? QStringLiteral("%1 — %2").arg(effectRecipeName(slot), QString::number(i + 1))
-                                     : QStringLiteral("%1 — %2").arg(m_title, QString::number(i + 1)));
+                                     ? QStringLiteral("%1: %2").arg(effectRecipeName(slot), QString::number(i + 1))
+                                     : QStringLiteral("%1: %2").arg(m_title, QString::number(i + 1)));
         }
     }
     m_instances->setVisible(m_effects.size() > 1);
@@ -1707,7 +1718,7 @@ void StudioPanel::selectInstance(int index)
     m_savePreset->setEnabled(bool(m_effect));
     m_replacePreset->setEnabled(bool(m_effect) && m_presets->currentIndex() >= 0);
     m_applyPreset->setEnabled(m_presets->currentIndex() >= 0 && bool(m_stack));
-    m_status->setText(m_effect ? QStringLiteral("Изменения сразу видны в мониторе. Отмена — Ctrl+Z.") : QStringLiteral("Выберите экземпляр эффекта."));
+    m_status->setText(m_effect ? QStringLiteral("Изменения сразу видны в мониторе. Отмена: Ctrl+Z.") : QStringLiteral("Выберите экземпляр эффекта."));
     if (!m_effect) { loadTrackingFrame(); return; }
     if (m_assetId == QLatin1String("studiofx")) {
         selectEffectRecipe(qRound(m_effect->getParam(QStringLiteral("0")).toDouble() * 127.0));
@@ -2572,7 +2583,7 @@ void StudioPanel::applySelectedPreset(bool batch)
     pCore->pushUndo(undo, redo, batch ? QStringLiteral("Применить шаблон студии к клипам") : QStringLiteral("Применить шаблон студии"));
     refreshSelection();
     m_status->setText(batch
-        ? QStringLiteral("Шаблон применён к %1 клипам. Исключено: заблокировано — %2, только аудио — %3, неоднозначно — %4.")
+        ? QStringLiteral("Шаблон применён к %1 клипам. Исключено: заблокировано: %2, только аудио: %3, неоднозначно: %4.")
               .arg(changed).arg(excludedLocked).arg(excludedAudio).arg(excludedAmbiguous)
         : QStringLiteral("Шаблон применён одним действием."));
 }
@@ -2874,7 +2885,7 @@ void StudioPanel::refreshTransitionSelection()
         // Keep duration editable, so the user can reduce an overlong request.
         m_controls[QStringLiteral("duration")].row->setEnabled(true);
         m_status->setText(QStringLiteral("Для перехода %1 с нужно %2 кадров суммарно. "
-                                         "Доступно: после первого — %3, до второго — %4. Максимум — %5 с.")
+                                         "Доступно: после первого: %3, до второго: %4. Максимум: %5 с.")
                               .arg(m_controls[QStringLiteral("duration")].spec.value(QStringLiteral("value")).toDouble(), 0, 'f', 2)
                               .arg(requested).arg(selection.firstAvailable).arg(selection.secondAvailable)
                               .arg(selection.maxDuration / pCore->getCurrentFps(), 0, 'f', 2)); break;
@@ -2895,7 +2906,7 @@ void StudioPanel::refreshTransitionSelection()
         m_status->setText(selection.sameFrames
             ? QStringLiteral("Оба входа показывают те же кадры исходника. Автообрезка отключена: удалите переход и выберите разные фрагменты. "
                              "Настройки можно менять без сдвига монтажа.")
-            : QStringLiteral("Переход установлен. Изменения сразу видны в мониторе; отмена — Ctrl+Z."));
+            : QStringLiteral("Переход установлен. Изменения сразу видны в мониторе; отмена: Ctrl+Z."));
         if (m_effect) m_parameterConnection = connect(m_effect.get(), &QAbstractItemModel::dataChanged, this, [this] { refreshValues(); });
         refreshValues();
         return;
@@ -3101,7 +3112,7 @@ void StudioPanel::startFraming()
     monitor->slotShowEffectScene(SceneType::MonitorSceneGeometry, true);
     monitor->setEffectSceneProperty(QStringLiteral("lockratio"), true);
     QTimer::singleShot(0, this, &StudioPanel::updateFramingRect);
-    m_status->setText(QStringLiteral("Кадрирование открыто в мониторе. Готово или Escape — выход."));
+    m_status->setText(QStringLiteral("Кадрирование открыто в мониторе. Готово или Escape: выход."));
 }
 
 void StudioPanel::stopFraming()
@@ -3244,7 +3255,7 @@ void StudioPanel::startEffectCenter()
     monitor->slotShowEffectScene(SceneType::MonitorSceneGeometry, true);
     monitor->setEffectSceneProperty(QStringLiteral("lockratio"), true);
     QTimer::singleShot(0, this, &StudioPanel::updateEffectCenterRect);
-    m_status->setText(QStringLiteral("Перетащите метку центра. «Готово» или Escape — выход."));
+    m_status->setText(QStringLiteral("Перетащите метку центра. «Готово» или Escape: выход."));
 }
 
 void StudioPanel::updateEffectCenterRect()
@@ -3284,7 +3295,7 @@ void StudioPanel::startCardPosition()
     monitor->slotShowEffectScene(SceneType::MonitorSceneGeometry, true);
     monitor->setEffectSceneProperty(QStringLiteral("lockratio"), true);
     QTimer::singleShot(0, this, &StudioPanel::updateCardPositionRect);
-    m_status->setText(QStringLiteral("Перетащите рамку карточки в мониторе проекта. Готово или Escape — выход."));
+    m_status->setText(QStringLiteral("Перетащите рамку карточки в мониторе проекта. Готово или Escape: выход."));
 }
 
 void StudioPanel::updateCardPositionRect()

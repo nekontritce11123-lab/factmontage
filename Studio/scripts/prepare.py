@@ -331,7 +331,7 @@ def main(baseline=False, output=None):
                'docs/INSTALL.md', 'docs/INSTALL_RU.md', 'docs/PROJECTS.md', 'docs/PROJECTS_RU.md',
                'docs/RELEASE_NOTES.md', 'docs/RELEASE_NOTES_RU.md', 'docs/TESTING.md',
                'Studio/upstream/sources.json', 'Studio/upstream/org.kde.kdenlive.json', 'Studio/upstream/'+patch)]
-    for folder in ('overlay', 'scripts', 'tests', 'previews', 'patches', 'branding'):
+    for folder in ('overlay', 'scripts', 'tests', 'previews', 'patches', 'branding', 'release'):
         changes += [(p, p.relative_to(ROOT.parent).as_posix()) for p in sorted((ROOT/folder).rglob('*'))
                     if p.is_file() and '__pycache__' not in p.parts]
     source_archive(out/'studio-changes-source.tar.gz', changes)
