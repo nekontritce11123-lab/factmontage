@@ -38,7 +38,7 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
         && pCore->window()->getCurrentTimeline()->model(); }, 15000));
     auto *window = pCore->window();
     auto *timeline = window->getCurrentTimeline();
-    const auto model = timeline->model();
+    auto model = timeline->model();
     REQUIRE(std::abs(pCore->getCurrentFps() - 60.0) < .001);
     REQUIRE(pCore->getProjectProfile().width() == 1920);
     REQUIRE(pCore->getProjectProfile().height() == 1080);
@@ -240,6 +240,7 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
     capture(QStringLiteral("workspace"), QStringLiteral("Карточки"), clips[0], 120);
     REQUIRE(pCore->projectManager()->saveFile());
     REQUIRE(studioWait([] { return pCore->taskManager.backgroundIdle(); }, 15000));
+    model.reset(); // Release test-owned MLT objects before the native window closes the factory.
     QPointer<MainWindow> closingWindow(window);
     REQUIRE(window->close());
     windowClosed = true; // MainWindow has already destroyed ProjectManager; do not call it from the guard.
