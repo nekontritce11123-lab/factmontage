@@ -1,0 +1,42 @@
+name: Bug report / Ошибка
+description: Report a reproducible problem in FactMontage.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: FactMontage version / Версия
+      description: Include the package version and source SHA if available.
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Linux distribution, hardware and display scale
+      placeholder: "SteamOS version, Steam Deck model, 1280×800, 125%"
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce / Шаги воспроизведения
+      description: State the panel section and selected clips.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual result / Ожидание и результат
+    validations:
+      required: true
+  - type: textarea
+    id: lifecycle
+    attributes:
+      label: Save, reopen, Undo/Redo and export
+      description: Which of these actions changes the result?
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Small sample project, screenshots and logs
+      description: Attach only files you have permission to share. Remove personal paths and private media.

@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "width": 144,
+  "height": 81,
+  "items": [
+    {
+      "style": 0,
+      "code": 0.0,
+      "name": "Двойное отдаление",
+      "png": "transition_00.png",
+      "gif": "transition_00.gif"
+    },
+    {
+      "style": 1,
+      "code": 0.09090909090909091,
+      "name": "Проезд вперёд",
+      "png": "transition_01.png",
+      "gif": "transition_01.gif"
+    },
+    {
+      "style": 2,
+      "code": 0.18181818181818182,
+      "name": "Мягкий взмах",
+      "png": "transition_02.png",
+      "gif": "transition_02.gif"
+    },
+    {
+      "style": 3,
+      "code": 0.2727272727272727,
+      "name": "Плавный проезд",
+      "png": "transition_03.png",
+      "gif": "transition_03.gif"
+    },
+    {
+      "style": 4,
+      "code": 0.36363636363636365,
+      "name": "Через расфокус",
+      "png": "transition_04.png",
+      "gif": "transition_04.gif"
+    },
+    {
+      "style": 5,
+      "code": 0.45454545454545453,
+      "name": "Диагональное раскрытие",
+      "png": "transition_05.png",
+      "gif": "transition_05.gif"
+    },
+    {
+      "style": 6,
+      "code": 0.5454545454545454,
+      "name": "Лёгкий поворот",
+      "png": "transition_06.png",
+      "gif": "transition_06.gif"
+    },
+    {
+      "style": 7,
+      "code": 0.6363636363636364,
+      "name": "Живой наплыв",
+      "png": "transition_07.png",
+      "gif": "transition_07.gif"
+    },
+    {
+      "style": 8,
+      "code": 0.7272727272727273,
+      "name": "Круговое раскрытие",
+      "png": "transition_08.png",
+      "gif": "transition_08.gif"
+    },
+    {
+      "style": 9,
+      "code": 0.8181818181818182,
+      "name": "Мягкое разделение",
+      "png": "transition_09.png",
+      "gif": "transition_09.gif"
+    },
+    {
+      "style": 10,
+      "code": 0.9090909090909091,
+      "name": "Наклон и зум",
+      "png": "transition_10.png",
+      "gif": "transition_10.gif"
+    },
+    {
+      "style": 11,
+      "code": 1.0,
+      "name": "Мягкая шторка",
+      "png": "transition_11.png",
+      "gif": "transition_11.gif"
+    },
+    {
+      "style": 12,
+      "code": 0.045454545454545456,
+      "name": "Световой засвет",
+      "png": "transition_12.png",
+      "gif": "transition_12.gif"
+    },
+    {
+      "style": 13,
+      "code": 0.13636363636363635,
+      "name": "Раскрытие по яркости",
+      "png": "transition_13.png",
+      "gif": "transition_13.gif"
+    },
+    {
+      "style": 14,
+      "code": 0.22727272727272727,
+      "name": "Цифровой сдвиг",
+      "png": "transition_14.png",
+      "gif": "transition_14.gif"
+    }
+  ]
+}

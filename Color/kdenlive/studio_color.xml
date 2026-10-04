@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<effect tag="studio.color" id="studio_color" type="video" LC_NUMERIC="C">
+  <name>FactMontage: Цвет</name>
+  <description>SDR 8-бит. Единый цвет, сохранённые поправки; без анализа при воспроизведении.</description>
+  <author>SUNIMO contributors</author>
+  <version>1</version>
+  <parameter name="exposure" type="constant" default="0" min="-2" max="2" factor="1" decimals="2">
+    <name>Яркость</name>
+  </parameter>
+  <parameter name="temperature" type="constant" default="0" min="-100" max="100" factor="1" decimals="0">
+    <name>Теплее / холоднее</name>
+  </parameter>
+  <parameter name="tint" type="constant" default="0" min="-100" max="100" factor="1" decimals="0">
+    <name>Зелёный / пурпурный</name>
+  </parameter>
+  <parameter name="contrast" type="constant" default="0" min="-50" max="50" factor="1" decimals="0">
+    <name>Контраст</name>
+  </parameter>
+  <parameter name="shadows" type="constant" default="0" min="-50" max="50" factor="1" decimals="0">
+    <name>Тени</name>
+  </parameter>
+  <parameter name="highlights" type="constant" default="0" min="-50" max="50" factor="1" decimals="0">
+    <name>Светлые участки</name>
+  </parameter>
+  <parameter name="saturation" type="constant" default="100" min="0" max="150" factor="1" decimals="0">
+    <name>Насыщенность</name>
+  </parameter>
+  <parameter name="protection" type="constant" default="100" min="0" max="100" factor="1" decimals="0">
+    <name>Защита светов</name>
+  </parameter>
+  <parameter name="mix" type="constant" default="100" min="0" max="100" factor="1" decimals="0">
+    <name>Сила общего стиля</name>
+  </parameter>
+  <parameter name="auto_strength" type="fixed" default="100" min="0" max="100" factor="1" decimals="0" value="100">
+    <name>Сила выравнивания</name>
+  </parameter>
+  <parameter name="auto_ev" type="fixed" default="0" min="-1" max="1" factor="1" decimals="4" value="0">
+    <name>Авто: экспозиция</name>
+  </parameter>
+  <parameter name="auto_r" type="fixed" default="0" min="-0.25" max="0.25" factor="1" decimals="5" value="0">
+    <name>Авто: красный, EV</name>
+  </parameter>
+  <parameter name="auto_b" type="fixed" default="0" min="-0.25" max="0.25" factor="1" decimals="5" value="0">
+    <name>Авто: синий, EV</name>
+  </parameter>
+  <parameter name="auto_contrast" type="fixed" default="0" min="-0.12" max="0.12" factor="1" decimals="5" value="0">
+    <name>Авто: контраст</name>
+  </parameter>
+  <parameter name="transfer" type="fixed" default="0" min="0" max="1" factor="1" decimals="0" value="0">
+    <name>Передаточная функция (0: BT.709; 1: sRGB)</name>
+  </parameter>
+  <parameter name="studio_input_validated" type="fixed" default="0" value="0">
+    <name>studio_input_validated</name>
+  </parameter>
+  <parameter name="studio_color_algorithm" type="fixed" default="sdr-primary-v1" value="sdr-primary-v1">
+    <name>studio_color_algorithm</name>
+  </parameter>
+</effect>

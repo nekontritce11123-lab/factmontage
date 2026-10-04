@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transition tag="frei0r.sunimo_transition" id="studio_transition" type="videotransition" LC_NUMERIC="C">
+  <name>FactMontage: Переходы</name>
+  <description>Пятнадцать переходов для двух соседних видеоклипов.</description>
+  <author>SUNIMO Motion contributors</author>
+  <parameter name="0" type="animated" default="0=0;%out=1" value="0=0;%out=1" min="0" max="1" factor="1" decimals="3">
+    <name>Ход перехода</name>
+  </parameter>
+  <parameter name="1" type="list" default="0" value="0" paramlist="0;0.0909090909091;0.181818181818;0.272727272727;0.363636363636;0.454545454545;0.545454545455;0.636363636364;0.727272727273;0.818181818182;0.909090909091;1;0.0454545454545;0.136363636364;0.227272727273">
+    <name>Стиль</name>
+    <paramlistdisplay>Двойное отдаление;Проезд вперёд;Мягкий взмах;Плавный проезд;Через расфокус;Диагональное раскрытие;Лёгкий поворот;Живой наплыв;Круговое раскрытие;Мягкое разделение;Наклон и зум;Мягкая шторка;Световой засвет;Раскрытие по яркости;Цифровой сдвиг</paramlistdisplay>
+  </parameter>
+  <parameter name="2" type="constant" default="0.45" value="0.45" min="0" max="100" factor="100" decimals="0">
+    <name>Сила</name>
+  </parameter>
+  <parameter name="3" type="list" default="0" value="0" paramlist="0;0.333333333333;0.666666666667;1">
+    <name>Направление</name>
+    <paramlistdisplay>Влево;Вправо;Вверх;Вниз</paramlistdisplay>
+  </parameter>
+  <parameter name="4" type="constant" default="0.35" value="0.35" min="0" max="100" factor="100" decimals="0">
+    <name>Мягкость</name>
+  </parameter>
+  <parameter name="5" type="fixed" default="0.5 0.5" value="0.5 0.5" />
+  <parameter name="6" type="fixed" default="0" value="0" />
+  <parameter name="studio:audio_dip" type="fixed" default="0" value="0" />
+  <parameter name="studio:sfx_enabled" type="fixed" default="0" value="0" />
+  <parameter name="studio:sfx_level" type="fixed" default="0.5" value="0.5" />
+  <parameter name="studio:sfx_source" type="fixed" default="" value="" />
+  <parameter name="studio:sfx_id" type="fixed" default="" value="" />
+</transition>

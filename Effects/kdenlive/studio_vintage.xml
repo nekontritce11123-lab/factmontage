@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='utf-8'?>
+<effect xmlns="https://www.kdenlive.org" tag="frei0r.studio_vintage" id="studio_vintage" type="video" version="0.1.0">
+    <name>Старая камера</name>
+    <description>Детальный эффект монтажной студии. Предсказуемый SDR / 8 бит.</description>
+    <author>Studio FX contributors</author>
+    <parameter name="0" type="list" default="0.25" value="0.25" min="0" max="4" factor="4" decimals="0" paramlist="0;1;2;3;4" paramlistdisplay="VHS,Hi8,Super 8,CRT,старая веб-камера">
+        <name>Тип камеры</name>
+    </parameter>
+    <parameter name="1" type="constant" default="0.62" value="0.62" min="0" max="100" factor="100" decimals="1">
+        <name>Общая сила</name>
+    </parameter>
+    <parameter name="2" type="constant" default="0.46000000000000002" value="0.46000000000000002" min="0" max="100" factor="100" decimals="1">
+        <name>Размывание цвета</name>
+    </parameter>
+    <parameter name="3" type="constant" default="0.28000000000000003" value="0.28000000000000003" min="0" max="100" factor="100" decimals="1">
+        <name>Световые контуры</name>
+    </parameter>
+    <parameter name="4" type="constant" default="0.22" value="0.22" min="0" max="100" factor="100" decimals="1">
+        <name>Плавание оттенка</name>
+    </parameter>
+    <parameter name="5" type="constant" default="0.26000000000000001" value="0.26000000000000001" min="0" max="100" factor="100" decimals="1">
+        <name>Чересстрочность</name>
+    </parameter>
+    <parameter name="6" type="constant" default="0.29999999999999999" value="0.29999999999999999" min="0" max="100" factor="100" decimals="1">
+        <name>Строки развертки</name>
+    </parameter>
+    <parameter name="7" type="constant" default="0.17999999999999999" value="0.17999999999999999" min="0" max="100" factor="100" decimals="1">
+        <name>Мерцание</name>
+    </parameter>
+    <parameter name="8" type="constant" default="0.23999999999999999" value="0.23999999999999999" min="0" max="100" factor="100" decimals="1">
+        <name>Горизонтальный сдвиг</name>
+    </parameter>
+    <parameter name="9" type="constant" default="0.17999999999999999" value="0.17999999999999999" min="0" max="100" factor="100" decimals="1">
+        <name>Плавание ленты</name>
+    </parameter>
+    <parameter name="10" type="constant" default="0.12" value="0.12" min="0" max="100" factor="100" decimals="1">
+        <name>Выпадения сигнала</name>
+    </parameter>
+    <parameter name="11" type="constant" default="0.35999999999999999" value="0.35999999999999999" min="0" max="100" factor="100" decimals="1">
+        <name>Зерно</name>
+    </parameter>
+    <parameter name="12" type="constant" default="0.20000000000000001" value="0.20000000000000001" min="0" max="100" factor="100" decimals="1">
+        <name>Пыль и царапины</name>
+    </parameter>
+    <parameter name="13" type="constant" default="0.17999999999999999" value="0.17999999999999999" min="0" max="100" factor="100" decimals="1">
+        <name>Свечение</name>
+    </parameter>
+    <parameter name="14" type="constant" default="0.23999999999999999" value="0.23999999999999999" min="0" max="100" factor="100" decimals="1">
+        <name>Виньетка</name>
+    </parameter>
+    <parameter name="15" type="constant" default="0.13699999999999998" value="0.13699999999999998" min="0" max="100" factor="100" decimals="1">
+        <name>Вариант движения</name>
+    </parameter>
+    <parameter name="16" type="constant" default="1" value="1" min="0" max="100" factor="100" decimals="1">
+        <name>Смешивание</name>
+    </parameter>
+    <parameter name="threads" type="fixed" default="1" value="1">
+        <name>Потоки MLT</name>
+    </parameter>
+</effect>

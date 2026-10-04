@@ -1,0 +1,17 @@
+{
+  "schema": "studio.color.preset/1",
+  "id": "cool",
+  "name": "Прохладный",
+  "description": "Лёгкий холодный оттенок.",
+  "manual": {
+    "exposure": 0,
+    "temperature": -14,
+    "tint": 0,
+    "contrast": 6,
+    "shadows": 3,
+    "highlights": 0,
+    "saturation": 96,
+    "protection": 100,
+    "mix": 100
+  }
+}

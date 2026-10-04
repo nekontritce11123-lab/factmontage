@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<effect xmlns="https://www.kdenlive.org" tag="frei0r.studio_lens" id="studio_lens" type="video" version="0.1.0">
+    <name>Оптический глазок</name>
+    <description>Детальный эффект монтажной студии. Предсказуемый SDR / 8 бит.</description>
+    <author>Studio FX contributors</author>
+    <parameter name="0" type="list" default="0.5" value="0.5" min="0" max="2" factor="2" decimals="0" paramlist="0;1;2" paramlistdisplay="широкий угол,рыбий глаз,глазок">
+        <name>Тип проекции</name>
+    </parameter>
+    <parameter name="1" type="constant" default="0.78000000000000003" value="0.78000000000000003" min="0" max="100" factor="100" decimals="1">
+        <name>Сила искажения</name>
+    </parameter>
+    <parameter name="2" type="list" default="0" value="0" min="0" max="2" factor="2" decimals="0" paramlist="0;1;2" paramlistdisplay="круг,овал,прямоугольник">
+        <name>Форма апертуры</name>
+    </parameter>
+    <parameter name="3" type="constant" default="0.81999999999999995" value="0.81999999999999995" min="0" max="100" factor="100" decimals="1">
+        <name>Радиус окна</name>
+    </parameter>
+    <parameter name="4" type="constant" default="0.5" value="0.5" min="0" max="100" factor="100" decimals="1">
+        <name>Соотношение сторон</name>
+    </parameter>
+    <parameter name="5" type="constant" default="0.5" value="0.5" min="0" max="100" factor="100" decimals="1">
+        <name>Центр X</name>
+    </parameter>
+    <parameter name="6" type="constant" default="0.5" value="0.5" min="0" max="100" factor="100" decimals="1">
+        <name>Центр Y</name>
+    </parameter>
+    <parameter name="7" type="constant" default="1" value="1" min="0" max="100" factor="100" decimals="1">
+        <name>Затемнение вне окна</name>
+    </parameter>
+    <parameter name="8" type="constant" default="0.35999999999999999" value="0.35999999999999999" min="0" max="100" factor="100" decimals="1">
+        <name>Мягкость границы</name>
+    </parameter>
+    <parameter name="9" type="constant" default="0.16" value="0.16" min="0" max="100" factor="100" decimals="1">
+        <name>Запас кадрирования</name>
+    </parameter>
+    <parameter name="10" type="constant" default="0.28000000000000003" value="0.28000000000000003" min="0" max="100" factor="100" decimals="1">
+        <name>Размытие краёв</name>
+    </parameter>
+    <parameter name="11" type="constant" default="0.34000000000000002" value="0.34000000000000002" min="0" max="100" factor="100" decimals="1">
+        <name>Падение резкости</name>
+    </parameter>
+    <parameter name="12" type="constant" default="0.12" value="0.12" min="0" max="100" factor="100" decimals="1">
+        <name>Хроматическая аберрация</name>
+    </parameter>
+    <parameter name="13" type="constant" default="0.22" value="0.22" min="0" max="100" factor="100" decimals="1">
+        <name>Свечение</name>
+    </parameter>
+    <parameter name="14" type="constant" default="0.46000000000000002" value="0.46000000000000002" min="0" max="100" factor="100" decimals="1">
+        <name>Контраст</name>
+    </parameter>
+    <parameter name="15" type="constant" default="1" value="1" min="0" max="100" factor="100" decimals="1">
+        <name>Смешивание</name>
+    </parameter>
+    <parameter name="threads" type="fixed" default="1" value="1">
+        <name>Потоки MLT</name>
+    </parameter>
+</effect>

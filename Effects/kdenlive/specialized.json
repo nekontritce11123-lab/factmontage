@@ -1,0 +1,554 @@
+{
+  "schema": 1,
+  "version": "0.1.0",
+  "filters": [
+    {
+      "id": "studio_lens",
+      "tag": "frei0r.studio_lens",
+      "label": "Оптический глазок",
+      "version": "0.1.0",
+      "groups": [
+        {
+          "id": "projection",
+          "label": "Проекция",
+          "controls": [
+            "projection",
+            "strength"
+          ]
+        },
+        {
+          "id": "aperture",
+          "label": "Апертурное окно",
+          "controls": [
+            "shape",
+            "radius",
+            "aspect",
+            "center_x",
+            "center_y"
+          ]
+        },
+        {
+          "id": "edge",
+          "label": "Края и оптика",
+          "controls": [
+            "edge_darkness",
+            "edge_softness",
+            "overscan",
+            "edge_blur",
+            "sharpness_falloff"
+          ]
+        },
+        {
+          "id": "color",
+          "label": "Цвет и свечение",
+          "controls": [
+            "aberration",
+            "bloom",
+            "contrast",
+            "mix"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "id": "projection",
+          "label": "Тип проекции",
+          "kind": "choice",
+          "min": 0,
+          "max": 2,
+          "default": 1,
+          "options": [
+            "широкий угол",
+            "рыбий глаз",
+            "глазок"
+          ]
+        },
+        {
+          "id": "strength",
+          "label": "Сила искажения",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 78,
+          "unit": "%"
+        },
+        {
+          "id": "shape",
+          "label": "Форма апертуры",
+          "kind": "choice",
+          "min": 0,
+          "max": 2,
+          "default": 0,
+          "options": [
+            "круг",
+            "овал",
+            "прямоугольник"
+          ]
+        },
+        {
+          "id": "radius",
+          "label": "Радиус окна",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 82,
+          "unit": "%"
+        },
+        {
+          "id": "aspect",
+          "label": "Соотношение сторон",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 50,
+          "unit": "%"
+        },
+        {
+          "id": "center_x",
+          "label": "Центр X",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 50,
+          "unit": "%"
+        },
+        {
+          "id": "center_y",
+          "label": "Центр Y",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 50,
+          "unit": "%"
+        },
+        {
+          "id": "edge_darkness",
+          "label": "Затемнение вне окна",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 100,
+          "unit": "%"
+        },
+        {
+          "id": "edge_softness",
+          "label": "Мягкость границы",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 36,
+          "unit": "%"
+        },
+        {
+          "id": "overscan",
+          "label": "Запас кадрирования",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 16,
+          "unit": "%"
+        },
+        {
+          "id": "edge_blur",
+          "label": "Размытие краёв",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 28,
+          "unit": "%"
+        },
+        {
+          "id": "sharpness_falloff",
+          "label": "Падение резкости",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 34,
+          "unit": "%"
+        },
+        {
+          "id": "aberration",
+          "label": "Хроматическая аберрация",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 12,
+          "unit": "%"
+        },
+        {
+          "id": "bloom",
+          "label": "Свечение",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 22,
+          "unit": "%"
+        },
+        {
+          "id": "contrast",
+          "label": "Контраст",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 46,
+          "unit": "%"
+        },
+        {
+          "id": "mix",
+          "label": "Смешивание",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 100,
+          "unit": "%"
+        }
+      ],
+      "presets": [
+        {
+          "id": "peephole",
+          "label": "Дверной глазок",
+          "description": "Круглая апертура, тёмные края и мягкая оптика.",
+          "values": {
+            "projection": 2,
+            "strength": 90,
+            "shape": 0,
+            "radius": 82,
+            "edge_darkness": 100,
+            "edge_softness": 36,
+            "overscan": 16,
+            "edge_blur": 28,
+            "sharpness_falloff": 34,
+            "aberration": 12,
+            "bloom": 22,
+            "contrast": 46,
+            "mix": 100
+          }
+        },
+        {
+          "id": "fisheye",
+          "label": "Круглый fisheye",
+          "description": "Сильное искажение с сохранением круглой границы.",
+          "values": {
+            "projection": 1,
+            "strength": 78,
+            "shape": 0,
+            "radius": 88,
+            "edge_darkness": 82,
+            "edge_softness": 28,
+            "overscan": 22,
+            "edge_blur": 18,
+            "sharpness_falloff": 26,
+            "aberration": 9,
+            "bloom": 12,
+            "contrast": 50,
+            "mix": 100
+          }
+        },
+        {
+          "id": "soft_wide",
+          "label": "Мягкий широкий угол",
+          "description": "Лёгкая оптика без жёсткой чёрной маски.",
+          "values": {
+            "projection": 0,
+            "strength": 34,
+            "shape": 1,
+            "radius": 100,
+            "edge_darkness": 22,
+            "edge_softness": 72,
+            "overscan": 12,
+            "edge_blur": 24,
+            "sharpness_falloff": 18,
+            "aberration": 5,
+            "bloom": 14,
+            "contrast": 52,
+            "mix": 86
+          }
+        }
+      ]
+    },
+    {
+      "id": "studio_vintage",
+      "tag": "frei0r.studio_vintage",
+      "label": "Старая камера",
+      "version": "0.1.0",
+      "groups": [
+        {
+          "id": "format",
+          "label": "Формат камеры",
+          "controls": [
+            "format",
+            "amount",
+            "mix"
+          ]
+        },
+        {
+          "id": "signal",
+          "label": "Сигнал",
+          "controls": [
+            "chroma_bleed",
+            "luma_ring",
+            "hue_drift",
+            "interlace",
+            "scanlines"
+          ]
+        },
+        {
+          "id": "motion",
+          "label": "Движение ленты",
+          "controls": [
+            "flicker",
+            "jitter",
+            "timebase",
+            "dropouts"
+          ]
+        },
+        {
+          "id": "texture",
+          "label": "Фактура",
+          "controls": [
+            "grain",
+            "dust",
+            "bloom",
+            "vignette",
+            "seed"
+          ]
+        }
+      ],
+      "parameters": [
+        {
+          "id": "format",
+          "label": "Тип камеры",
+          "kind": "choice",
+          "min": 0,
+          "max": 4,
+          "default": 1,
+          "options": [
+            "VHS",
+            "Hi8",
+            "Super 8",
+            "CRT",
+            "старая веб-камера"
+          ]
+        },
+        {
+          "id": "amount",
+          "label": "Общая сила",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 62,
+          "unit": "%"
+        },
+        {
+          "id": "chroma_bleed",
+          "label": "Размывание цвета",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 46,
+          "unit": "%"
+        },
+        {
+          "id": "luma_ring",
+          "label": "Световые контуры",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 28,
+          "unit": "%"
+        },
+        {
+          "id": "hue_drift",
+          "label": "Плавание оттенка",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 22,
+          "unit": "%"
+        },
+        {
+          "id": "interlace",
+          "label": "Чересстрочность",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 26,
+          "unit": "%"
+        },
+        {
+          "id": "scanlines",
+          "label": "Строки развертки",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 30,
+          "unit": "%"
+        },
+        {
+          "id": "flicker",
+          "label": "Мерцание",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 18,
+          "unit": "%"
+        },
+        {
+          "id": "jitter",
+          "label": "Горизонтальный сдвиг",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 24,
+          "unit": "%"
+        },
+        {
+          "id": "timebase",
+          "label": "Плавание ленты",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 18,
+          "unit": "%"
+        },
+        {
+          "id": "dropouts",
+          "label": "Выпадения сигнала",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 12,
+          "unit": "%"
+        },
+        {
+          "id": "grain",
+          "label": "Зерно",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 36,
+          "unit": "%"
+        },
+        {
+          "id": "dust",
+          "label": "Пыль и царапины",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 20,
+          "unit": "%"
+        },
+        {
+          "id": "bloom",
+          "label": "Свечение",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 18,
+          "unit": "%"
+        },
+        {
+          "id": "vignette",
+          "label": "Виньетка",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 24,
+          "unit": "%"
+        },
+        {
+          "id": "seed",
+          "label": "Вариант движения",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 13.7,
+          "unit": ""
+        },
+        {
+          "id": "mix",
+          "label": "Смешивание",
+          "kind": "number",
+          "min": 0,
+          "max": 100,
+          "default": 100,
+          "unit": "%"
+        }
+      ],
+      "presets": [
+        {
+          "id": "home_vhs",
+          "label": "Домашняя VHS",
+          "description": "Мягкий цвет, умеренное плавание ленты и зерно.",
+          "values": {
+            "format": 0,
+            "amount": 52,
+            "chroma_bleed": 46,
+            "luma_ring": 24,
+            "hue_drift": 18,
+            "interlace": 22,
+            "scanlines": 26,
+            "flicker": 14,
+            "jitter": 18,
+            "timebase": 16,
+            "dropouts": 8,
+            "grain": 32,
+            "dust": 14,
+            "bloom": 16,
+            "vignette": 22,
+            "seed": 13.7,
+            "mix": 100
+          }
+        },
+        {
+          "id": "worn_tape",
+          "label": "Изношенная кассета",
+          "description": "Сильная нестабильность, выпадения и цветовой сдвиг.",
+          "values": {
+            "format": 0,
+            "amount": 78,
+            "chroma_bleed": 66,
+            "luma_ring": 38,
+            "hue_drift": 34,
+            "interlace": 36,
+            "scanlines": 42,
+            "flicker": 30,
+            "jitter": 38,
+            "timebase": 32,
+            "dropouts": 32,
+            "grain": 54,
+            "dust": 28,
+            "bloom": 20,
+            "vignette": 30,
+            "seed": 13.7,
+            "mix": 100
+          }
+        },
+        {
+          "id": "old_camera",
+          "label": "Старая камера",
+          "description": "Тёплый мягкий образ с лёгким bloom и виньеткой.",
+          "values": {
+            "format": 1,
+            "amount": 48,
+            "chroma_bleed": 30,
+            "luma_ring": 20,
+            "hue_drift": 16,
+            "interlace": 12,
+            "scanlines": 14,
+            "flicker": 10,
+            "jitter": 10,
+            "timebase": 8,
+            "dropouts": 4,
+            "grain": 24,
+            "dust": 12,
+            "bloom": 28,
+            "vignette": 34,
+            "seed": 13.7,
+            "mix": 100
+          }
+        }
+      ]
+    }
+  ]
+}

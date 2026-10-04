@@ -1,0 +1,109 @@
+name: Text stage 0 source diagnostics
+on:
+  push:
+    branches: ['codex/text-subtitles-staged-plan']
+    paths:
+      - 'Text/**'
+      - 'Subtitles/**'
+      - 'Studio/overlay/text/**'
+      - '.github/workflows/text-stage0.yml'
+  pull_request:
+    paths:
+      - 'Text/**'
+      - 'Subtitles/**'
+      - 'Studio/overlay/text/**'
+      - '.github/workflows/text-stage0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: text-stage0-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  source-baseline:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      QT_QPA_PLATFORM: offscreen
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Prepare Qt test environment (separate from FAST)
+        id: prepare
+        run: |
+          timeout 120 sudo apt-get update -qq
+          timeout 300 sudo apt-get install -y --no-install-recommends cmake ninja-build g++ pkg-config qt6-base-dev python3-numpy python3-pil fonts-dejavu-core
+          mkdir -p .build/reports/stage0-environment
+          {
+            git rev-parse HEAD
+            git status --porcelain
+            uname -a
+            cmake --version
+            c++ --version
+            python3 --version
+            pkg-config --modversion Qt6Core Qt6Gui
+            dpkg-query -W cmake ninja-build g++ qt6-base-dev python3-numpy python3-pil fonts-dejavu-core
+            sha256sum Text/qt/scenecompiler.hpp Text/src/plugin.cpp Text/src/engine.hpp Text/web/catalog.json
+          } > .build/reports/stage0-environment/versions.txt
+      - name: Evidence collector unit tests
+        if: ${{ !cancelled() && steps.prepare.outcome == 'success' }}
+        run: |
+          set -o pipefail
+          timeout 60 python3 -m unittest discover -s Text/tests -p test_stage0_capture.py -v 2>&1 | tee .build/reports/stage0-environment/collector-tests.log
+      - name: Build opt-in installed-renderer clock probe
+        if: ${{ !cancelled() && steps.prepare.outcome == 'success' }}
+        run: |
+          set -o pipefail
+          mkdir -p .build/reports/stage0-deck-tools
+          timeout 60 python3 -m unittest discover -s Text/tests -p test_deck_clock_proxy.py -v 2>&1 | tee .build/reports/stage0-deck-tools/proxy-tests.log
+          timeout 30 cc -O2 -shared -fPIC -Wall -Wextra -Werror Text/tools/deck_clock_proxy.c -ldl -o .build/reports/stage0-deck-tools/sunimo_text_studio.so
+          sha256sum .build/reports/stage0-deck-tools/sunimo_text_studio.so > .build/reports/stage0-deck-tools/proxy.sha256
+          git archive --format=tar.gz --output=.build/reports/stage0-deck-tools/source.tar.gz HEAD Text Subtitles Studio docs dev AGENTS.md .gitignore .gitattributes
+          git rev-parse HEAD > .build/reports/stage0-deck-tools/source-revision.txt
+      - name: Existing Text FAST baseline
+        if: ${{ !cancelled() && steps.prepare.outcome == 'success' }}
+        run: timeout 300 ./dev test text --jobs 2 --timeout 180 --report-dir .build/reports/stage0-text
+      - name: Existing Subtitles FAST baseline
+        if: ${{ !cancelled() && steps.prepare.outcome == 'success' }}
+        run: timeout 300 ./dev test subtitles --jobs 2 --timeout 180 --report-dir .build/reports/stage0-subtitles
+      - name: Build actual Qt compiler and native renderer
+        id: qt_build
+        if: ${{ !cancelled() && steps.prepare.outcome == 'success' }}
+        run: |
+          set -o pipefail
+          timeout 60 cmake -S Text -B .build/stage0-text-qt -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DBUILD_TESTING=ON -DSTXT_BUILD_QT_COMPILER=ON 2>&1 | tee .build/reports/stage0-environment/qt-configure.log
+          timeout 180 cmake --build .build/stage0-text-qt --parallel 2 2>&1 | tee .build/reports/stage0-environment/qt-build.log
+          sha256sum .build/stage0-text-qt/studio-text-compile .build/stage0-text-qt/sunimo_text_studio.so > .build/reports/stage0-environment/binaries.sha256
+      - name: Existing Text and Qt compiler CTest suites
+        if: ${{ !cancelled() && steps.qt_build.outcome == 'success' }}
+        run: |
+          set -o pipefail
+          timeout 240 ctest --test-dir .build/stage0-text-qt --output-on-failure --no-tests=error --timeout 120 --output-junit "$PWD/.build/reports/stage0-environment/qt-tests.xml" 2>&1 | tee .build/reports/stage0-environment/qt-tests.log
+      - name: Full Text Python suite
+        if: ${{ !cancelled() && steps.qt_build.outcome == 'success' }}
+        run: |
+          set -o pipefail
+          export SUNIMO_TEXT_LIBRARY="$PWD/.build/stage0-text-qt/sunimo_text_studio.so"
+          export SUNIMO_TEXT_INVARIANTS="$PWD/.build/stage0-text-qt/text-motion-invariants"
+          timeout 180 python3 -m unittest discover -s Text/tests -v 2>&1 | tee .build/reports/stage0-environment/text-python-tests.log
+      - name: Capture 40 real renderer frames (not MLT or Deck acceptance)
+        if: ${{ !cancelled() && steps.qt_build.outcome == 'success' }}
+        run: |
+          set -o pipefail
+          timeout 480 python3 Text/tools/capture_stage0.py --compiler .build/stage0-text-qt/studio-text-compile --library .build/stage0-text-qt/sunimo_text_studio.so --output .build/reports/stage0-native 2>&1 | tee .build/reports/stage0-environment/capture.log
+      - name: Tests must not rewrite tracked sources
+        if: ${{ !cancelled() && steps.prepare.outcome == 'success' }}
+        run: git diff --exit-code
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        if: always()
+        with:
+          name: text-stage0-${{ github.event.pull_request.head.sha || github.sha }}
+          path: |
+            .build/reports/stage0-*
+            .build/dev/text/tests.xml
+            .build/dev/subtitles/tests.xml
+          retention-days: 14
+          if-no-files-found: error

@@ -1,0 +1,22 @@
+.flatpak-builder/
+**/build/
+__pycache__/
+*.py[cod]
+Studio/upstream/*
+!Studio/upstream/sources.json
+!Studio/upstream/org.kde.kdenlive.json
+!Studio/upstream/*.patch
+*.flatpak
+releases/*.zip
+
+# Beads / Dolt files (added by bd init)
+.dolt/
+*.db
+.beads-credential-key
+.beads/proxieddb/
+*.gate.lock*
+
+# Incremental development and evidence (never project assets)
+.build/
+dist/
+.recovery-transfer/

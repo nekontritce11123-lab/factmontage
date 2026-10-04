@@ -1,0 +1,17 @@
+{
+  "schema": "studio.color.preset/1",
+  "id": "mono",
+  "name": "Чёрно-белый",
+  "description": "Чистое чёрно-белое изображение, без шума и резкости.",
+  "manual": {
+    "exposure": 0,
+    "temperature": 0,
+    "tint": 0,
+    "contrast": 10,
+    "shadows": 4,
+    "highlights": -8,
+    "saturation": 0,
+    "protection": 100,
+    "mix": 100
+  }
+}

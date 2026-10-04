@@ -1,0 +1,7 @@
+{
+  "schema": 1,
+  "source_archive": "StudioAudio-0.1-source.zip",
+  "source_archive_sha256": "fce0504fbcf7ff454906855b30b4f118fcdc24dda36ccae2cec39cf22a568062",
+  "imported_on": "2026-09-21",
+  "policy": "source-tests-licenses-only; no prebuilt binaries or standalone status report"
+}

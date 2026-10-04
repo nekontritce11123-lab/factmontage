@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<effect tag="studio.camera" id="studio_camera" type="video" LC_NUMERIC="C" requires_in_out="1">
+  <name>FactMontage: Камера</name>
+  <description>Плавная камера, циклический зум, проезд и заранее рассчитанный трекинг головы.</description>
+  <author>SUNIMO contributors</author>
+  <parameter name="mode" default="0" type="list" paramlist="0;1;2;3;4;5">
+    <name>Движение</name>
+    <comment>Выберите одно готовое движение камеры.</comment>
+    <paramlistdisplay>Без изменения масштаба,Приблизить,Отдалить,Приблизить и вернуть,Проезд,Зум по кругу</paramlistdisplay>
+  </parameter>
+  <parameter name="live" default="1" type="list" paramlist="0;1;2">
+    <name>Живая камера</name>
+    <comment>Медленный повторяемый дрейф без покадровой случайной тряски.</comment>
+    <paramlistdisplay>Выключена,Спокойная,Заметная</paramlistdisplay>
+  </parameter>
+  <parameter name="zoom" default="120" type="constant" min="100" max="200" factor="1" suffix="%" decimals="1">
+    <name>Масштаб</name>
+    <comment>100% не оставляет пространства для управляемого проезда; увеличьте масштаб.</comment>
+  </parameter>
+  <parameter name="start_x" default="35" type="constant" min="0" max="100" factor="1" suffix="%" decimals="1">
+    <name>Начало · X</name>
+    <comment />
+  </parameter>
+  <parameter name="start_y" default="50" type="constant" min="0" max="100" factor="1" suffix="%" decimals="1">
+    <name>Начало · Y</name>
+    <comment />
+  </parameter>
+  <parameter name="end_x" default="65" type="constant" min="0" max="100" factor="1" suffix="%" decimals="1">
+    <name>Конец · X</name>
+    <comment />
+  </parameter>
+  <parameter name="end_y" default="50" type="constant" min="0" max="100" factor="1" suffix="%" decimals="1">
+    <name>Конец · Y</name>
+    <comment />
+  </parameter>
+  <parameter name="timing" default="0" type="list" paramlist="0;1">
+    <name>Продолжительность</name>
+    <comment>По умолчанию движение растягивается на весь клип.</comment>
+    <paramlistdisplay>Весь клип,Заданное время</paramlistdisplay>
+  </parameter>
+  <parameter name="duration" default="0.65" type="constant" min="0.25" max="60" factor="1" suffix=" с" decimals="2">
+    <name>Время движения</name>
+    <comment>После заданного времени камера сохраняет конечное положение.</comment>
+  </parameter>
+  <parameter name="cycle_period" default="6" type="constant" min="2" max="12" factor="1" suffix=" с" decimals="1">
+    <name>Полный цикл</name>
+    <comment>Время полного движения «приближение → возвращение».</comment>
+  </parameter>
+  <parameter name="tracking" default="0" type="list" paramlist="0;1">
+    <name>Слежение за головой</name>
+    <comment>Анализ выполняется заранее, поэтому перемотка и экспорт дают одинаковый результат.</comment>
+    <paramlistdisplay>Выключено,Автоматически</paramlistdisplay>
+  </parameter>
+  <parameter name="track_path" default="" type="url">
+    <name>Файл трека</name>
+    <comment>Трек .scam хранит только координаты головы и не содержит видео.</comment>
+  </parameter>
+  <parameter name="track_offset" default="0" type="constant" min="-7200" max="7200" factor="1" suffix=" с" decimals="3">
+    <name>Смещение трека</name>
+    <comment>Сдвигает траекторию относительно начала эффекта.</comment>
+  </parameter>
+  <parameter name="studio_time_origin" type="fixed" default="0" />
+  <parameter name="studio_time_span" type="fixed" default="0" />
+  <parameter name="variant" type="fixed" default="0" />
+</effect>

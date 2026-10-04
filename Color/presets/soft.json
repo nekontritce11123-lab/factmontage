@@ -1,0 +1,17 @@
+{
+  "schema": "studio.color.preset/1",
+  "id": "soft",
+  "name": "Мягкий",
+  "description": "Спокойный контраст, мягче светлые участки.",
+  "manual": {
+    "exposure": 0,
+    "temperature": 0,
+    "tint": 0,
+    "contrast": -8,
+    "shadows": 8,
+    "highlights": -10,
+    "saturation": 96,
+    "protection": 100,
+    "mix": 100
+  }
+}

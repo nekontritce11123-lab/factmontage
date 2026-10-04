@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<effect tag="frei0r.card3d" id="card3d" type="video" LC_NUMERIC="C" requires_in_out="1">
+  <name>FactMontage: Карточки</name>
+  <description>Карточка с готовым оформлением, появлением и живой перспективой. Один эффект на слой.</description>
+  <author>Card 3D contributors</author>
+  <parameter name="0" default="0" type="list" paramlist="0;0.5;1">
+    <name>Вид карточки</name>
+    <comment>Готовые рамка, край, тень и торец. Сменить вид можно без потери расположения.</comment>
+    <paramlistdisplay>Панель,Бумага,Фото</paramlistdisplay>
+  </parameter>
+  <parameter name="1" default="0.25" type="list" paramlist="0;0.25;0.5;0.75;1">
+    <name>Появление</name>
+    <comment>Как карточка появляется в начале клипа. «Без появления» показывает её сразу.</comment>
+    <paramlistdisplay>Без появления,Мягкий выезд,Выезд с вытягиванием,Из глубины,Раскрытие</paramlistdisplay>
+  </parameter>
+  <parameter name="2" default="0.33333333333333331" type="list" paramlist="0;0.33333333333333331;0.66666666666666663;1">
+    <name>Откуда</name>
+    <comment>Угол входа. Не меняет конечное расположение. При «Без появления» не используется.</comment>
+    <paramlistdisplay>Справа снизу,Слева снизу,Справа сверху,Слева сверху</paramlistdisplay>
+  </parameter>
+  <parameter name="3" default="0.16666666666666666" type="list" paramlist="0;0.16666666666666666;0.33333333333333331;0.5;0.66666666666666663;0.83333333333333337;1">
+    <name>Расположение</name>
+    <comment>Где останется карточка после появления. Размер и запас для тени учитываются автоматически.</comment>
+    <paramlistdisplay>По центру,Слева,Справа,Сверху слева,Сверху справа,Снизу слева,Снизу справа</paramlistdisplay>
+  </parameter>
+  <parameter name="4" default="0.68000000000000005" type="constant" min="15" max="100" factor="100" decimals="1" suffix="%">
+    <name>Размер</name>
+    <comment>Размер относительно доступной области кадра. Пропорции источника сохраняются.</comment>
+  </parameter>
+  <parameter name="5" default="0.33999999999999997" type="constant" min="0.25" max="2.5" factor="2.5" decimals="2" suffix=" с">
+    <name>Длительность появления</name>
+    <comment>Меньше — быстрее. При «Без появления» не используется. Для задержки передвиньте клип на таймлайне.</comment>
+  </parameter>
+  <parameter name="6" default="0.5" type="list" paramlist="0;0.5;1">
+    <name>Движение</name>
+    <comment>Готовая перспектива после входа. «Без движения» оставляет карточку прямо и неподвижно.</comment>
+    <paramlistdisplay>Без движения,Спокойное,Живое</paramlistdisplay>
+  </parameter>
+  <parameter name="7" default="0" type="list" paramlist="0;1">
+    <name>Источник</name>
+    <comment>«Изображение» убирает прозрачные поля. «Видео» сохраняет границы кадра, чтобы меняющаяся прозрачность не меняла масштаб. Чёрные поля не удаляются.</comment>
+    <paramlistdisplay>Изображение,Видео</paramlistdisplay>
+  </parameter>
+  <parameter name="8" default="0.20000000000000001" type="constant" min="0" max="20" factor="20" decimals="1" suffix="%">
+    <name>Скругление</name>
+    <comment>Скругляет внешний силуэт карточки. Значение сохраняется при смене вида.</comment>
+  </parameter>
+  <parameter name="9" default="0" type="list" paramlist="0;1">
+    <name>Фон карточки</name>
+    <comment>«С фоном» заполняет прозрачные участки цветом материала. «Только обводка» сохраняет альфа-канал источника.</comment>
+    <paramlistdisplay>С фоном,Только обводка</paramlistdisplay>
+  </parameter>
+  <parameter name="10" default="0.34999999999999998" type="constant" min="0" max="100" factor="100" decimals="0" suffix="%">
+    <name>Интенсивность тени</name>
+    <comment>Непрозрачность мягкой тени. 0% полностью отключает тень.</comment>
+  </parameter>
+  <parameter name="11" default="0" type="list" paramlist="0;1">
+    <name>Способ расположения</name>
+    <comment>Готовые позиции выбираются выше. Ручной режим включается при перетаскивании в мониторе или изменении ползунков.</comment>
+    <paramlistdisplay>Готовая позиция,Вручную</paramlistdisplay>
+  </parameter>
+  <parameter name="12" default="0" type="constant" min="0" max="100" factor="100" decimals="1" suffix="%">
+    <name>Положение по горизонтали</name>
+    <comment>Положение карточки слева направо. Ползунок синхронизирован с рамкой в мониторе.</comment>
+  </parameter>
+  <parameter name="13" default="0.5" type="constant" min="0" max="100" factor="100" decimals="1" suffix="%">
+    <name>Положение по вертикали</name>
+    <comment>Положение карточки сверху вниз. Ползунок синхронизирован с рамкой в мониторе.</comment>
+  </parameter>
+  <parameter name="14" default="1" type="bool" min="0" max="1">
+    <name>Анимировать уход</name>
+    <comment>В конце клипа карточка уходит обратным ходом выбранной анимации.</comment>
+  </parameter>
+  <parameter name="15" default="0" type="list" paramlist="0;0.25;0.5;0.75;1">
+    <name>Анимация ухода</name>
+    <comment>«Как у появления» автоматически повторяет текущий вход в обратную сторону.</comment>
+    <paramlistdisplay>Как у появления,Мягкий выезд,Выезд с вытягиванием,Из глубины,Раскрытие</paramlistdisplay>
+  </parameter>
+  <parameter name="16" default="0.33999999999999997" type="constant" min="0.25" max="2.5" factor="2.5" decimals="2" suffix=" с">
+    <name>Длительность ухода</name>
+    <comment>Меньше — быстрее. Уход всегда заканчивается на последнем кадре клипа.</comment>
+  </parameter>
+  <parameter name="17" default="0" type="fixed">
+    <name>Конец клипа</name>
+    <comment>Внутреннее время последнего кадра; Kdenlive обновляет его при обрезке и разрезании.</comment>
+  </parameter>
+</effect>

@@ -1,0 +1,17 @@
+{
+  "schema": "studio.color.preset/1",
+  "id": "neutral",
+  "name": "Естественный",
+  "description": "Без стилизации. Начальная точка для выравнивания.",
+  "manual": {
+    "exposure": 0,
+    "temperature": 0,
+    "tint": 0,
+    "contrast": 0,
+    "shadows": 0,
+    "highlights": 0,
+    "saturation": 100,
+    "protection": 100,
+    "mix": 100
+  }
+}

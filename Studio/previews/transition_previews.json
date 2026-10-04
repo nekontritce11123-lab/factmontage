@@ -1,0 +1,142 @@
+{
+  "version": 1,
+  "width": 144,
+  "height": 81,
+  "items": [
+    {
+      "style": 0,
+      "code": 0.0,
+      "name": "Двойное отдаление",
+      "png": "transition_00.png",
+      "gif": "transition_00.gif",
+      "png_sha256": "055f05b9894144a9f67d2b09835b34a5780d1a647ccdf7048ff88b84bdf694e4",
+      "gif_sha256": "7af0a1a20f5ff24640885a2745afdd7ef7cc1b4cd2e8dd43a1d083128bda75af"
+    },
+    {
+      "style": 1,
+      "code": 0.09090909090909091,
+      "name": "Проезд вперёд",
+      "png": "transition_01.png",
+      "gif": "transition_01.gif",
+      "png_sha256": "0089a5e7c8fed1608335e6dfd7ab629d4174f712e4f8c6f8358d231fcf13dd03",
+      "gif_sha256": "01e45e6800094e1e0007b8269b97c8f65d44b848d781f4a56c2374662627e346"
+    },
+    {
+      "style": 2,
+      "code": 0.18181818181818182,
+      "name": "Мягкий взмах",
+      "png": "transition_02.png",
+      "gif": "transition_02.gif",
+      "png_sha256": "986474a099951a68e5f5d13eef5ca36eb8da37b2fb378fc8b10becd29b931f5d",
+      "gif_sha256": "1a36466eeed1ed1529db6bfae3e88ed7996389fedd6bec845c40dfa31149126a"
+    },
+    {
+      "style": 3,
+      "code": 0.2727272727272727,
+      "name": "Плавный проезд",
+      "png": "transition_03.png",
+      "gif": "transition_03.gif",
+      "png_sha256": "92dbb7ceee63b35f91cf3175ddd9bcead2e115b3a6df2399a56b35a14f793e12",
+      "gif_sha256": "7692cb266faec14e1ba1d572a4b2d72fe67b53a170f73f49a8401b75e8fe29c7"
+    },
+    {
+      "style": 4,
+      "code": 0.36363636363636365,
+      "name": "Через расфокус",
+      "png": "transition_04.png",
+      "gif": "transition_04.gif",
+      "png_sha256": "e4f84bd8ea598d065b3678a7b66549c3cb126431ef511dcd4992c356b6c7861b",
+      "gif_sha256": "5178ab7776f661bd9e2371e958b0a2e1a47a7bcb06231f573db67cb0c2fa5ddf"
+    },
+    {
+      "style": 5,
+      "code": 0.45454545454545453,
+      "name": "Диагональное раскрытие",
+      "png": "transition_05.png",
+      "gif": "transition_05.gif",
+      "png_sha256": "f417b420206a3a9c776308f28ef0bb39b4ede0e9ad2aaad6f480942b0d85062c",
+      "gif_sha256": "d4ec940547e4c92f29c2a204efecfc61afe21e60f24bb95a743783962c9752cc"
+    },
+    {
+      "style": 6,
+      "code": 0.5454545454545454,
+      "name": "Лёгкий поворот",
+      "png": "transition_06.png",
+      "gif": "transition_06.gif",
+      "png_sha256": "da8f5606f7b6c5e1c41a607da8b266045005505b587b81167574e3d267cdadc3",
+      "gif_sha256": "7e1b8c05d3b014e6715931a5f7e94e06351332d2cf52b8f38fbe3549907b56d8"
+    },
+    {
+      "style": 7,
+      "code": 0.6363636363636364,
+      "name": "Живой наплыв",
+      "png": "transition_07.png",
+      "gif": "transition_07.gif",
+      "png_sha256": "b5db8041e23c6c3a9c6028ea47e68787089806e3635051e955c64d08bc8a2ffa",
+      "gif_sha256": "8c8bd7c02c58bed5b01a21cbbfcdcd64a17cab88b34ac683f07f727aca638998"
+    },
+    {
+      "style": 8,
+      "code": 0.7272727272727273,
+      "name": "Круговое раскрытие",
+      "png": "transition_08.png",
+      "gif": "transition_08.gif",
+      "png_sha256": "6240382babcd6ee826cc2f02b15a03fa1819cec86b218300558792d48fb41b56",
+      "gif_sha256": "e2d5b94333193b514276482ccdd0b6ed589cab5467386b19bad89be75ba4c319"
+    },
+    {
+      "style": 9,
+      "code": 0.8181818181818182,
+      "name": "Мягкое разделение",
+      "png": "transition_09.png",
+      "gif": "transition_09.gif",
+      "png_sha256": "d1102931450c795f396806fd93253330bd28501717f82cf735fb6fe51fa90d25",
+      "gif_sha256": "e94e090c4a4eb66ea070006aa0e0a4e3e9cb52a0790eb687368bcf014d502745"
+    },
+    {
+      "style": 10,
+      "code": 0.9090909090909091,
+      "name": "Наклон и зум",
+      "png": "transition_10.png",
+      "gif": "transition_10.gif",
+      "png_sha256": "6e44bae57f8169d900fab87d15ecca6ff967ece853c1459508bb86ee9edaac39",
+      "gif_sha256": "558b5fd3fa4c65b679cd30b4555bedc7b751612513fbe035b4dc1c71e784d072"
+    },
+    {
+      "style": 11,
+      "code": 1.0,
+      "name": "Мягкая шторка",
+      "png": "transition_11.png",
+      "gif": "transition_11.gif",
+      "png_sha256": "fa7d1216743cb9874f371a4afd2fb6b32e5fd51e6c1e5382728b20a477e50fca",
+      "gif_sha256": "7b43c3bee92d76af7c39614295acb7e69c70d4e7a07a1cca5cbd0a9552a4fd2c"
+    },
+    {
+      "style": 12,
+      "code": 0.045454545454545456,
+      "name": "Световой засвет",
+      "png": "transition_12.png",
+      "gif": "transition_12.gif",
+      "png_sha256": "84629c4d480d3eced4ce79e974940cd4a0c3c0c859563502501f8c074d3eaf96",
+      "gif_sha256": "e5969cde05ed05f8ebcb371d70d6ead9d339cdd8c595b13aa4d243d013273738"
+    },
+    {
+      "style": 13,
+      "code": 0.13636363636363635,
+      "name": "Раскрытие по яркости",
+      "png": "transition_13.png",
+      "gif": "transition_13.gif",
+      "png_sha256": "2f3a3fe5e2ef21cafecf95a700ac4e214ab735425348eb17bb0a4ae60174c6e3",
+      "gif_sha256": "a45d1d8eade6967308678a66ad154f33ae3f9d45b576aa025c14b9401cd0a967"
+    },
+    {
+      "style": 14,
+      "code": 0.22727272727272727,
+      "name": "Цифровой сдвиг",
+      "png": "transition_14.png",
+      "gif": "transition_14.gif",
+      "png_sha256": "2a5bd2147177ef0905db6beb77b2fa7bc36469d7151e1159f149e4f35fc3357f",
+      "gif_sha256": "f83a16c9170bae75d5780b9c13f9ff4a7c046a4358bff4e4fd0e1c5f5dff3718"
+    }
+  ]
+}

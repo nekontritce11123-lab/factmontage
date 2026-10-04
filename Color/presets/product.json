@@ -1,0 +1,17 @@
+{
+  "schema": "studio.color.preset/1",
+  "id": "product",
+  "name": "Товар / детали",
+  "description": "Сдержанный старт для съёмки изделий, не калибровка цвета.",
+  "manual": {
+    "exposure": 0,
+    "temperature": 0,
+    "tint": 0,
+    "contrast": 5,
+    "shadows": 0,
+    "highlights": -5,
+    "saturation": 100,
+    "protection": 100,
+    "mix": 100
+  }
+}

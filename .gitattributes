@@ -1,0 +1,15 @@
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+*.cpp text eol=lf
+*.hpp text eol=lf
+*.c text eol=lf
+*.h text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
+*.patch text eol=lf whitespace=-blank-at-eol
+*.md text eol=lf
+*.cmd text eol=crlf
+*.png binary
+*.gif binary
+*.rgba binary

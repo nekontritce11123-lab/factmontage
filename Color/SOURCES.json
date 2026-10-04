@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "source_archives": [
+    {
+      "name": "Studio_Color_0.1.0_source.zip",
+      "sha256": "cf464274ef3918c630d471883a64ffbfa227a5de9568fd4b1dcd310bff6c99da"
+    },
+    {
+      "name": "Studio_Color_SDR_presets.zip",
+      "sha256": "cd9f97030587a85a8006092c99c29c318c0943a80221d7763e857ee1ace0929f"
+    }
+  ],
+  "accepted": [
+    "Color/src",
+    "Color/include",
+    "Color/mlt",
+    "Color/kdenlive",
+    "Color/scripts",
+    "Color/tests",
+    "Color/presets",
+    "Color/LICENSE",
+    "Color/NOTICE.md"
+  ],
+  "excluded_prototypes": [
+    "ColorPanel",
+    "ColorHost",
+    "DemoHost",
+    "PresetStore"
+  ]
+}

@@ -1,0 +1,3 @@
+# Validation only: CPython 3.13, Linux x86-64 in the pinned SDK.
+numpy==2.3.3 --hash=sha256:5b83648633d46f77039c29078751f80da65aa64d5622a3cd62aaef9d835b6c93
+Pillow==11.3.0 --hash=sha256:13f87d581e71d9189ab21fe0efb5a23e9f28552d5be6979e84001d3b8505abe8

@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "engine": "studio.background",
+  "onnx_runtime": {
+    "version": "1.21.0",
+    "source": "https://github.com/microsoft/onnxruntime/releases/tag/v1.21.0",
+    "commit": "e0b66cad282043d4377cea5269083f17771b6dfc",
+    "license": "MIT",
+    "archive": "https://github.com/microsoft/onnxruntime/archive/refs/tags/v1.21.0.tar.gz",
+    "sha256": "b395c72e0e6c6cb28525f4617bc8477c99cf65659c20439fe955c511c2da2cd9",
+    "size": 240779010,
+    "status": "downloaded from the official v1.21.0 tag archive and verified locally",
+    "eigen": {
+      "commit": "1d8b82b0740839c0de7f1242a3585e3390ff5f33",
+      "source": "https://gitlab.com/libeigen/eigen/-/archive/1d8b82b0740839c0de7f1242a3585e3390ff5f33/eigen-1d8b82b0740839c0de7f1242a3585e3390ff5f33.zip",
+      "sha256": "0a11e4f71593a1335cae38c4847bb9f36e1b700148c0d257abfca9df802115c2"
+    },
+    "protobuf": {
+      "version": "21.12",
+      "source": "https://github.com/protocolbuffers/protobuf/archive/refs/tags/v21.12.zip",
+      "sha256": "6a31b662deaeb0ac35e6287bda2f3369b19836e6c9f8828d4da444346f420298"
+    }
+  },
+  "model": {
+    "name": "pp_humansegv2_lite_portrait_static.onnx",
+    "version": "PaddleSeg release/2.10, commit 3c4db66de1d9d59d0628ed87590b6308a2f4aa2a",
+    "source": "https://github.com/PaddlePaddle/PaddleSeg/blob/release/2.10/contrib/PP-HumanSeg/README.md",
+    "checkpoint_url": "https://paddleseg.bj.bcebos.com/dygraph/pp_humanseg_v2/portrait_pp_humansegv2_lite_256x144_smaller/portrait_pp_humansegv2_lite_256x144_pretrained.zip",
+    "checkpoint_sha256": "2cc45fa68064ffefdc32a5ef0cd4b5a089a60f9b3328b5f27dcf239181a53797",
+    "inference_url": "https://paddleseg.bj.bcebos.com/dygraph/pp_humanseg_v2/portrait_pp_humansegv2_lite_256x144_smaller/portrait_pp_humansegv2_lite_256x144_inference_model_with_softmax.zip",
+    "inference_sha256": "d7b6835ce8faec098d8286a53d91eed8ad22186fae9322acc653d0a0943d4b1b",
+    "license": "Apache-2.0",
+    "sha256": "2047b95bea344af15575f4279d6fac44bb07a42e7d537cf8d3265f15fe95cc82",
+    "status": "locally exported with PaddlePaddle 2.6.2 and Paddle2ONNX 1.3.1; static 1x3x144x256 softmax ONNX opset 14; experimental until Deck acceptance"
+  }
+}

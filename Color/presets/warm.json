@@ -1,0 +1,17 @@
+{
+  "schema": "studio.color.preset/1",
+  "id": "warm",
+  "name": "Тёплый",
+  "description": "Умеренное тепло без сильного жёлтого оттенка.",
+  "manual": {
+    "exposure": 0,
+    "temperature": 18,
+    "tint": 0,
+    "contrast": 3,
+    "shadows": 0,
+    "highlights": -6,
+    "saturation": 102,
+    "protection": 100,
+    "mix": 100
+  }
+}

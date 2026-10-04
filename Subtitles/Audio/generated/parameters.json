@@ -1,0 +1,148 @@
+{
+  "schema": 1,
+  "module": "StudioAudio",
+  "version": "0.2.0",
+  "parameters": [
+    {
+      "id": "strength",
+      "label": "Обработка голоса",
+      "min": 0,
+      "max": 100,
+      "default": 40
+    },
+    {
+      "id": "presence",
+      "label": "Заметность музыки",
+      "min": 0,
+      "max": 100,
+      "default": 50
+    },
+    {
+      "id": "priority",
+      "label": "Приоритет голоса",
+      "min": 0,
+      "max": 100,
+      "default": 60
+    }
+  ],
+  "actions": [
+    {
+      "id": "voice",
+      "label": "Голос",
+      "worker_mode": "voice",
+      "button": "Улучшить голос"
+    },
+    {
+      "id": "loudness",
+      "label": "Громкость",
+      "worker_mode": "music",
+      "button": "Выровнять громкость"
+    },
+    {
+      "id": "music",
+      "label": "Музыка",
+      "worker_mode": "mix",
+      "button": "Сбалансировать"
+    },
+    {
+      "id": "pauses",
+      "label": "Паузы",
+      "worker_mode": "pauses",
+      "button": "Сократить паузы"
+    }
+  ],
+  "targets": [
+    {
+      "id": "video",
+      "label": "Видео / рассказ",
+      "lufs": -16
+    },
+    {
+      "id": "gentle",
+      "label": "Спокойная громкость",
+      "lufs": -18
+    },
+    {
+      "id": "broadcast",
+      "label": "Телевещание: −23 LUFS",
+      "lufs": -23
+    }
+  ],
+  "noise": [
+    {
+      "id": "off",
+      "label": "Не убирать шум"
+    },
+    {
+      "id": "fft",
+      "label": "Ровный шум: мягкая очистка"
+    },
+    {
+      "id": "rnnoise",
+      "label": "RNNoise: только после проверки на Deck"
+    }
+  ],
+  "presets": [
+    {
+      "id": "natural",
+      "mode": "voice",
+      "normalize": true,
+      "target_lufs": -16,
+      "label": "Естественный голос",
+      "strength": 30,
+      "presence": 50,
+      "priority": 60,
+      "noise": "fft"
+    },
+    {
+      "id": "story",
+      "mode": "mix",
+      "normalize": true,
+      "target_lufs": -16,
+      "label": "Рассказ под музыку",
+      "strength": 40,
+      "presence": 50,
+      "priority": 65,
+      "noise": "off"
+    },
+    {
+      "id": "soft",
+      "mode": "mix",
+      "normalize": true,
+      "target_lufs": -16,
+      "label": "Тихая подложка",
+      "strength": 30,
+      "presence": 25,
+      "priority": 80,
+      "noise": "off"
+    },
+    {
+      "id": "fan",
+      "mode": "voice",
+      "normalize": true,
+      "target_lufs": -16,
+      "label": "Ровный шум вентилятора",
+      "strength": 35,
+      "presence": 45,
+      "priority": 65,
+      "noise": "fft"
+    },
+    {
+      "id": "short-pauses",
+      "mode": "pauses",
+      "label": "Короткие паузы"
+    }
+  ],
+  "internal": {
+    "sample_rate": 48000,
+    "channels": 2,
+    "lookahead_s": 0.14,
+    "hold_s": 0.35,
+    "release_s": 0.85,
+    "merge_gap_s": 0.65,
+    "pause_after_s": 0.18,
+    "pause_before_s": 0.12,
+    "true_peak_dbtp": -1.5,
+    "lufs_tolerance": 0.4
+  }
+}

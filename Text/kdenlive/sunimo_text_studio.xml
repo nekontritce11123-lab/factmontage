@@ -1,0 +1,17 @@
+<!DOCTYPE kpartgui>
+<effect tag="frei0r.sunimo_text_studio" id="sunimo_text_studio" type="video">
+  <name>FactMontage: Текст</name>
+  <description>Живой текст из файла .stxt. У отдельной надписи из панели «Текст» момент ухода следует за длиной клипа.</description>
+  <author>SUNIMO</author>
+  <parameter type="url" name="0" default="" filter="*.stxt|FactMontage Text scene">
+    <name>Сцена .stxt</name>
+    <comment>Абсолютный путь к сцене, сохранённой локальным редактором. Не удаляйте этот файл после добавления в проект.</comment>
+  </parameter>
+  <parameter type="constant" name="1" default="0" min="0" max="120" factor="120" decimals="2" suffix=" s">
+    <name>Длина титра: 0 = из сцены</name>
+    <comment>Для отдельной надписи обновляется при обрезке; на обычном видеоклипе задаётся вручную.</comment>
+  </parameter>
+  <!-- Frei0r normalized neutral value. Kdenlive constant does not implement offset. -->
+  <parameter type="fixed" name="2" default="0.5"/>
+  <parameter type="fixed" name="threads" default="1"/>
+</effect>

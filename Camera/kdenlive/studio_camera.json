@@ -1,0 +1,303 @@
+{
+  "version": 2,
+  "effect": "studio_camera",
+  "service": "studio.camera",
+  "groups": [
+    {
+      "key": "movement",
+      "label": "Движение камеры",
+      "keys": [
+        "mode"
+      ],
+      "collapsed": false
+    },
+    {
+      "key": "framing",
+      "label": "Кадрирование",
+      "keys": [
+        "zoom",
+        "start_x",
+        "start_y",
+        "end_x",
+        "end_y"
+      ],
+      "collapsed": false
+    },
+    {
+      "key": "time",
+      "label": "Время",
+      "keys": [
+        "timing",
+        "duration",
+        "cycle_period"
+      ],
+      "collapsed": false
+    },
+    {
+      "key": "live",
+      "label": "Живая камера",
+      "keys": [
+        "live"
+      ],
+      "collapsed": true
+    },
+    {
+      "key": "tracking",
+      "label": "Трекинг головы",
+      "keys": [
+        "tracking",
+        "track_path",
+        "track_offset"
+      ],
+      "collapsed": true,
+      "clip_only": true
+    }
+  ],
+  "controls": [
+    {
+      "key": "mode",
+      "label": "Движение",
+      "kind": "choice",
+      "value": 0,
+      "tip": "Выберите одно готовое движение камеры.",
+      "options": [
+        {
+          "value": 0,
+          "name": "Без изменения масштаба",
+          "description": "Сохраняет выбранный масштаб.",
+          "preview": "camera_mode_0",
+          "animated": true
+        },
+        {
+          "value": 1,
+          "name": "Приблизить",
+          "description": "Плавно приближает к цели.",
+          "preview": "camera_mode_1",
+          "animated": true
+        },
+        {
+          "value": 2,
+          "name": "Отдалить",
+          "description": "Плавно отдаляет от цели.",
+          "preview": "camera_mode_2",
+          "animated": true
+        },
+        {
+          "value": 3,
+          "name": "Приблизить и вернуть",
+          "description": "Приближает, удерживает и возвращает.",
+          "preview": "camera_mode_3",
+          "animated": true
+        },
+        {
+          "value": 4,
+          "name": "Проезд",
+          "description": "Перемещается между двумя точками.",
+          "preview": "camera_mode_4",
+          "animated": true
+        },
+        {
+          "value": 5,
+          "name": "Зум по кругу",
+          "description": "Плавно приближает и отдаляет.",
+          "preview": "camera_mode_5",
+          "animated": true
+        }
+      ]
+    },
+    {
+      "key": "live",
+      "label": "Живая камера",
+      "kind": "choice",
+      "value": 1,
+      "tip": "Медленный повторяемый дрейф без покадровой случайной тряски.",
+      "options": [
+        {
+          "value": 0,
+          "name": "Выключена",
+          "description": "Без дополнительного дрейфа.",
+          "preview": "camera_live_0",
+          "animated": true
+        },
+        {
+          "value": 1,
+          "name": "Спокойная",
+          "description": "Очень мягкое живое движение.",
+          "preview": "camera_live_1",
+          "animated": true
+        },
+        {
+          "value": 2,
+          "name": "Заметная",
+          "description": "Более заметное живое движение.",
+          "preview": "camera_live_2",
+          "animated": true
+        }
+      ]
+    },
+    {
+      "key": "zoom",
+      "label": "Масштаб",
+      "kind": "number",
+      "lo": 100,
+      "hi": 200,
+      "value": 120,
+      "suffix": "%",
+      "decimals": 1,
+      "tip": "100% не оставляет пространства для управляемого проезда; увеличьте масштаб."
+    },
+    {
+      "key": "start_x",
+      "label": "Начало · X",
+      "kind": "number",
+      "lo": 0,
+      "hi": 100,
+      "value": 35,
+      "suffix": "%",
+      "decimals": 1
+    },
+    {
+      "key": "start_y",
+      "label": "Начало · Y",
+      "kind": "number",
+      "lo": 0,
+      "hi": 100,
+      "value": 50,
+      "suffix": "%",
+      "decimals": 1
+    },
+    {
+      "key": "end_x",
+      "label": "Конец · X",
+      "kind": "number",
+      "lo": 0,
+      "hi": 100,
+      "value": 65,
+      "suffix": "%",
+      "decimals": 1
+    },
+    {
+      "key": "end_y",
+      "label": "Конец · Y",
+      "kind": "number",
+      "lo": 0,
+      "hi": 100,
+      "value": 50,
+      "suffix": "%",
+      "decimals": 1
+    },
+    {
+      "key": "timing",
+      "label": "Продолжительность",
+      "kind": "choice",
+      "value": 0,
+      "tip": "По умолчанию движение растягивается на весь клип.",
+      "visible_when": {
+        "key": "mode",
+        "not_value": 5
+      },
+      "options": [
+        {
+          "value": 0,
+          "name": "Весь клип",
+          "description": "",
+          "preview": "",
+          "animated": false
+        },
+        {
+          "value": 1,
+          "name": "Заданное время",
+          "description": "",
+          "preview": "",
+          "animated": false
+        }
+      ]
+    },
+    {
+      "key": "duration",
+      "label": "Время движения",
+      "kind": "number",
+      "lo": 0.25,
+      "hi": 60,
+      "value": 0.65,
+      "suffix": " с",
+      "decimals": 2,
+      "tip": "После заданного времени камера сохраняет конечное положение.",
+      "visible_when": [
+        {
+          "key": "mode",
+          "not_value": 5
+        },
+        {
+          "key": "timing",
+          "equals": 1
+        }
+      ]
+    },
+    {
+      "key": "cycle_period",
+      "label": "Полный цикл",
+      "kind": "number",
+      "lo": 2,
+      "hi": 12,
+      "value": 6,
+      "suffix": " с",
+      "decimals": 1,
+      "tip": "Время полного движения «приближение → возвращение».",
+      "visible_when": {
+        "key": "mode",
+        "equals": 5
+      }
+    },
+    {
+      "key": "tracking",
+      "label": "Слежение за головой",
+      "kind": "choice",
+      "value": 0,
+      "tip": "Анализ выполняется заранее, поэтому перемотка и экспорт дают одинаковый результат.",
+      "options": [
+        {
+          "value": 0,
+          "name": "Выключено",
+          "description": "Камера следует выбранной точке.",
+          "preview": "",
+          "animated": false
+        },
+        {
+          "value": 1,
+          "name": "Автоматически",
+          "description": "Удерживает заранее проанализированную голову в кадре.",
+          "preview": "",
+          "animated": false
+        }
+      ]
+    },
+    {
+      "key": "track_path",
+      "label": "Файл трека",
+      "kind": "file",
+      "value": "",
+      "filter": "Трек головы (*.scam)",
+      "tip": "Трек .scam хранит только координаты головы и не содержит видео.",
+      "visible_when": {
+        "key": "tracking",
+        "equals": 1
+      }
+    },
+    {
+      "key": "track_offset",
+      "label": "Смещение трека",
+      "kind": "number",
+      "lo": -7200,
+      "hi": 7200,
+      "value": 0,
+      "suffix": " с",
+      "decimals": 3,
+      "tip": "Сдвигает траекторию относительно начала эффекта.",
+      "visible_when": {
+        "key": "tracking",
+        "equals": 1
+      }
+    }
+  ]
+}

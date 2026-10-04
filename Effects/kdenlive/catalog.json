@@ -1,0 +1,2506 @@
+{
+  "schema": 1,
+  "version": "0.2.0",
+  "parameters": [
+    [
+      "recipe",
+      "Шаблон",
+      0.0
+    ],
+    [
+      "amount",
+      "Сила",
+      0.6
+    ],
+    [
+      "size",
+      "Размер",
+      0.5
+    ],
+    [
+      "speed",
+      "Скорость",
+      0.5
+    ],
+    [
+      "mix",
+      "Смешивание",
+      1.0
+    ],
+    [
+      "center_x",
+      "Центр по горизонтали",
+      0.5
+    ],
+    [
+      "center_y",
+      "Центр по вертикали",
+      0.5
+    ],
+    [
+      "softness",
+      "Мягкость",
+      0.65
+    ],
+    [
+      "animate",
+      "Анимация",
+      1.0
+    ],
+    [
+      "seed",
+      "Вариант движения",
+      0.137
+    ],
+    [
+      "time_offset",
+      "Смещение времени",
+      0.0
+    ]
+  ],
+  "recipes": [
+    {
+      "slot": 0,
+      "id": "studiofx.000",
+      "name": "Мягкая киношная",
+      "category_id": "vignette",
+      "category": "Виньетки",
+      "algorithm": "VIGNETTE",
+      "variant": 0,
+      "values": [
+        0.0,
+        0.55,
+        0.56,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.75,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 1,
+      "id": "studiofx.001",
+      "name": "Глубокие края",
+      "category_id": "vignette",
+      "category": "Виньетки",
+      "algorithm": "VIGNETTE",
+      "variant": 0,
+      "values": [
+        0.007874015748031496,
+        0.88,
+        0.39,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 2,
+      "id": "studiofx.002",
+      "name": "Круглый акцент",
+      "category_id": "vignette",
+      "category": "Виньетки",
+      "algorithm": "VIGNETTE",
+      "variant": 1,
+      "values": [
+        0.015748031496062992,
+        0.7,
+        0.47,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.55,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 3,
+      "id": "studiofx.003",
+      "name": "Вертикальный акцент",
+      "category_id": "vignette",
+      "category": "Виньетки",
+      "algorithm": "VIGNETTE",
+      "variant": 2,
+      "values": [
+        0.023622047244094488,
+        0.67,
+        0.49,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.7,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 4,
+      "id": "studiofx.004",
+      "name": "Акцент сбоку",
+      "category_id": "vignette",
+      "category": "Виньетки",
+      "algorithm": "VIGNETTE",
+      "variant": 0,
+      "values": [
+        0.031496062992125984,
+        0.65,
+        0.52,
+        0.5,
+        1.0,
+        0.3,
+        0.5,
+        0.7,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 5,
+      "id": "studiofx.005",
+      "name": "Белая дымка",
+      "category_id": "vignette",
+      "category": "Виньетки",
+      "algorithm": "VIGNETTE",
+      "variant": 3,
+      "values": [
+        0.03937007874015748,
+        0.46,
+        0.5,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.88,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 6,
+      "id": "studiofx.006",
+      "name": "Тёплые края",
+      "category_id": "vignette",
+      "category": "Виньетки",
+      "algorithm": "VIGNETTE",
+      "variant": 4,
+      "values": [
+        0.047244094488188976,
+        0.42,
+        0.55,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.82,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 7,
+      "id": "studiofx.007",
+      "name": "Туннель",
+      "category_id": "vignette",
+      "category": "Виньетки",
+      "algorithm": "VIGNETTE",
+      "variant": 1,
+      "values": [
+        0.05511811023622047,
+        0.97,
+        0.25,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.24,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 8,
+      "id": "studiofx.008",
+      "name": "Чистый CRT",
+      "category_id": "tv",
+      "category": "Телевизор и VHS",
+      "algorithm": "TV",
+      "variant": 0,
+      "values": [
+        0.06299212598425197,
+        0.42,
+        0.38,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 9,
+      "id": "studiofx.009",
+      "name": "Тёплый телевизор",
+      "category_id": "tv",
+      "category": "Телевизор и VHS",
+      "algorithm": "TV",
+      "variant": 1,
+      "values": [
+        0.07086614173228346,
+        0.54,
+        0.42,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 10,
+      "id": "studiofx.010",
+      "name": "Домашняя VHS",
+      "category_id": "tv",
+      "category": "Телевизор и VHS",
+      "algorithm": "TV",
+      "variant": 2,
+      "values": [
+        0.07874015748031496,
+        0.46,
+        0.47,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 11,
+      "id": "studiofx.011",
+      "name": "Изношенная кассета",
+      "category_id": "tv",
+      "category": "Телевизор и VHS",
+      "algorithm": "TV",
+      "variant": 3,
+      "values": [
+        0.08661417322834646,
+        0.7,
+        0.62,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 12,
+      "id": "studiofx.012",
+      "name": "Чёрно-белый телевизор",
+      "category_id": "tv",
+      "category": "Телевизор и VHS",
+      "algorithm": "TV",
+      "variant": 4,
+      "values": [
+        0.09448818897637795,
+        0.7,
+        0.46,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 13,
+      "id": "studiofx.013",
+      "name": "Сбитая синхронизация",
+      "category_id": "tv",
+      "category": "Телевизор и VHS",
+      "algorithm": "TV",
+      "variant": 5,
+      "values": [
+        0.10236220472440945,
+        0.5,
+        0.4,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 14,
+      "id": "studiofx.014",
+      "name": "Камера наблюдения",
+      "category_id": "tv",
+      "category": "Телевизор и VHS",
+      "algorithm": "TV",
+      "variant": 6,
+      "values": [
+        0.11023622047244094,
+        0.51,
+        0.42,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 15,
+      "id": "studiofx.015",
+      "name": "Старая веб-камера",
+      "category_id": "tv",
+      "category": "Телевизор и VHS",
+      "algorithm": "TV",
+      "variant": 7,
+      "values": [
+        0.11811023622047244,
+        0.59,
+        0.58,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 16,
+      "id": "studiofx.016",
+      "name": "Мягкий широкий угол",
+      "category_id": "lens",
+      "category": "Линзы",
+      "algorithm": "LENS",
+      "variant": 0,
+      "values": [
+        0.12598425196850394,
+        0.3,
+        0.82,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.7,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 17,
+      "id": "studiofx.017",
+      "name": "Экшн-рыбий глаз",
+      "category_id": "lens",
+      "category": "Линзы",
+      "algorithm": "LENS",
+      "variant": 0,
+      "values": [
+        0.13385826771653545,
+        0.75,
+        0.91,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.7,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 18,
+      "id": "studiofx.018",
+      "name": "Пузырь",
+      "category_id": "lens",
+      "category": "Линзы",
+      "algorithm": "LENS",
+      "variant": 1,
+      "values": [
+        0.14173228346456693,
+        0.68,
+        0.46,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.72,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 19,
+      "id": "studiofx.019",
+      "name": "Дверной глазок",
+      "category_id": "lens",
+      "category": "Линзы",
+      "algorithm": "LENS",
+      "variant": 2,
+      "values": [
+        0.14960629921259844,
+        0.9,
+        0.82,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.36,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 20,
+      "id": "studiofx.020",
+      "name": "Вогнутая линза",
+      "category_id": "lens",
+      "category": "Линзы",
+      "algorithm": "LENS",
+      "variant": 3,
+      "values": [
+        0.15748031496062992,
+        0.63,
+        0.53,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.72,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 21,
+      "id": "studiofx.021",
+      "name": "Горизонтальный цилиндр",
+      "category_id": "lens",
+      "category": "Линзы",
+      "algorithm": "LENS",
+      "variant": 4,
+      "values": [
+        0.16535433070866143,
+        0.54,
+        0.59,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.72,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 22,
+      "id": "studiofx.022",
+      "name": "Вертикальный цилиндр",
+      "category_id": "lens",
+      "category": "Линзы",
+      "algorithm": "LENS",
+      "variant": 5,
+      "values": [
+        0.1732283464566929,
+        0.54,
+        0.59,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.72,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 23,
+      "id": "studiofx.023",
+      "name": "Дышащая линза",
+      "category_id": "lens",
+      "category": "Линзы",
+      "algorithm": "LENS",
+      "variant": 6,
+      "values": [
+        0.18110236220472442,
+        0.5,
+        0.63,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.75,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 24,
+      "id": "studiofx.024",
+      "name": "Широкое лицо",
+      "category_id": "fun",
+      "category": "Смешные деформации",
+      "algorithm": "DEFORM",
+      "variant": 0,
+      "values": [
+        0.1889763779527559,
+        0.56,
+        0.48,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.78,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 25,
+      "id": "studiofx.025",
+      "name": "Узкое лицо",
+      "category_id": "fun",
+      "category": "Смешные деформации",
+      "algorithm": "DEFORM",
+      "variant": 1,
+      "values": [
+        0.1968503937007874,
+        0.54,
+        0.48,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.78,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 26,
+      "id": "studiofx.026",
+      "name": "Длинное лицо",
+      "category_id": "fun",
+      "category": "Смешные деформации",
+      "algorithm": "DEFORM",
+      "variant": 2,
+      "values": [
+        0.2047244094488189,
+        0.5,
+        0.49,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.78,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 27,
+      "id": "studiofx.027",
+      "name": "Большой нос",
+      "category_id": "fun",
+      "category": "Смешные деформации",
+      "algorithm": "LENS",
+      "variant": 1,
+      "values": [
+        0.2125984251968504,
+        0.84,
+        0.24,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.72,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 28,
+      "id": "studiofx.028",
+      "name": "Сплющило",
+      "category_id": "fun",
+      "category": "Смешные деформации",
+      "algorithm": "DEFORM",
+      "variant": 3,
+      "values": [
+        0.2204724409448819,
+        0.56,
+        0.56,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.72,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 29,
+      "id": "studiofx.029",
+      "name": "Желе",
+      "category_id": "fun",
+      "category": "Смешные деформации",
+      "algorithm": "DEFORM",
+      "variant": 4,
+      "values": [
+        0.2283464566929134,
+        0.51,
+        0.54,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.78,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 30,
+      "id": "studiofx.030",
+      "name": "Кривое зеркало",
+      "category_id": "fun",
+      "category": "Смешные деформации",
+      "algorithm": "DEFORM",
+      "variant": 5,
+      "values": [
+        0.23622047244094488,
+        0.53,
+        0.58,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.78,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 31,
+      "id": "studiofx.031",
+      "name": "Воронка",
+      "category_id": "fun",
+      "category": "Смешные деформации",
+      "algorithm": "DEFORM",
+      "variant": 6,
+      "values": [
+        0.2440944881889764,
+        0.58,
+        0.54,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.78,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 32,
+      "id": "studiofx.032",
+      "name": "Зеркало слева",
+      "category_id": "mirror",
+      "category": "Зеркала",
+      "algorithm": "MIRROR",
+      "variant": 0,
+      "values": [
+        0.25196850393700787,
+        1,
+        0.5,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 33,
+      "id": "studiofx.033",
+      "name": "Зеркало справа",
+      "category_id": "mirror",
+      "category": "Зеркала",
+      "algorithm": "MIRROR",
+      "variant": 1,
+      "values": [
+        0.25984251968503935,
+        1,
+        0.5,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 34,
+      "id": "studiofx.034",
+      "name": "Зеркало сверху",
+      "category_id": "mirror",
+      "category": "Зеркала",
+      "algorithm": "MIRROR",
+      "variant": 2,
+      "values": [
+        0.2677165354330709,
+        1,
+        0.5,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 35,
+      "id": "studiofx.035",
+      "name": "Зеркало снизу",
+      "category_id": "mirror",
+      "category": "Зеркала",
+      "algorithm": "MIRROR",
+      "variant": 3,
+      "values": [
+        0.2755905511811024,
+        1,
+        0.5,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 36,
+      "id": "studiofx.036",
+      "name": "Диагональное зеркало",
+      "category_id": "mirror",
+      "category": "Зеркала",
+      "algorithm": "MIRROR",
+      "variant": 4,
+      "values": [
+        0.28346456692913385,
+        1,
+        0.5,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 37,
+      "id": "studiofx.037",
+      "name": "Калейдоскоп ×4",
+      "category_id": "mirror",
+      "category": "Зеркала",
+      "algorithm": "KALEIDO",
+      "variant": 4,
+      "values": [
+        0.29133858267716534,
+        1,
+        0.6,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 38,
+      "id": "studiofx.038",
+      "name": "Калейдоскоп ×8",
+      "category_id": "mirror",
+      "category": "Зеркала",
+      "algorithm": "KALEIDO",
+      "variant": 8,
+      "values": [
+        0.2992125984251969,
+        1,
+        0.6,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 39,
+      "id": "studiofx.039",
+      "name": "Вращающийся калейдоскоп",
+      "category_id": "mirror",
+      "category": "Зеркала",
+      "algorithm": "KALEIDO",
+      "variant": 6,
+      "values": [
+        0.30708661417322836,
+        1,
+        0.6,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "medium"
+    },
+    {
+      "slot": 40,
+      "id": "studiofx.040",
+      "name": "Лёгкая хроматика",
+      "category_id": "glitch",
+      "category": "Цифровые сбои",
+      "algorithm": "RGB",
+      "variant": 0,
+      "values": [
+        0.31496062992125984,
+        0.28,
+        0.47,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 41,
+      "id": "studiofx.041",
+      "name": "RGB-раздвоение",
+      "category_id": "glitch",
+      "category": "Цифровые сбои",
+      "algorithm": "RGB",
+      "variant": 1,
+      "values": [
+        0.3228346456692913,
+        0.65,
+        0.56,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 42,
+      "id": "studiofx.042",
+      "name": "Сдвиг блоков",
+      "category_id": "glitch",
+      "category": "Цифровые сбои",
+      "algorithm": "GLITCH",
+      "variant": 0,
+      "values": [
+        0.33070866141732286,
+        0.55,
+        0.57,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 43,
+      "id": "studiofx.043",
+      "name": "Разрыв строки",
+      "category_id": "glitch",
+      "category": "Цифровые сбои",
+      "algorithm": "GLITCH",
+      "variant": 1,
+      "values": [
+        0.33858267716535434,
+        0.59,
+        0.5,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 44,
+      "id": "studiofx.044",
+      "name": "Цифровые помехи",
+      "category_id": "glitch",
+      "category": "Цифровые сбои",
+      "algorithm": "GLITCH",
+      "variant": 2,
+      "values": [
+        0.3464566929133858,
+        0.55,
+        0.54,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 45,
+      "id": "studiofx.045",
+      "name": "Цветовая волна",
+      "category_id": "glitch",
+      "category": "Цифровые сбои",
+      "algorithm": "RGB",
+      "variant": 2,
+      "values": [
+        0.3543307086614173,
+        0.55,
+        0.53,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 46,
+      "id": "studiofx.046",
+      "name": "Плохой кодек — стилизация",
+      "category_id": "glitch",
+      "category": "Цифровые сбои",
+      "algorithm": "GLITCH",
+      "variant": 3,
+      "values": [
+        0.36220472440944884,
+        0.62,
+        0.65,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 47,
+      "id": "studiofx.047",
+      "name": "Редкий сбой",
+      "category_id": "glitch",
+      "category": "Цифровые сбои",
+      "algorithm": "GLITCH",
+      "variant": 4,
+      "values": [
+        0.3700787401574803,
+        0.58,
+        0.45,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 48,
+      "id": "studiofx.048",
+      "name": "Мелкое зерно",
+      "category_id": "film",
+      "category": "Плёнка и фактура",
+      "algorithm": "GRAIN",
+      "variant": 0,
+      "values": [
+        0.3779527559055118,
+        0.37,
+        0.2,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 49,
+      "id": "studiofx.049",
+      "name": "Крупное зерно",
+      "category_id": "film",
+      "category": "Плёнка и фактура",
+      "algorithm": "GRAIN",
+      "variant": 0,
+      "values": [
+        0.3858267716535433,
+        0.58,
+        0.72,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 50,
+      "id": "studiofx.050",
+      "name": "Домашняя Super 8",
+      "category_id": "film",
+      "category": "Плёнка и фактура",
+      "algorithm": "GRAIN",
+      "variant": 1,
+      "values": [
+        0.3937007874015748,
+        0.55,
+        0.43,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 51,
+      "id": "studiofx.051",
+      "name": "Пыль",
+      "category_id": "film",
+      "category": "Плёнка и фактура",
+      "algorithm": "DUST",
+      "variant": 0,
+      "values": [
+        0.4015748031496063,
+        0.57,
+        0.42,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 52,
+      "id": "studiofx.052",
+      "name": "Царапины",
+      "category_id": "film",
+      "category": "Плёнка и фактура",
+      "algorithm": "DUST",
+      "variant": 1,
+      "values": [
+        0.4094488188976378,
+        0.57,
+        0.46,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 53,
+      "id": "studiofx.053",
+      "name": "Дрожание плёнки",
+      "category_id": "film",
+      "category": "Плёнка и фактура",
+      "algorithm": "GRAIN",
+      "variant": 2,
+      "values": [
+        0.41732283464566927,
+        0.48,
+        0.45,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 54,
+      "id": "studiofx.054",
+      "name": "Старый проектор",
+      "category_id": "film",
+      "category": "Плёнка и фактура",
+      "algorithm": "GRAIN",
+      "variant": 3,
+      "values": [
+        0.4251968503937008,
+        0.61,
+        0.51,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 55,
+      "id": "studiofx.055",
+      "name": "Выцветшая эмульсия",
+      "category_id": "film",
+      "category": "Плёнка и фактура",
+      "algorithm": "GRAIN",
+      "variant": 4,
+      "values": [
+        0.4330708661417323,
+        0.55,
+        0.3,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 56,
+      "id": "studiofx.056",
+      "name": "Мягкое свечение",
+      "category_id": "light",
+      "category": "Свечение и свет",
+      "algorithm": "GLOW",
+      "variant": 0,
+      "values": [
+        0.4409448818897638,
+        0.46,
+        0.42,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 57,
+      "id": "studiofx.057",
+      "name": "Сонная диффузия",
+      "category_id": "light",
+      "category": "Свечение и свет",
+      "algorithm": "GLOW",
+      "variant": 1,
+      "values": [
+        0.44881889763779526,
+        0.6,
+        0.68,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 58,
+      "id": "studiofx.058",
+      "name": "Тёплый ореол",
+      "category_id": "light",
+      "category": "Свечение и свет",
+      "algorithm": "GLOW",
+      "variant": 2,
+      "values": [
+        0.4566929133858268,
+        0.52,
+        0.54,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 59,
+      "id": "studiofx.059",
+      "name": "Неоновое свечение",
+      "category_id": "light",
+      "category": "Свечение и свет",
+      "algorithm": "GLOW",
+      "variant": 3,
+      "values": [
+        0.4645669291338583,
+        0.61,
+        0.45,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 60,
+      "id": "studiofx.060",
+      "name": "Горизонтальные лучи",
+      "category_id": "light",
+      "category": "Свечение и свет",
+      "algorithm": "GLOW",
+      "variant": 4,
+      "values": [
+        0.47244094488188976,
+        0.52,
+        0.62,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 61,
+      "id": "studiofx.061",
+      "name": "Вертикальные лучи",
+      "category_id": "light",
+      "category": "Свечение и свет",
+      "algorithm": "GLOW",
+      "variant": 5,
+      "values": [
+        0.48031496062992124,
+        0.52,
+        0.62,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 62,
+      "id": "studiofx.062",
+      "name": "Свет сбоку",
+      "category_id": "light",
+      "category": "Свечение и свет",
+      "algorithm": "LEAK",
+      "variant": 0,
+      "values": [
+        0.4881889763779528,
+        0.49,
+        0.61,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.74,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 63,
+      "id": "studiofx.063",
+      "name": "Призма",
+      "category_id": "light",
+      "category": "Свечение и свет",
+      "algorithm": "LEAK",
+      "variant": 1,
+      "values": [
+        0.49606299212598426,
+        0.45,
+        0.55,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.74,
+        1.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        3,
+        8
+      ],
+      "animated": true,
+      "cost": "light"
+    },
+    {
+      "slot": 64,
+      "id": "studiofx.064",
+      "name": "Крупные пиксели",
+      "category_id": "pixel",
+      "category": "Пиксели и печать",
+      "algorithm": "PIXEL",
+      "variant": 0,
+      "values": [
+        0.5039370078740157,
+        0.95,
+        0.78,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 65,
+      "id": "studiofx.065",
+      "name": "Мелкие пиксели",
+      "category_id": "pixel",
+      "category": "Пиксели и печать",
+      "algorithm": "PIXEL",
+      "variant": 0,
+      "values": [
+        0.5118110236220472,
+        0.9,
+        0.28,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 66,
+      "id": "studiofx.066",
+      "name": "Мозаика",
+      "category_id": "pixel",
+      "category": "Пиксели и печать",
+      "algorithm": "PIXEL",
+      "variant": 1,
+      "values": [
+        0.5196850393700787,
+        0.88,
+        0.67,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 67,
+      "id": "studiofx.067",
+      "name": "Четыре цвета",
+      "category_id": "pixel",
+      "category": "Пиксели и печать",
+      "algorithm": "PALETTE",
+      "variant": 0,
+      "values": [
+        0.5275590551181102,
+        0.95,
+        0.5,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 68,
+      "id": "studiofx.068",
+      "name": "Газетная печать",
+      "category_id": "pixel",
+      "category": "Пиксели и печать",
+      "algorithm": "HALFTONE",
+      "variant": 0,
+      "values": [
+        0.5354330708661418,
+        0.92,
+        0.45,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 69,
+      "id": "studiofx.069",
+      "name": "Ретро-дизеринг",
+      "category_id": "pixel",
+      "category": "Пиксели и печать",
+      "algorithm": "PALETTE",
+      "variant": 1,
+      "values": [
+        0.5433070866141733,
+        0.95,
+        0.46,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 70,
+      "id": "studiofx.070",
+      "name": "Постеризация",
+      "category_id": "pixel",
+      "category": "Пиксели и печать",
+      "algorithm": "PALETTE",
+      "variant": 2,
+      "values": [
+        0.5511811023622047,
+        0.92,
+        0.49,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 71,
+      "id": "studiofx.071",
+      "name": "Цветная печать",
+      "category_id": "pixel",
+      "category": "Пиксели и печать",
+      "algorithm": "HALFTONE",
+      "variant": 1,
+      "values": [
+        0.5590551181102362,
+        0.86,
+        0.51,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "light"
+    },
+    {
+      "slot": 72,
+      "id": "studiofx.072",
+      "name": "Карандаш",
+      "category_id": "draw",
+      "category": "Рисунок и контуры",
+      "algorithm": "EDGE",
+      "variant": 0,
+      "values": [
+        0.5669291338582677,
+        0.89,
+        0.42,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 73,
+      "id": "studiofx.073",
+      "name": "Уголь",
+      "category_id": "draw",
+      "category": "Рисунок и контуры",
+      "algorithm": "EDGE",
+      "variant": 1,
+      "values": [
+        0.5748031496062992,
+        0.9,
+        0.65,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 74,
+      "id": "studiofx.074",
+      "name": "Комикс",
+      "category_id": "draw",
+      "category": "Рисунок и контуры",
+      "algorithm": "EDGE",
+      "variant": 2,
+      "values": [
+        0.5826771653543307,
+        0.83,
+        0.44,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 75,
+      "id": "studiofx.075",
+      "name": "Тушь",
+      "category_id": "draw",
+      "category": "Рисунок и контуры",
+      "algorithm": "EDGE",
+      "variant": 3,
+      "values": [
+        0.5905511811023622,
+        0.91,
+        0.52,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 76,
+      "id": "studiofx.076",
+      "name": "Ксерокопия",
+      "category_id": "draw",
+      "category": "Рисунок и контуры",
+      "algorithm": "EDGE",
+      "variant": 4,
+      "values": [
+        0.5984251968503937,
+        0.92,
+        0.55,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 77,
+      "id": "studiofx.077",
+      "name": "Неоновые контуры",
+      "category_id": "draw",
+      "category": "Рисунок и контуры",
+      "algorithm": "EDGE",
+      "variant": 5,
+      "values": [
+        0.6062992125984252,
+        0.9,
+        0.46,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 78,
+      "id": "studiofx.078",
+      "name": "Тиснение",
+      "category_id": "draw",
+      "category": "Рисунок и контуры",
+      "algorithm": "EMBOSS",
+      "variant": 0,
+      "values": [
+        0.6141732283464567,
+        0.87,
+        0.51,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    },
+    {
+      "slot": 79,
+      "id": "studiofx.079",
+      "name": "Гравюра",
+      "category_id": "draw",
+      "category": "Рисунок и контуры",
+      "algorithm": "EMBOSS",
+      "variant": 1,
+      "values": [
+        0.6220472440944882,
+        0.91,
+        0.48,
+        0.5,
+        1.0,
+        0.5,
+        0.5,
+        0.65,
+        0.0,
+        0.137,
+        0.0
+      ],
+      "controls": [
+        1,
+        2,
+        4
+      ],
+      "animated": false,
+      "cost": "medium"
+    }
+  ]
+}

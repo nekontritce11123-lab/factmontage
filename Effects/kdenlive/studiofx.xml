@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<effect xmlns="https://www.kdenlive.org" tag="frei0r.studiofx" id="studiofx" type="video" version="0.2.0">
+    <name>FactMontage: Эффекты</name>
+    <description>Видеоэффекты монтажной студии. SDR / 8 бит.</description>
+    <author>Studio FX contributors</author>
+    <parameter name="0" type="fixed" default="0" value="0">
+        <name>Шаблон</name>
+    </parameter>
+    <parameter name="1" type="constant" default="0.55000000000000004" value="0.55000000000000004" min="0" max="100" factor="100" decimals="0">
+        <name>Сила</name>
+    </parameter>
+    <parameter name="2" type="constant" default="0.56000000000000005" value="0.56000000000000005" min="0" max="100" factor="100" decimals="0">
+        <name>Размер</name>
+    </parameter>
+    <parameter name="3" type="constant" default="0.5" value="0.5" min="0.25" max="2" factor="2" decimals="2">
+        <name>Скорость</name>
+    </parameter>
+    <parameter name="4" type="constant" default="1" value="1" min="0" max="100" factor="100" decimals="0">
+        <name>Смешивание</name>
+    </parameter>
+    <parameter name="5" type="constant" default="0.5" value="0.5" min="0" max="100" factor="100" decimals="0">
+        <name>Центр по горизонтали</name>
+    </parameter>
+    <parameter name="6" type="constant" default="0.5" value="0.5" min="0" max="100" factor="100" decimals="0">
+        <name>Центр по вертикали</name>
+    </parameter>
+    <parameter name="7" type="constant" default="0.75" value="0.75" min="0" max="100" factor="100" decimals="0">
+        <name>Мягкость</name>
+    </parameter>
+    <parameter name="8" type="bool" default="0" value="0">
+        <name>Анимация</name>
+    </parameter>
+    <parameter name="9" type="constant" default="0.13700000000000001" value="0.13700000000000001" min="0" max="100" factor="100" decimals="0">
+        <name>Вариант движения</name>
+    </parameter>
+    <parameter name="10" type="fixed" default="0" value="0">
+        <name>Смещение времени</name>
+    </parameter>
+    <parameter name="threads" type="fixed" default="1" value="1">
+        <name>Потоки MLT</name>
+    </parameter>
+</effect>

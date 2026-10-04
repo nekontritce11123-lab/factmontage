@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "modules": {
+    "card": {
+      "path": "Card_3D",
+      "depends_on": [],
+      "generator": "scripts/generate_ui.py",
+      "contracts": [
+        "tests/test_studio_schema.py"
+      ],
+      "cmake": []
+    },
+    "camera": {
+      "path": "Camera",
+      "depends_on": [],
+      "generator": "scripts/generate_ui.py",
+      "contracts": [
+        "tests/test_contract.py"
+      ],
+      "cmake": [
+        "-DSTUDIO_CAMERA_MLT=OFF",
+        "-DSTUDIO_CAMERA_HEAD_TRACKER=OFF"
+      ]
+    },
+    "background": {
+      "path": "Background",
+      "depends_on": [],
+      "generator": "scripts/generate_ui.py",
+      "contracts": [
+        "tests/test_contract.py"
+      ],
+      "cmake": [
+        "-DSBG_WITH_MLT=OFF",
+        "-DSBG_WITH_ONNX=OFF"
+      ]
+    },
+    "transitions": {
+      "path": "Transitions",
+      "depends_on": [],
+      "generator": "scripts/generate_ui.py",
+      "contracts": [
+        "tests/test_contract.py"
+      ],
+      "cmake": []
+    },
+    "effects": {
+      "path": "Effects",
+      "depends_on": [],
+      "generator": "scripts/generate_ui.py",
+      "contracts": [
+        "tests/test_contract.py"
+      ],
+      "cmake": []
+    },
+    "color": {
+      "path": "Color",
+      "depends_on": [],
+      "generator": "scripts/generate_ui.py",
+      "contracts": [],
+      "cmake": [
+        "-DSTUDIO_COLOR_MLT=OFF",
+        "-DSTUDIO_COLOR_NATIVE=OFF"
+      ]
+    },
+    "audio": {
+      "path": "Audio",
+      "depends_on": [],
+      "generator": "scripts/generate_ui.py",
+      "contracts": [],
+      "cmake": []
+    },
+    "subtitles": {
+      "path": "Subtitles",
+      "depends_on": [
+        "audio"
+      ],
+      "generator": "scripts/generate_ui.py",
+      "contracts": [
+        "tests/test_contract.py"
+      ],
+      "cmake": []
+    },
+    "text": {
+      "path": "Text",
+      "depends_on": [],
+      "generator": "scripts/generate_ui.py",
+      "contracts": [
+        "tests/test_contract.py"
+      ],
+      "cmake": []
+    }
+  }
+}

@@ -1,0 +1,446 @@
+{
+  "version": 2,
+  "effect": "studio_background",
+  "service": "studio.background",
+  "pixel_format": "RGBA8888-straight-SDR",
+  "groups": [
+    {
+      "key": "result",
+      "label": "Результат",
+      "keys": [
+        "output",
+        "blur"
+      ],
+      "collapsed": false
+    },
+    {
+      "key": "key",
+      "label": "Однотонный фон",
+      "keys": [
+        "tolerance",
+        "transition",
+        "despill"
+      ],
+      "collapsed": true,
+      "method": 0
+    },
+    {
+      "key": "edge",
+      "label": "Край",
+      "keys": [
+        "feather",
+        "edge_shift",
+        "refine"
+      ],
+      "collapsed": true
+    }
+  ],
+  "controls": [
+    {
+      "key": "output",
+      "label": "Что сделать с фоном",
+      "kind": "choice",
+      "value": 0,
+      "options": [
+        {
+          "value": 0,
+          "name": "Убрать",
+          "description": "Оставить прозрачность."
+        },
+        {
+          "value": 1,
+          "name": "Размыть",
+          "description": "Сохранить и размыть исходный фон."
+        },
+        {
+          "value": 2,
+          "name": "Залить цветом",
+          "description": "Заменить фон выбранным цветом."
+        }
+      ]
+    },
+    {
+      "key": "blur",
+      "label": "Сила размытия",
+      "kind": "number",
+      "lo": 0,
+      "hi": 80,
+      "value": 24,
+      "suffix": " px",
+      "decimals": 0,
+      "visible_when": {
+        "key": "output",
+        "equals": 1
+      }
+    },
+    {
+      "key": "tolerance",
+      "label": "Убрать больше фона",
+      "kind": "number",
+      "lo": 0.005,
+      "hi": 0.6,
+      "value": 0.13,
+      "suffix": "",
+      "decimals": 3
+    },
+    {
+      "key": "transition",
+      "label": "Мягкость перехода",
+      "kind": "number",
+      "lo": 0.005,
+      "hi": 0.3,
+      "value": 0.08,
+      "suffix": "",
+      "decimals": 3
+    },
+    {
+      "key": "despill",
+      "label": "Убрать цветной отсвет",
+      "kind": "number",
+      "lo": 0,
+      "hi": 1,
+      "value": 0.65,
+      "suffix": "",
+      "decimals": 2
+    },
+    {
+      "key": "feather",
+      "label": "Смягчить край",
+      "kind": "number",
+      "lo": 0,
+      "hi": 12,
+      "value": 1.2,
+      "suffix": " px",
+      "decimals": 1
+    },
+    {
+      "key": "edge_shift",
+      "label": "Сузить / расширить край",
+      "kind": "number",
+      "lo": -8,
+      "hi": 8,
+      "value": 0,
+      "suffix": " px",
+      "decimals": 1
+    },
+    {
+      "key": "refine",
+      "label": "Уточнить край",
+      "kind": "number",
+      "lo": 0,
+      "hi": 1,
+      "value": 0.5,
+      "suffix": "",
+      "decimals": 2
+    }
+  ],
+  "presets": [
+    {
+      "schema": "studio.background.preset/1",
+      "id": "green",
+      "name": "Зелёный фон",
+      "description": "Точный ключ для ровного зелёного экрана.",
+      "preview": "previews/background_green",
+      "animated": true,
+      "values": {
+        "method": 0,
+        "output": 0,
+        "key_r": 0,
+        "key_g": 1,
+        "key_b": 0,
+        "tolerance": 0.13,
+        "transition": 0.08,
+        "despill": 0.65,
+        "feather": 1.2,
+        "edge_shift": 0,
+        "refine": 0.5,
+        "blur": 24,
+        "fill_r": 0.12,
+        "fill_g": 0.12,
+        "fill_b": 0.14
+      }
+    },
+    {
+      "schema": "studio.background.preset/1",
+      "id": "blue",
+      "name": "Синий фон",
+      "description": "Точный ключ для ровного синего экрана.",
+      "preview": "previews/background_blue",
+      "animated": true,
+      "values": {
+        "method": 0,
+        "output": 0,
+        "key_r": 0,
+        "key_g": 0,
+        "key_b": 1,
+        "tolerance": 0.13,
+        "transition": 0.08,
+        "despill": 0.65,
+        "feather": 1.2,
+        "edge_shift": 0,
+        "refine": 0.5,
+        "blur": 24,
+        "fill_r": 0.12,
+        "fill_g": 0.12,
+        "fill_b": 0.14
+      }
+    },
+    {
+      "schema": "studio.background.preset/1",
+      "id": "soft_chroma",
+      "name": "Мягкий хромакей",
+      "description": "Мягче край и сильнее подавление отсвета.",
+      "preview": "previews/background_soft_chroma",
+      "animated": true,
+      "values": {
+        "method": 0,
+        "output": 0,
+        "key_r": 0,
+        "key_g": 1,
+        "key_b": 0,
+        "tolerance": 0.13,
+        "transition": 0.1,
+        "despill": 0.8,
+        "feather": 2.5,
+        "edge_shift": 0,
+        "refine": 0.5,
+        "blur": 24,
+        "fill_r": 0.12,
+        "fill_g": 0.12,
+        "fill_b": 0.14
+      }
+    },
+    {
+      "schema": "studio.background.preset/1",
+      "id": "person_blur",
+      "name": "Человек · размытие",
+      "description": "Сохраняет человека и мягко размывает фон.",
+      "preview": "previews/background_person_blur",
+      "animated": true,
+      "values": {
+        "method": 1,
+        "output": 1,
+        "key_r": 0,
+        "key_g": 1,
+        "key_b": 0,
+        "tolerance": 0.13,
+        "transition": 0.08,
+        "despill": 0,
+        "feather": 1.2,
+        "edge_shift": 0,
+        "refine": 0.5,
+        "blur": 24,
+        "fill_r": 0.12,
+        "fill_g": 0.12,
+        "fill_b": 0.14
+      }
+    },
+    {
+      "schema": "studio.background.preset/1",
+      "id": "person_alpha",
+      "name": "Человек · прозрачность",
+      "description": "Сохраняет человека на прозрачном фоне.",
+      "preview": "previews/background_person_alpha",
+      "animated": true,
+      "values": {
+        "method": 1,
+        "output": 0,
+        "key_r": 0,
+        "key_g": 1,
+        "key_b": 0,
+        "tolerance": 0.13,
+        "transition": 0.08,
+        "despill": 0,
+        "feather": 0.8,
+        "edge_shift": 0,
+        "refine": 0.5,
+        "blur": 24,
+        "fill_r": 0.12,
+        "fill_g": 0.12,
+        "fill_b": 0.14
+      }
+    },
+    {
+      "schema": "studio.background.preset/1",
+      "id": "person_color",
+      "name": "Человек · цвет",
+      "description": "Заменяет фон спокойным однотонным цветом.",
+      "preview": "previews/background_person_color",
+      "animated": true,
+      "values": {
+        "method": 1,
+        "output": 2,
+        "key_r": 0,
+        "key_g": 1,
+        "key_b": 0,
+        "tolerance": 0.13,
+        "transition": 0.08,
+        "despill": 0,
+        "feather": 1.2,
+        "edge_shift": 0,
+        "refine": 0.5,
+        "blur": 24,
+        "fill_r": 0.12,
+        "fill_g": 0.12,
+        "fill_b": 0.14
+      }
+    }
+  ],
+  "parameters": [
+    {
+      "key": "method",
+      "type": "int",
+      "default": 0,
+      "min": 0,
+      "max": 1,
+      "label": "Способ",
+      "group": "hidden"
+    },
+    {
+      "key": "output",
+      "type": "int",
+      "default": 0,
+      "min": 0,
+      "max": 2,
+      "label": "Результат",
+      "group": "result"
+    },
+    {
+      "key": "key_r",
+      "type": "double",
+      "default": 0,
+      "min": 0,
+      "max": 1,
+      "label": "Красный",
+      "group": "hidden"
+    },
+    {
+      "key": "key_g",
+      "type": "double",
+      "default": 1,
+      "min": 0,
+      "max": 1,
+      "label": "Зелёный",
+      "group": "hidden"
+    },
+    {
+      "key": "key_b",
+      "type": "double",
+      "default": 0,
+      "min": 0,
+      "max": 1,
+      "label": "Синий",
+      "group": "hidden"
+    },
+    {
+      "key": "tolerance",
+      "type": "double",
+      "default": 0.13,
+      "min": 0.005,
+      "max": 0.6,
+      "label": "Убрать больше фона",
+      "group": "key"
+    },
+    {
+      "key": "transition",
+      "type": "double",
+      "default": 0.08,
+      "min": 0.005,
+      "max": 0.3,
+      "label": "Мягкость перехода",
+      "group": "key"
+    },
+    {
+      "key": "despill",
+      "type": "double",
+      "default": 0.65,
+      "min": 0,
+      "max": 1,
+      "label": "Убрать цветной отсвет",
+      "group": "key"
+    },
+    {
+      "key": "feather",
+      "type": "double",
+      "default": 1.2,
+      "min": 0,
+      "max": 12,
+      "label": "Смягчить край",
+      "group": "edge"
+    },
+    {
+      "key": "edge_shift",
+      "type": "double",
+      "default": 0,
+      "min": -8,
+      "max": 8,
+      "label": "Сузить / расширить край",
+      "group": "edge"
+    },
+    {
+      "key": "refine",
+      "type": "double",
+      "default": 0.5,
+      "min": 0,
+      "max": 1,
+      "label": "Уточнить край",
+      "group": "edge"
+    },
+    {
+      "key": "blur",
+      "type": "double",
+      "default": 24,
+      "min": 0,
+      "max": 80,
+      "label": "Размытие фона",
+      "group": "result"
+    },
+    {
+      "key": "fill_r",
+      "type": "double",
+      "default": 0.12,
+      "min": 0,
+      "max": 1,
+      "label": "Цвет заливки: R",
+      "group": "hidden"
+    },
+    {
+      "key": "fill_g",
+      "type": "double",
+      "default": 0.12,
+      "min": 0,
+      "max": 1,
+      "label": "Цвет заливки: G",
+      "group": "hidden"
+    },
+    {
+      "key": "fill_b",
+      "type": "double",
+      "default": 0.14,
+      "min": 0,
+      "max": 1,
+      "label": "Цвет заливки: B",
+      "group": "hidden"
+    }
+  ],
+  "hidden_project_properties": [
+    "mask_asset",
+    "source_sha256",
+    "recipe_sha256",
+    "sample_offset",
+    "analysis_size",
+    "static_image"
+  ],
+  "method_values": [
+    "Однотонный фон",
+    "Человек"
+  ],
+  "analysis_sizes": [
+    512,
+    768,
+    1280
+  ],
+  "runtime_only_properties": [
+    "_sbg_mask_path"
+  ]
+}

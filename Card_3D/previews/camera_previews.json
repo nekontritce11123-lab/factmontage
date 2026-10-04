@@ -1,0 +1,100 @@
+{
+  "previews": [
+    {
+      "name": "camera_mode_0",
+      "seconds": 3,
+      "settings": {
+        "mode": 0,
+        "live": 0,
+        "zoom": 150,
+        "cycle_period": 3
+      },
+      "sha256": "abde2a2dbf807309716f6d2f6cc27f3f47376826c77370ed2c464c05d6cc0ff3"
+    },
+    {
+      "name": "camera_mode_1",
+      "seconds": 3,
+      "settings": {
+        "mode": 1,
+        "live": 0,
+        "zoom": 150,
+        "cycle_period": 3
+      },
+      "sha256": "de50876f1233d06c5f952c98cc6f34c38babfa751af1d47f91523671be8c2d78"
+    },
+    {
+      "name": "camera_mode_2",
+      "seconds": 3,
+      "settings": {
+        "mode": 2,
+        "live": 0,
+        "zoom": 150,
+        "cycle_period": 3
+      },
+      "sha256": "0202cfe48671e12f1df6ec82ad48ecb23bfa1a4c494c720ece053350f7a4d96d"
+    },
+    {
+      "name": "camera_mode_3",
+      "seconds": 3,
+      "settings": {
+        "mode": 3,
+        "live": 0,
+        "zoom": 150,
+        "cycle_period": 3
+      },
+      "sha256": "175b056250379d91ed3dca7754524c9cbbda3f828edf263de8304cf7dbe8f324"
+    },
+    {
+      "name": "camera_mode_4",
+      "seconds": 3,
+      "settings": {
+        "mode": 4,
+        "live": 0,
+        "zoom": 150,
+        "cycle_period": 3
+      },
+      "sha256": "520f4a02e84b9aeb62516f52f36de8a9c07aaa3eb2c3daef6f1f3e0ac2f49cc1"
+    },
+    {
+      "name": "camera_mode_5",
+      "seconds": 3,
+      "settings": {
+        "mode": 5,
+        "live": 0,
+        "zoom": 150,
+        "cycle_period": 3
+      },
+      "sha256": "0c613484a3a56b81e2f4bf587d7dff6a32fb54368f5623c467133af037ee81dc"
+    },
+    {
+      "name": "camera_live_0",
+      "seconds": 3,
+      "settings": {
+        "mode": 0,
+        "live": 0,
+        "zoom": 125
+      },
+      "sha256": "cf8de0d22d4cff4ebeac356d73ad73784e442c70d03e78bfad9c2bb463781cfe"
+    },
+    {
+      "name": "camera_live_1",
+      "seconds": 3,
+      "settings": {
+        "mode": 0,
+        "live": 1,
+        "zoom": 125
+      },
+      "sha256": "14bbb46740a323f3fc731bfc9e47aeb77d487fc562e94afe6a01a18f7f2214dd"
+    },
+    {
+      "name": "camera_live_2",
+      "seconds": 3,
+      "settings": {
+        "mode": 0,
+        "live": 2,
+        "zoom": 125
+      },
+      "sha256": "93a089c1ea734ef9cdcd4e3ab6a608ac1bc32b4dec2ae3d000380248d5dd26e2"
+    }
+  ]
+}

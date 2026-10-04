@@ -1,0 +1,276 @@
+{
+  "version": 2,
+  "effect": "studio_color",
+  "service": "studio.color",
+  "groups": [
+    {
+      "key": "main",
+      "label": "Сила",
+      "keys": [
+        "mix"
+      ],
+      "collapsed": false
+    },
+    {
+      "key": "light",
+      "label": "Свет",
+      "keys": [
+        "exposure",
+        "contrast",
+        "shadows",
+        "highlights",
+        "protection"
+      ],
+      "collapsed": false
+    },
+    {
+      "key": "color",
+      "label": "Цвет и насыщенность",
+      "keys": [
+        "temperature",
+        "tint",
+        "saturation"
+      ],
+      "collapsed": true
+    }
+  ],
+  "controls": [
+    {
+      "key": "exposure",
+      "label": "Яркость",
+      "kind": "number",
+      "lo": -2,
+      "hi": 2,
+      "value": 0,
+      "suffix": " EV",
+      "decimals": 2,
+      "tip": "Общая яркость без изменения автоматического выравнивания."
+    },
+    {
+      "key": "temperature",
+      "label": "Теплее / холоднее",
+      "kind": "number",
+      "lo": -100,
+      "hi": 100,
+      "value": 0,
+      "suffix": "",
+      "decimals": 0,
+      "tip": "Сдвиг в тёплую или холодную сторону."
+    },
+    {
+      "key": "tint",
+      "label": "Зелёный / пурпурный",
+      "kind": "number",
+      "lo": -100,
+      "hi": 100,
+      "value": 0,
+      "suffix": "",
+      "decimals": 0,
+      "tip": "Сдвиг между зелёным и пурпурным."
+    },
+    {
+      "key": "contrast",
+      "label": "Контраст",
+      "kind": "number",
+      "lo": -50,
+      "hi": 50,
+      "value": 0,
+      "suffix": "",
+      "decimals": 0,
+      "tip": "Разница между светлыми и тёмными участками."
+    },
+    {
+      "key": "shadows",
+      "label": "Тени",
+      "kind": "number",
+      "lo": -50,
+      "hi": 50,
+      "value": 0,
+      "suffix": "",
+      "decimals": 0,
+      "tip": "Осветляет или затемняет тёмные участки."
+    },
+    {
+      "key": "highlights",
+      "label": "Светлые участки",
+      "kind": "number",
+      "lo": -50,
+      "hi": 50,
+      "value": 0,
+      "suffix": "",
+      "decimals": 0,
+      "tip": "Осветляет или затемняет светлые участки."
+    },
+    {
+      "key": "saturation",
+      "label": "Насыщенность",
+      "kind": "number",
+      "lo": 0,
+      "hi": 150,
+      "value": 100,
+      "suffix": "%",
+      "decimals": 0,
+      "tip": "Интенсивность цвета; 0% даёт чёрно-белое изображение."
+    },
+    {
+      "key": "protection",
+      "label": "Защита светов",
+      "kind": "number",
+      "lo": 0,
+      "hi": 100,
+      "value": 100,
+      "suffix": "%",
+      "decimals": 0,
+      "tip": "Мягко сжимает новые пересветы после коррекции."
+    },
+    {
+      "key": "mix",
+      "label": "Сила общего стиля",
+      "kind": "number",
+      "lo": 0,
+      "hi": 100,
+      "value": 100,
+      "suffix": "%",
+      "decimals": 0,
+      "tip": "Сила общего стиля; автоматическое выравнивание сохраняется."
+    }
+  ],
+  "presets": [
+    {
+      "schema": "studio.color.preset/1",
+      "id": "neutral",
+      "name": "Естественный",
+      "description": "Без стилизации. Начальная точка для выравнивания.",
+      "manual": {
+        "exposure": 0,
+        "temperature": 0,
+        "tint": 0,
+        "contrast": 0,
+        "shadows": 0,
+        "highlights": 0,
+        "saturation": 100,
+        "protection": 100,
+        "mix": 100
+      }
+    },
+    {
+      "schema": "studio.color.preset/1",
+      "id": "soft",
+      "name": "Мягкий",
+      "description": "Спокойный контраст, мягче светлые участки.",
+      "manual": {
+        "exposure": 0,
+        "temperature": 0,
+        "tint": 0,
+        "contrast": -8,
+        "shadows": 8,
+        "highlights": -10,
+        "saturation": 96,
+        "protection": 100,
+        "mix": 100
+      }
+    },
+    {
+      "schema": "studio.color.preset/1",
+      "id": "warm",
+      "name": "Тёплый",
+      "description": "Умеренное тепло без сильного жёлтого оттенка.",
+      "manual": {
+        "exposure": 0,
+        "temperature": 18,
+        "tint": 0,
+        "contrast": 3,
+        "shadows": 0,
+        "highlights": -6,
+        "saturation": 102,
+        "protection": 100,
+        "mix": 100
+      }
+    },
+    {
+      "schema": "studio.color.preset/1",
+      "id": "sunimo",
+      "name": "Уют",
+      "description": "Тёплая мастерская; цвета изделий не нужно разгонять.",
+      "manual": {
+        "exposure": 0,
+        "temperature": 12,
+        "tint": 2,
+        "contrast": 5,
+        "shadows": 6,
+        "highlights": -8,
+        "saturation": 104,
+        "protection": 100,
+        "mix": 100
+      }
+    },
+    {
+      "schema": "studio.color.preset/1",
+      "id": "product",
+      "name": "Товар / детали",
+      "description": "Сдержанный старт для съёмки изделий, не калибровка цвета.",
+      "manual": {
+        "exposure": 0,
+        "temperature": 0,
+        "tint": 0,
+        "contrast": 5,
+        "shadows": 0,
+        "highlights": -5,
+        "saturation": 100,
+        "protection": 100,
+        "mix": 100
+      }
+    },
+    {
+      "schema": "studio.color.preset/1",
+      "id": "cool",
+      "name": "Прохладный",
+      "description": "Лёгкий холодный оттенок.",
+      "manual": {
+        "exposure": 0,
+        "temperature": -14,
+        "tint": 0,
+        "contrast": 6,
+        "shadows": 3,
+        "highlights": 0,
+        "saturation": 96,
+        "protection": 100,
+        "mix": 100
+      }
+    },
+    {
+      "schema": "studio.color.preset/1",
+      "id": "muted",
+      "name": "Приглушённый",
+      "description": "Ниже насыщенность и контраст, без имитации плёнки.",
+      "manual": {
+        "exposure": 0,
+        "temperature": 0,
+        "tint": 0,
+        "contrast": -7,
+        "shadows": 4,
+        "highlights": -9,
+        "saturation": 82,
+        "protection": 100,
+        "mix": 100
+      }
+    },
+    {
+      "schema": "studio.color.preset/1",
+      "id": "mono",
+      "name": "Чёрно-белый",
+      "description": "Чистое чёрно-белое изображение, без шума и резкости.",
+      "manual": {
+        "exposure": 0,
+        "temperature": 0,
+        "tint": 0,
+        "contrast": 10,
+        "shadows": 4,
+        "highlights": -8,
+        "saturation": 0,
+        "protection": 100,
+        "mix": 100
+      }
+    }
+  ]
+}

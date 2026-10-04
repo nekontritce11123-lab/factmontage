@@ -1,0 +1,37 @@
+name: Linux fast checks
+on:
+  push:
+    branches: [main, 'codex/**']
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: linux-fast-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  native:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Prepare compiler environment (not part of FAST)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends cmake ninja-build g++ pkg-config libpng-dev zlib1g-dev libssl-dev python3-numpy python3-pil
+      - name: Prepare verified pinned editor source (not part of FAST)
+        run: python3 Studio/scripts/fetch-upstream.py
+      - name: Contracts and fresh native modules (no SDK, model downloads or install)
+        run: ./dev test all --jobs 2 --timeout 180 --report-dir .build/reports/ci
+      - name: Tests must not rewrite tracked sources
+        run: git diff --exit-code
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fast-evidence-${{ github.sha }}
+          path: |
+            .build/reports/ci
+            .build/dev/*/tests.xml
+          retention-days: 7

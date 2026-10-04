@@ -1,0 +1,17 @@
+{
+  "schema": "studio.color.preset/1",
+  "id": "muted",
+  "name": "Приглушённый",
+  "description": "Ниже насыщенность и контраст, без имитации плёнки.",
+  "manual": {
+    "exposure": 0,
+    "temperature": 0,
+    "tint": 0,
+    "contrast": -7,
+    "shadows": 4,
+    "highlights": -9,
+    "saturation": 82,
+    "protection": 100,
+    "mix": 100
+  }
+}

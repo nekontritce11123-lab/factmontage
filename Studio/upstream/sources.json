@@ -1,0 +1,10 @@
+{
+  "kdenlive": "26.08.0",
+  "opentimelineio_commit": "44236713c1db295a6ffc66189ae98dbdfd0cb9c4",
+  "manifest_sha256": "F78B022452F61086D9C27ACAD7F4462E3A3663F223149500A614A1CC66F30D1C",
+  "kde_sdk_commit": "58a3c36a9e2cbd3fb3507d88d9195b3dcb8e8cde7bce86a0a0a5700a28a0ea18",
+  "archive_sha256": "754e1b3e288f8529b2739cfe8ce702d3880f3f3239b0d73f2aef2c88aca49b12",
+  "kde_runtime_commit": "31742ff0f905913c512ea732960bbdeffa8306dcbebca45eeee62bfed0ca03a3",
+  "flathub_commit": "8e84f007ab9512ea4ff439d156beea6de83eb918",
+  "llvm_sdk_commit": "28ae7e36dead6805e413a7959689ddf19c7fb9dfd8c4d59c251a34a35fb3088a"
+}

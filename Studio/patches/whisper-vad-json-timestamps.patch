@@ -1,0 +1,44 @@
+diff --git a/examples/cli/cli.cpp b/examples/cli/cli.cpp
+--- a/examples/cli/cli.cpp
++++ b/examples/cli/cli.cpp
+@@ -730,11 +730,23 @@
+         start_obj("params");
+             value_s("model", params.model.c_str(), false);
+             value_s("language", params.language.c_str(), false);
++            value_s("token_timestamps", "original", false);
+             value_b("translate", params.translate, true);
+         end_obj(false);
+         start_obj("result");
+             value_s("language", whisper_lang_str(whisper_full_lang_id(ctx)), true);
+         end_obj(false);
++        if (full) {
++            start_arr("vad_segments");
++            const int n_vad_segments = whisper_full_n_vad_segments(ctx);
++            for (int i = 0; i < n_vad_segments; ++i) {
++                start_obj(nullptr);
++                    times_o(whisper_full_get_vad_segment_t0(ctx, i),
++                            whisper_full_get_vad_segment_t1(ctx, i), true);
++                end_obj(i == n_vad_segments - 1);
++            }
++            end_arr(false);
++        }
+         start_arr("transcription");
+ 
+             const int n_segments = whisper_full_n_segments(ctx);
+@@ -766,13 +778,15 @@
+                         merged.reserve(n);
+                         for (int j = 0; j < n; ) {
+                             auto tok = whisper_full_get_token_data(ctx, i, j);
++                            if (tok.t0 > -1) tok.t0 = whisper_full_get_token_t0(ctx, i, j);
++                            if (tok.t1 > -1) tok.t1 = whisper_full_get_token_t1(ctx, i, j);
+                             merged_token m{ whisper_token_to_str(ctx, tok.id), tok, tok.t1 };
+                             ++j;
+                             while (j < n && utf8_trailing_bytes_needed(m.text) > 0) {
+                                 auto tok_next = whisper_full_get_token_data(ctx, i, j);
+                                 m.text += whisper_token_to_str(ctx, tok_next.id);
+                                 if (tok_next.t1 > -1) {
+-                                    m.t1 = tok_next.t1;
++                                    m.t1 = whisper_full_get_token_t1(ctx, i, j);
+                                 }
+                                 ++j;
+                             }

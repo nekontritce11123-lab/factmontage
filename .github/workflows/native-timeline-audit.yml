@@ -1,0 +1,91 @@
+name: Native timeline boundaries
+on:
+  push:
+    branches: [main, 'codex/**', fix/native-mixes-mask-clock-e0d532d]
+    paths: ['Background/**', 'Transitions/**', 'Studio/**', .github/workflows/native-timeline-audit.yml]
+  pull_request:
+    paths: ['Background/**', 'Transitions/**', 'Studio/**', .github/workflows/native-timeline-audit.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: native-boundaries-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      QT_QPA_PLATFORM: offscreen
+      FREI0R_PATH: /tmp/transitions-green
+      STUDIO_TRANSITION_TEST_DIR: /tmp/studio-seams
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Prepare declared test dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends libmlt-dev libmlt++-dev libpng-dev libssl-dev zlib1g-dev frei0r-plugins-dev qt6-base-dev melt ffmpeg python3-pil gdb xvfb xauth
+          mkdir -p evidence
+          git rev-parse HEAD > evidence/SOURCE_SHA.txt
+          pkg-config --modversion mlt-framework-7 Qt6Core > evidence/versions.txt
+          python3 Studio/scripts/fetch-upstream.py
+      - name: Background real MLT moving matte regressions
+        run: |
+          set -o pipefail
+          cmake -S Background -B /tmp/sbg-green -DSBG_WITH_MLT=ON -DSBG_WITH_ONNX=OFF 2>&1 | tee evidence/background.log
+          cmake --build /tmp/sbg-green -j2 2>&1 | tee -a evidence/background.log
+          ctest --test-dir /tmp/sbg-green --output-on-failure 2>&1 | tee -a evidence/background.log
+      - name: Transition core and official frei0r ABI
+        if: ${{ !cancelled() }}
+        run: |
+          set -o pipefail
+          cmake -S Transitions -B /tmp/transitions-green -DTRANSITIONS_SYSTEM_FREI0R=ON 2>&1 | tee evidence/transitions.log
+          cmake --build /tmp/transitions-green -j2 2>&1 | tee -a evidence/transitions.log
+          ctest --test-dir /tmp/transitions-green --output-on-failure 2>&1 | tee -a evidence/transitions.log
+      - name: Qt static versus animated image policy
+        if: ${{ !cancelled() }}
+        run: |
+          set -o pipefail
+          cmake -S Studio/tests/qt -B /tmp/studio-qt 2>&1 | tee evidence/qt.log
+          cmake --build /tmp/studio-qt -j2 2>&1 | tee -a qt.log
+          ctest --test-dir /tmp/studio-qt --output-on-failure 2>&1 | tee -a evidence/qt.log
+      - name: All styles through MLT export in both native playlist orders
+        id: seams
+        if: ${{ !cancelled() }}
+        run: |
+          set -o pipefail
+          QT_QPA_PLATFORM=xcb timeout 240 xvfb-run -a python3 -u Studio/tests/transition_mlt_all.py 2>&1 | tee evidence/mlt-transitions.log
+      - name: Capture latest consumer backtrace without masking test failure
+        if: ${{ failure() && steps.seams.outcome == 'failure' }}
+        env:
+          QT_QPA_PLATFORM: xcb
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, subprocess
+          commands = list(pathlib.Path('/tmp/studio-seams').glob('*.command.json'))
+          if commands:
+              command = json.loads(max(commands, key=lambda p: p.stat().st_mtime_ns).read_text())
+              with open('evidence/consumer-backtrace.log', 'w') as log:
+                  try:
+                      subprocess.run(['xvfb-run', '-a', 'gdb', '--batch', '-ex', 'run', '-ex', 'thread apply all bt', '--args', *command], stdout=log, stderr=subprocess.STDOUT, timeout=90)
+                  except subprocess.TimeoutExpired:
+                      log.write('\nBacktrace replay exceeded 90 seconds.\n')
+          PY
+      - name: All offline module contracts and pinned source integration
+        if: ${{ !cancelled() }}
+        run: |
+          set -o pipefail
+          python3 -B Studio/scripts/dev.py test all --contracts-only --report-dir evidence/contracts 2>&1 | tee evidence/contracts.log
+          git diff --exit-code
+      - name: Retain boundary evidence
+        if: always()
+        run: |
+          if test -d /tmp/studio-seams; then cp -a /tmp/studio-seams evidence/seams; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-timeline-boundary-evidence
+          path: evidence
+          retention-days: 7

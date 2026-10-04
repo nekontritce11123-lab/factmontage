@@ -1,0 +1,330 @@
+{
+  "version": 2,
+  "effect": "studio_lens",
+  "groups": [
+    {
+      "key": "projection",
+      "label": "Проекция",
+      "keys": [
+        "projection",
+        "strength"
+      ],
+      "collapsed": false
+    },
+    {
+      "key": "aperture",
+      "label": "Апертурное окно",
+      "keys": [
+        "shape",
+        "radius",
+        "aspect",
+        "center_x",
+        "center_y"
+      ],
+      "collapsed": true
+    },
+    {
+      "key": "edge",
+      "label": "Края и оптика",
+      "keys": [
+        "edge_darkness",
+        "edge_softness",
+        "overscan",
+        "edge_blur",
+        "sharpness_falloff"
+      ],
+      "collapsed": true
+    },
+    {
+      "key": "color",
+      "label": "Цвет и свечение",
+      "keys": [
+        "aberration",
+        "bloom",
+        "contrast",
+        "mix"
+      ],
+      "collapsed": true
+    }
+  ],
+  "controls": [
+    {
+      "key": "projection",
+      "index": 0,
+      "kind": "choice",
+      "label": "Тип проекции",
+      "value": 1,
+      "lo": 0,
+      "hi": 2,
+      "normalized": true,
+      "options": [
+        {
+          "name": "широкий угол",
+          "value": 0
+        },
+        {
+          "name": "рыбий глаз",
+          "value": 1
+        },
+        {
+          "name": "глазок",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "key": "strength",
+      "index": 1,
+      "kind": "number",
+      "label": "Сила искажения",
+      "value": 78,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "shape",
+      "index": 2,
+      "kind": "choice",
+      "label": "Форма апертуры",
+      "value": 0,
+      "lo": 0,
+      "hi": 2,
+      "normalized": true,
+      "options": [
+        {
+          "name": "круг",
+          "value": 0
+        },
+        {
+          "name": "овал",
+          "value": 1
+        },
+        {
+          "name": "прямоугольник",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "key": "radius",
+      "index": 3,
+      "kind": "number",
+      "label": "Радиус окна",
+      "value": 82,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "aspect",
+      "index": 4,
+      "kind": "number",
+      "label": "Соотношение сторон",
+      "value": 50,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "center_x",
+      "index": 5,
+      "kind": "number",
+      "label": "Центр X",
+      "value": 50,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "center_y",
+      "index": 6,
+      "kind": "number",
+      "label": "Центр Y",
+      "value": 50,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "edge_darkness",
+      "index": 7,
+      "kind": "number",
+      "label": "Затемнение вне окна",
+      "value": 100,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "edge_softness",
+      "index": 8,
+      "kind": "number",
+      "label": "Мягкость границы",
+      "value": 36,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "overscan",
+      "index": 9,
+      "kind": "number",
+      "label": "Запас кадрирования",
+      "value": 16,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "edge_blur",
+      "index": 10,
+      "kind": "number",
+      "label": "Размытие краёв",
+      "value": 28,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "sharpness_falloff",
+      "index": 11,
+      "kind": "number",
+      "label": "Падение резкости",
+      "value": 34,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "aberration",
+      "index": 12,
+      "kind": "number",
+      "label": "Хроматическая аберрация",
+      "value": 12,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "bloom",
+      "index": 13,
+      "kind": "number",
+      "label": "Свечение",
+      "value": 22,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "contrast",
+      "index": 14,
+      "kind": "number",
+      "label": "Контраст",
+      "value": 46,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "mix",
+      "index": 15,
+      "kind": "number",
+      "label": "Смешивание",
+      "value": 100,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    }
+  ],
+  "presets": [
+    {
+      "id": "peephole",
+      "name": "Дверной глазок",
+      "description": "Круглая апертура, тёмные края и мягкая оптика.",
+      "values": {
+        "0": 1.0,
+        "1": 0.9,
+        "2": 0.0,
+        "3": 0.82,
+        "7": 1.0,
+        "8": 0.36,
+        "9": 0.16,
+        "10": 0.28,
+        "11": 0.34,
+        "12": 0.12,
+        "13": 0.22,
+        "14": 0.46,
+        "15": 1.0
+      }
+    },
+    {
+      "id": "fisheye",
+      "name": "Круглый fisheye",
+      "description": "Сильное искажение с сохранением круглой границы.",
+      "values": {
+        "0": 0.5,
+        "1": 0.78,
+        "2": 0.0,
+        "3": 0.88,
+        "7": 0.82,
+        "8": 0.28,
+        "9": 0.22,
+        "10": 0.18,
+        "11": 0.26,
+        "12": 0.09,
+        "13": 0.12,
+        "14": 0.5,
+        "15": 1.0
+      }
+    },
+    {
+      "id": "soft_wide",
+      "name": "Мягкий широкий угол",
+      "description": "Лёгкая оптика без жёсткой чёрной маски.",
+      "values": {
+        "0": 0.0,
+        "1": 0.34,
+        "2": 0.5,
+        "3": 1.0,
+        "7": 0.22,
+        "8": 0.72,
+        "9": 0.12,
+        "10": 0.24,
+        "11": 0.18,
+        "12": 0.05,
+        "13": 0.14,
+        "14": 0.52,
+        "15": 0.86
+      }
+    }
+  ]
+}

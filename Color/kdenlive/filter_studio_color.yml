@@ -1,0 +1,132 @@
+schema_version: 7.0
+type: filter
+identifier: studio.color
+title: Studio Color
+version: 1
+creator: Studio Color contributors
+license: GPLv3
+language: en
+tags:
+  - Video
+description: Experimental SDR 8-bit primary correction; no per-frame automatic estimation.
+parameters:
+  - identifier: exposure
+    title: "Яркость"
+    type: float
+    minimum: -2
+    maximum: 2
+    default: 0
+    mutable: yes
+    animation: no
+  - identifier: temperature
+    title: "Теплее / холоднее"
+    type: float
+    minimum: -100
+    maximum: 100
+    default: 0
+    mutable: yes
+    animation: no
+  - identifier: tint
+    title: "Зелёный / пурпурный"
+    type: float
+    minimum: -100
+    maximum: 100
+    default: 0
+    mutable: yes
+    animation: no
+  - identifier: contrast
+    title: "Контраст"
+    type: float
+    minimum: -50
+    maximum: 50
+    default: 0
+    mutable: yes
+    animation: no
+  - identifier: shadows
+    title: "Тени"
+    type: float
+    minimum: -50
+    maximum: 50
+    default: 0
+    mutable: yes
+    animation: no
+  - identifier: highlights
+    title: "Светлые участки"
+    type: float
+    minimum: -50
+    maximum: 50
+    default: 0
+    mutable: yes
+    animation: no
+  - identifier: saturation
+    title: "Насыщенность"
+    type: float
+    minimum: 0
+    maximum: 150
+    default: 100
+    mutable: yes
+    animation: no
+  - identifier: protection
+    title: "Защита светов"
+    type: float
+    minimum: 0
+    maximum: 100
+    default: 100
+    mutable: yes
+    animation: no
+  - identifier: mix
+    title: "Сила общего стиля"
+    type: float
+    minimum: 0
+    maximum: 100
+    default: 100
+    mutable: yes
+    animation: no
+  - identifier: auto_strength
+    title: "Сила выравнивания"
+    type: float
+    minimum: 0
+    maximum: 100
+    default: 100
+    mutable: yes
+    animation: no
+  - identifier: auto_ev
+    title: "Авто: экспозиция"
+    type: float
+    minimum: -1
+    maximum: 1
+    default: 0
+    mutable: yes
+    animation: no
+  - identifier: auto_r
+    title: "Авто: красный, EV"
+    type: float
+    minimum: -0.25
+    maximum: 0.25
+    default: 0
+    mutable: yes
+    animation: no
+  - identifier: auto_b
+    title: "Авто: синий, EV"
+    type: float
+    minimum: -0.25
+    maximum: 0.25
+    default: 0
+    mutable: yes
+    animation: no
+  - identifier: auto_contrast
+    title: "Авто: контраст"
+    type: float
+    minimum: -0.12
+    maximum: 0.12
+    default: 0
+    mutable: yes
+    animation: no
+  - identifier: transfer
+    title: "Передаточная функция (0: BT.709; 1: sRGB)"
+    type: float
+    minimum: 0
+    maximum: 1
+    default: 0
+    mutable: yes
+    animation: no

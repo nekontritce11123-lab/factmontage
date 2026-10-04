@@ -1,0 +1,30 @@
+{
+  "schema": "sunimo-standalone-module/1",
+  "note": "Module-specific manifest; not claimed to be a built-in Kdenlive plugin manifest.",
+  "id": "sunimo.text-studio",
+  "version": "0.2.0-beta",
+  "name": "FactMontage Text",
+  "platform": [
+    "linux-x86_64"
+  ],
+  "native_library": "lib/frei0r-1/sunimo_text_studio.so",
+  "frei0r_service": "frei0r.sunimo_text_studio",
+  "kdenlive_descriptor": "kdenlive/sunimo_text_studio.xml",
+  "scene_extension": ".stxt",
+  "scene_version": 2,
+  "catalog": "web/catalog.json",
+  "compiler": "web/compiler.js",
+  "c_api_header": "src/sunimo_text_api.h",
+  "panel_launcher": "launch.sh",
+  "animation_presets": 100,
+  "motion_kernels": 48,
+  "requires_network_at_runtime": false,
+  "host_integration_verified": false,
+  "supported_scene_versions": [
+    1,
+    2,
+    3
+  ],
+  "life_presets": 100,
+  "life_mechanisms": 25
+}

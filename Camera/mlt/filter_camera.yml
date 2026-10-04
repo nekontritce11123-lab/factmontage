@@ -1,0 +1,41 @@
+schema_version: 7.0
+type: filter
+identifier: studio.camera
+title: Монтажная студия — Камера
+version: 1
+copyright: SUNIMO contributors
+creator: SUNIMO contributors
+license: MIT
+language: C
+tags:
+  - Video
+description: Плавная виртуальная камера, циклический зум, проезд и трекинг головы.
+parameters:
+  - identifier: mode
+    title: Режим
+    type: integer
+    minimum: 0
+    maximum: 5
+    default: 0
+  - identifier: cycle_period
+    title: Полный цикл
+    type: float
+    minimum: 2
+    maximum: 12
+    default: 6
+  - identifier: tracking
+    title: Слежение за головой
+    type: integer
+    minimum: 0
+    maximum: 1
+    default: 0
+  - identifier: track_path
+    title: Файл трека
+    type: string
+    default: ''
+  - identifier: track_offset
+    title: Смещение трека
+    type: float
+    minimum: -7200
+    maximum: 7200
+    default: 0

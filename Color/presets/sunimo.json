@@ -1,0 +1,17 @@
+{
+  "schema": "studio.color.preset/1",
+  "id": "sunimo",
+  "name": "Уют",
+  "description": "Тёплая мастерская; цвета изделий не нужно разгонять.",
+  "manual": {
+    "exposure": 0,
+    "temperature": 12,
+    "tint": 2,
+    "contrast": 5,
+    "shadows": 6,
+    "highlights": -8,
+    "saturation": 104,
+    "protection": 100,
+    "mix": 100
+  }
+}

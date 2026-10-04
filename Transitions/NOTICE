@@ -1,0 +1,6 @@
+Transition rendering code is derived from SUNIMO Motion 0.2.0 and remains
+available under the MIT License in LICENSE. No prebuilt SUNIMO binaries,
+text renderer, GTK editor, Pango, Cairo or JSON-C code is included.
+The 16 transition WAV files contain CC0 sounds from Freesound, Kenney and
+OpenGameArt. Individual creators, source pages and edits are listed in
+sfx/README_RU.md. CC0 permits modification and redistribution.

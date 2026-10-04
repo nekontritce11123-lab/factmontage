@@ -1,0 +1,92 @@
+name: Linux Qt and MLT boundaries
+on:
+  push:
+    branches: [main, 'codex/**']
+    paths:
+      - 'Text/qt/**'
+      - 'Text/src/**'
+      - 'Text/CMakeLists.txt'
+      - 'Text/tests/test_qt_compiler.cpp'
+      - 'Background/**'
+      - 'Studio/overlay/core/studioresources.hpp'
+      - 'Studio/tests/qt/**'
+      - '.github/workflows/linux-boundaries.yml'
+  pull_request:
+    paths:
+      - 'Text/**'
+      - 'Background/**'
+      - 'Studio/overlay/core/**'
+      - 'Studio/tests/qt/**'
+      - '.github/workflows/linux-boundaries.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: linux-boundaries-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  boundaries:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    env:
+      QT_QPA_PLATFORM: offscreen
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Prepare Linux Qt and MLT (not the release SDK)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends cmake ninja-build g++ pkg-config libpng-dev zlib1g-dev libssl-dev qt6-base-dev libmlt-dev
+      - name: Qt shaped text and Linux resources
+        run: |
+          cmake -S Text -B .build/qt-text -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DSTXT_BUILD_QT_COMPILER=ON
+          cmake --build .build/qt-text --target text-qt-compiler-test studio-text-compile --parallel 2
+          ctest --test-dir .build/qt-text -R '^text-qt-compiler$' --no-tests=error --output-on-failure --timeout 30
+          cmake -S Studio/tests/qt -B .build/qt-resources -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo
+          cmake --build .build/qt-resources --parallel 2
+          ctest --test-dir .build/qt-resources --no-tests=error --output-on-failure --timeout 30
+      - name: Real MLT foreground, alpha and fail-closed diagnostic
+        run: |
+          cmake -S Background -B .build/mlt-background -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DSBG_WITH_MLT=ON -DSBG_WITH_ONNX=OFF
+          cmake --build .build/mlt-background --target sbg-mlt-callback-test --parallel 2
+          ctest --test-dir .build/mlt-background -R mlt-background-callback --no-tests=error --output-on-failure --timeout 30
+      - name: Prove the regression rejects the former white-frame behaviour
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil, subprocess, tempfile
+          with tempfile.TemporaryDirectory(prefix='studio-regression-') as folder:
+              root = Path(folder)
+              source = root / 'Background'
+              shutil.copytree('Background', source)
+              path = source / 'mlt/filter_background.cpp'
+              text = path.read_text()
+              old = 'return (*format==mlt_image_rgba&&*image&&*w>0&&*h>0\n                &&uint64_t(*w)*(*h)<=sbg::MaxPixels) ? 0 : 1;'
+              assert text.count(old) == 1, 'Update the explicit mutation after changing the callback'
+              path.write_text(text.replace(old, 'return 1;'))
+              build = root / 'build'
+              subprocess.run(['cmake','-S',str(source),'-B',str(build),'-G','Ninja','-DCMAKE_BUILD_TYPE=RelWithDebInfo','-DSBG_WITH_MLT=ON','-DSBG_WITH_ONNX=OFF'],check=True,timeout=30)
+              subprocess.run(['cmake','--build',str(build),'--target','sbg-mlt-callback-test','--parallel','2'],check=True,timeout=90)
+              result = subprocess.run([str(build/'sbg-mlt-callback-test')],capture_output=True,text=True,timeout=30)
+              assert result.returncode != 0, 'Old white-frame behaviour incorrectly passed'
+              assert 'pixels[0]==180' in result.stderr, result.stderr
+              evidence = Path('.build/boundary-evidence'); evidence.mkdir(parents=True,exist_ok=True)
+              (evidence/'mutation.txt').write_text('Expected failure confirmed: old return=1 loses the safe diagnostic.\n'+result.stderr)
+          PY
+      - name: Record environment and check source integrity
+        run: |
+          mkdir -p .build/boundary-evidence
+          { git rev-parse HEAD; cmake --version; c++ --version; pkg-config --modversion Qt6Core mlt-framework-7; } > .build/boundary-evidence/environment.txt
+          git diff --exit-code
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: boundary-evidence-${{ github.sha }}
+          path: |
+            .build/boundary-evidence
+            .build/qt-text/Testing/Temporary/*.log
+            .build/qt-resources/Testing/Temporary/*.log
+            .build/mlt-background/Testing/Temporary/*.log
+          retention-days: 7

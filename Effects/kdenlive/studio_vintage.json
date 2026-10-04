@@ -1,0 +1,351 @@
+{
+  "version": 2,
+  "effect": "studio_vintage",
+  "groups": [
+    {
+      "key": "format",
+      "label": "Формат камеры",
+      "keys": [
+        "format",
+        "amount",
+        "mix"
+      ],
+      "collapsed": false
+    },
+    {
+      "key": "signal",
+      "label": "Сигнал",
+      "keys": [
+        "chroma_bleed",
+        "luma_ring",
+        "hue_drift",
+        "interlace",
+        "scanlines"
+      ],
+      "collapsed": true
+    },
+    {
+      "key": "motion",
+      "label": "Движение ленты",
+      "keys": [
+        "flicker",
+        "jitter",
+        "timebase",
+        "dropouts"
+      ],
+      "collapsed": true
+    },
+    {
+      "key": "texture",
+      "label": "Фактура",
+      "keys": [
+        "grain",
+        "dust",
+        "bloom",
+        "vignette",
+        "seed"
+      ],
+      "collapsed": true
+    }
+  ],
+  "controls": [
+    {
+      "key": "format",
+      "index": 0,
+      "kind": "choice",
+      "label": "Тип камеры",
+      "value": 1,
+      "lo": 0,
+      "hi": 4,
+      "normalized": true,
+      "options": [
+        {
+          "name": "VHS",
+          "value": 0
+        },
+        {
+          "name": "Hi8",
+          "value": 1
+        },
+        {
+          "name": "Super 8",
+          "value": 2
+        },
+        {
+          "name": "CRT",
+          "value": 3
+        },
+        {
+          "name": "старая веб-камера",
+          "value": 4
+        }
+      ]
+    },
+    {
+      "key": "amount",
+      "index": 1,
+      "kind": "number",
+      "label": "Общая сила",
+      "value": 62,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "chroma_bleed",
+      "index": 2,
+      "kind": "number",
+      "label": "Размывание цвета",
+      "value": 46,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "luma_ring",
+      "index": 3,
+      "kind": "number",
+      "label": "Световые контуры",
+      "value": 28,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "hue_drift",
+      "index": 4,
+      "kind": "number",
+      "label": "Плавание оттенка",
+      "value": 22,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "interlace",
+      "index": 5,
+      "kind": "number",
+      "label": "Чересстрочность",
+      "value": 26,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "scanlines",
+      "index": 6,
+      "kind": "number",
+      "label": "Строки развертки",
+      "value": 30,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "flicker",
+      "index": 7,
+      "kind": "number",
+      "label": "Мерцание",
+      "value": 18,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "jitter",
+      "index": 8,
+      "kind": "number",
+      "label": "Горизонтальный сдвиг",
+      "value": 24,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "timebase",
+      "index": 9,
+      "kind": "number",
+      "label": "Плавание ленты",
+      "value": 18,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "dropouts",
+      "index": 10,
+      "kind": "number",
+      "label": "Выпадения сигнала",
+      "value": 12,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "grain",
+      "index": 11,
+      "kind": "number",
+      "label": "Зерно",
+      "value": 36,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "dust",
+      "index": 12,
+      "kind": "number",
+      "label": "Пыль и царапины",
+      "value": 20,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "bloom",
+      "index": 13,
+      "kind": "number",
+      "label": "Свечение",
+      "value": 18,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "vignette",
+      "index": 14,
+      "kind": "number",
+      "label": "Виньетка",
+      "value": 24,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    },
+    {
+      "key": "seed",
+      "index": 15,
+      "kind": "number",
+      "label": "Вариант движения",
+      "value": 13.7,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": ""
+    },
+    {
+      "key": "mix",
+      "index": 16,
+      "kind": "number",
+      "label": "Смешивание",
+      "value": 100,
+      "lo": 0,
+      "hi": 100,
+      "normalized": true,
+      "decimals": 1,
+      "suffix": " %"
+    }
+  ],
+  "presets": [
+    {
+      "id": "home_vhs",
+      "name": "Домашняя VHS",
+      "description": "Мягкий цвет, умеренное плавание ленты и зерно.",
+      "values": {
+        "0": 0.0,
+        "1": 0.52,
+        "2": 0.46,
+        "3": 0.24,
+        "4": 0.18,
+        "5": 0.22,
+        "6": 0.26,
+        "7": 0.14,
+        "8": 0.18,
+        "9": 0.16,
+        "10": 0.08,
+        "11": 0.32,
+        "12": 0.14,
+        "13": 0.16,
+        "14": 0.22,
+        "15": 0.13699999999999998,
+        "16": 1.0
+      }
+    },
+    {
+      "id": "worn_tape",
+      "name": "Изношенная кассета",
+      "description": "Сильная нестабильность, выпадения и цветовой сдвиг.",
+      "values": {
+        "0": 0.0,
+        "1": 0.78,
+        "2": 0.66,
+        "3": 0.38,
+        "4": 0.34,
+        "5": 0.36,
+        "6": 0.42,
+        "7": 0.3,
+        "8": 0.38,
+        "9": 0.32,
+        "10": 0.32,
+        "11": 0.54,
+        "12": 0.28,
+        "13": 0.2,
+        "14": 0.3,
+        "15": 0.13699999999999998,
+        "16": 1.0
+      }
+    },
+    {
+      "id": "old_camera",
+      "name": "Старая камера",
+      "description": "Тёплый мягкий образ с лёгким bloom и виньеткой.",
+      "values": {
+        "0": 0.25,
+        "1": 0.48,
+        "2": 0.3,
+        "3": 0.2,
+        "4": 0.16,
+        "5": 0.12,
+        "6": 0.14,
+        "7": 0.1,
+        "8": 0.1,
+        "9": 0.08,
+        "10": 0.04,
+        "11": 0.24,
+        "12": 0.12,
+        "13": 0.28,
+        "14": 0.34,
+        "15": 0.13699999999999998,
+        "16": 1.0
+      }
+    }
+  ]
+}

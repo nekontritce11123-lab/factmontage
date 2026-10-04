@@ -1,0 +1,23 @@
+{
+  "whisper_cpp": {
+    "version": "1.9.4",
+    "source": "https://github.com/ggml-org/whisper.cpp.git",
+    "commit": "927cfce34f31707e17f2bff35c349632fb9e2c3a"
+  },
+  "model": {
+    "name": "ggml-small-q5_1.bin",
+    "source": "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small-q5_1.bin",
+    "sha256": "ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb",
+    "size": 190085487,
+    "language": "multilingual"
+  },
+  "vad_model": {
+    "name": "ggml-silero-v5.1.2.bin",
+    "version": "5.1.2",
+    "revision": "e5614ed76a5dd4b03fad5068c89efcd2617a9d1e",
+    "source": "https://huggingface.co/ggml-org/whisper-vad/resolve/e5614ed76a5dd4b03fad5068c89efcd2617a9d1e/ggml-silero-v5.1.2.bin",
+    "sha256": "29940d98d42b91fbd05ce489f3ecf7c72f0a42f027e4875919a28fb4c04ea2cf",
+    "size": 885098,
+    "license": "MIT"
+  }
+}

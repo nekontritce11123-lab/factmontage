@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<effect tag="studio.background" id="studio_background" type="hidden">
+  <name>FactMontage: Фон</name>
+  <description>Управляется только общей панелью Монтажной студии. SDR RGBA8888.</description>
+  <author>Video Studio contributors</author>
+  <parameter name="method" type="constant" default="0" min="0" max="1" decimals="0">
+    <name>Способ</name>
+  </parameter>
+  <parameter name="output" type="constant" default="0" min="0" max="2" decimals="0">
+    <name>Результат</name>
+  </parameter>
+  <parameter name="key_r" type="constant" default="0" min="0" max="1" decimals="3">
+    <name>Красный</name>
+  </parameter>
+  <parameter name="key_g" type="constant" default="1" min="0" max="1" decimals="3">
+    <name>Зелёный</name>
+  </parameter>
+  <parameter name="key_b" type="constant" default="0" min="0" max="1" decimals="3">
+    <name>Синий</name>
+  </parameter>
+  <parameter name="tolerance" type="constant" default="0.13" min="0.005" max="0.6" decimals="3">
+    <name>Убрать больше фона</name>
+  </parameter>
+  <parameter name="transition" type="constant" default="0.08" min="0.005" max="0.3" decimals="3">
+    <name>Мягкость перехода</name>
+  </parameter>
+  <parameter name="despill" type="constant" default="0.65" min="0" max="1" decimals="3">
+    <name>Убрать цветной отсвет</name>
+  </parameter>
+  <parameter name="feather" type="constant" default="1.2" min="0" max="12" decimals="3">
+    <name>Смягчить край</name>
+  </parameter>
+  <parameter name="edge_shift" type="constant" default="0" min="-8" max="8" decimals="3">
+    <name>Сузить / расширить край</name>
+  </parameter>
+  <parameter name="refine" type="constant" default="0.5" min="0" max="1" decimals="3">
+    <name>Уточнить край</name>
+  </parameter>
+  <parameter name="blur" type="constant" default="24" min="0" max="80" decimals="3">
+    <name>Размытие фона</name>
+  </parameter>
+  <parameter name="fill_r" type="constant" default="0.12" min="0" max="1" decimals="3">
+    <name>Цвет заливки: R</name>
+  </parameter>
+  <parameter name="fill_g" type="constant" default="0.12" min="0" max="1" decimals="3">
+    <name>Цвет заливки: G</name>
+  </parameter>
+  <parameter name="fill_b" type="constant" default="0.14" min="0" max="1" decimals="3">
+    <name>Цвет заливки: B</name>
+  </parameter>
+  <parameter name="mask_asset" type="fixed" value="" />
+  <parameter name="source_sha256" type="fixed" value="" />
+  <parameter name="recipe_sha256" type="fixed" value="" />
+  <parameter name="sample_offset" type="fixed" value="0" />
+  <parameter name="analysis_size" type="fixed" value="768" />
+  <parameter name="static_image" type="fixed" value="0" />
+</effect>

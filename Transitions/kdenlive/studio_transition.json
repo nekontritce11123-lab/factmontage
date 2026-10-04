@@ -1,0 +1,395 @@
+{
+  "version": 2,
+  "effect": "studio_transition",
+  "asset": "studio_transition",
+  "service": "frei0r.sunimo_transition",
+  "default_duration": 0.65,
+  "groups": [
+    {
+      "key": "ready",
+      "label": "Готовые",
+      "keys": [
+        "style"
+      ],
+      "collapsed": false
+    },
+    {
+      "key": "settings",
+      "label": "Настройка перехода",
+      "keys": [
+        "duration",
+        "direction",
+        "strength",
+        "softness",
+        "audio_dip",
+        "sfx_enabled",
+        "sfx_source",
+        "sfx_level"
+      ],
+      "collapsed": true
+    }
+  ],
+  "controls": [
+    {
+      "key": "style",
+      "parameter": "1",
+      "label": "Готовый переход",
+      "kind": "choice",
+      "lo": 0,
+      "hi": 14,
+      "value": 0,
+      "normalized": true,
+      "options": [
+        {
+          "value": 0,
+          "code": 0.0,
+          "name": "Двойное отдаление",
+          "preview": "transition_00",
+          "animated": true,
+          "strength": true,
+          "direction": false,
+          "softness": false
+        },
+        {
+          "value": 1,
+          "code": 0.09090909090909091,
+          "name": "Проезд вперёд",
+          "preview": "transition_01",
+          "animated": true,
+          "strength": true,
+          "direction": false,
+          "softness": false
+        },
+        {
+          "value": 2,
+          "code": 0.18181818181818182,
+          "name": "Мягкий взмах",
+          "preview": "transition_02",
+          "animated": true,
+          "strength": false,
+          "direction": true,
+          "softness": false
+        },
+        {
+          "value": 3,
+          "code": 0.2727272727272727,
+          "name": "Плавный проезд",
+          "preview": "transition_03",
+          "animated": true,
+          "strength": false,
+          "direction": true,
+          "softness": true
+        },
+        {
+          "value": 4,
+          "code": 0.36363636363636365,
+          "name": "Через расфокус",
+          "preview": "transition_04",
+          "animated": true,
+          "strength": false,
+          "direction": false,
+          "softness": true
+        },
+        {
+          "value": 5,
+          "code": 0.45454545454545453,
+          "name": "Диагональное раскрытие",
+          "preview": "transition_05",
+          "animated": true,
+          "strength": false,
+          "direction": true,
+          "softness": true
+        },
+        {
+          "value": 6,
+          "code": 0.5454545454545454,
+          "name": "Лёгкий поворот",
+          "preview": "transition_06",
+          "animated": true,
+          "strength": true,
+          "direction": false,
+          "softness": false
+        },
+        {
+          "value": 7,
+          "code": 0.6363636363636364,
+          "name": "Живой наплыв",
+          "preview": "transition_07",
+          "animated": true,
+          "strength": true,
+          "direction": true,
+          "softness": false
+        },
+        {
+          "value": 8,
+          "code": 0.7272727272727273,
+          "name": "Круговое раскрытие",
+          "preview": "transition_08",
+          "animated": true,
+          "strength": true,
+          "direction": false,
+          "softness": true
+        },
+        {
+          "value": 9,
+          "code": 0.8181818181818182,
+          "name": "Мягкое разделение",
+          "preview": "transition_09",
+          "animated": true,
+          "strength": false,
+          "direction": true,
+          "softness": true
+        },
+        {
+          "value": 10,
+          "code": 0.9090909090909091,
+          "name": "Наклон и зум",
+          "preview": "transition_10",
+          "animated": true,
+          "strength": true,
+          "direction": false,
+          "softness": false
+        },
+        {
+          "value": 11,
+          "code": 1.0,
+          "name": "Мягкая шторка",
+          "preview": "transition_11",
+          "animated": true,
+          "strength": false,
+          "direction": true,
+          "softness": true
+        },
+        {
+          "value": 12,
+          "code": 0.045454545454545456,
+          "name": "Световой засвет",
+          "preview": "transition_12",
+          "animated": true,
+          "strength": true,
+          "direction": false,
+          "softness": true
+        },
+        {
+          "value": 13,
+          "code": 0.13636363636363635,
+          "name": "Раскрытие по яркости",
+          "preview": "transition_13",
+          "animated": true,
+          "strength": false,
+          "direction": false,
+          "softness": true
+        },
+        {
+          "value": 14,
+          "code": 0.22727272727272727,
+          "name": "Цифровой сдвиг",
+          "preview": "transition_14",
+          "animated": true,
+          "strength": true,
+          "direction": true,
+          "softness": false
+        }
+      ]
+    },
+    {
+      "key": "duration",
+      "label": "Длительность",
+      "kind": "number",
+      "lo": 0.08,
+      "hi": 3,
+      "step": 0.05,
+      "value": 0.65,
+      "suffix": " с",
+      "decimals": 2
+    },
+    {
+      "key": "direction",
+      "parameter": "3",
+      "label": "Направление",
+      "kind": "choice",
+      "lo": 0,
+      "hi": 3,
+      "value": 0,
+      "normalized": true,
+      "options": [
+        {
+          "value": 0,
+          "name": "Влево"
+        },
+        {
+          "value": 1,
+          "name": "Вправо"
+        },
+        {
+          "value": 2,
+          "name": "Вверх"
+        },
+        {
+          "value": 3,
+          "name": "Вниз"
+        }
+      ],
+      "visible_styles": [
+        2,
+        3,
+        5,
+        7,
+        9,
+        11
+      ]
+    },
+    {
+      "key": "strength",
+      "parameter": "2",
+      "label": "Сила",
+      "kind": "number",
+      "lo": 0,
+      "hi": 100,
+      "value": 45,
+      "suffix": "%",
+      "decimals": 0,
+      "normalized": true,
+      "visible_styles": [
+        0,
+        1,
+        6,
+        7,
+        8,
+        10
+      ]
+    },
+    {
+      "key": "softness",
+      "parameter": "4",
+      "label": "Мягкость",
+      "kind": "number",
+      "lo": 0,
+      "hi": 100,
+      "value": 35,
+      "suffix": "%",
+      "decimals": 0,
+      "normalized": true,
+      "visible_styles": [
+        3,
+        4,
+        5,
+        8,
+        9,
+        11
+      ]
+    },
+    {
+      "key": "audio_dip",
+      "parameter": "studio:audio_dip",
+      "label": "Приглушение звука на стыке",
+      "kind": "number",
+      "lo": 0,
+      "hi": 100,
+      "value": 25,
+      "suffix": "%",
+      "decimals": 0,
+      "normalized": true,
+      "tip": "0% — обычное плавное смешивание; 100% — дополнительно до −12 дБ в середине стыка."
+    },
+    {
+      "key": "sfx_enabled",
+      "parameter": "studio:sfx_enabled",
+      "label": "Звук перехода",
+      "kind": "bool",
+      "lo": 0,
+      "hi": 1,
+      "value": 0,
+      "tip": "Добавить звук к переходу."
+    },
+    {
+      "key": "sfx_source",
+      "parameter": "studio:sfx_source",
+      "label": "Выбрать звук",
+      "kind": "sound",
+      "options": [
+        {
+          "value": "",
+          "name": "Автоматически — звук этого перехода"
+        },
+        {
+          "value": "transition_00.wav",
+          "name": "Двойное отдаление"
+        },
+        {
+          "value": "transition_01.wav",
+          "name": "Проезд вперёд"
+        },
+        {
+          "value": "transition_02.wav",
+          "name": "Мягкий взмах"
+        },
+        {
+          "value": "transition_02_right.wav",
+          "name": "Мягкий взмах — обратное направление"
+        },
+        {
+          "value": "transition_03.wav",
+          "name": "Плавный проезд"
+        },
+        {
+          "value": "transition_04.wav",
+          "name": "Через расфокус"
+        },
+        {
+          "value": "transition_05.wav",
+          "name": "Диагональное раскрытие"
+        },
+        {
+          "value": "transition_06.wav",
+          "name": "Лёгкий поворот"
+        },
+        {
+          "value": "transition_07.wav",
+          "name": "Живой наплыв"
+        },
+        {
+          "value": "transition_08.wav",
+          "name": "Круговое раскрытие"
+        },
+        {
+          "value": "transition_09.wav",
+          "name": "Мягкое разделение"
+        },
+        {
+          "value": "transition_10.wav",
+          "name": "Наклон и зум"
+        },
+        {
+          "value": "transition_11.wav",
+          "name": "Мягкая шторка"
+        },
+        {
+          "value": "transition_12.wav",
+          "name": "Световой засвет"
+        },
+        {
+          "value": "transition_13.wav",
+          "name": "Раскрытие по яркости"
+        },
+        {
+          "value": "transition_14.wav",
+          "name": "Цифровой сдвиг"
+        }
+      ],
+      "tip": "Любой встроенный звук или собственный аудиофайл."
+    },
+    {
+      "key": "sfx_level",
+      "parameter": "studio:sfx_level",
+      "label": "Громкость звука",
+      "kind": "number",
+      "lo": 0,
+      "hi": 100,
+      "value": 50,
+      "suffix": "%",
+      "decimals": 0,
+      "normalized": true
+    }
+  ]
+}
