@@ -29,7 +29,7 @@ def main():
    recipe=catalog[id]
    bg=Image.new('RGBA',(W,H),(17,20,27,255));draw=ImageDraw.Draw(bg)
    draw.rounded_rectangle((36,28,75,67),radius=12,fill=(255,195,105));draw.text((47,31),'S',font=big,fill=(28,27,24))
-   draw.text((89,29),'SUNIMO / TEXT STUDIO',font=font,fill=(238,237,234));draw.text((90,58),'Нативный C++-рендер · без имитации в браузере',font=small,fill=(134,141,155))
+   draw.text((89,29),'FactMontage / Text',font=font,fill=(238,237,234));draw.text((90,58),'Нативный C++-рендер · без имитации в браузере',font=small,fill=(134,141,155))
    draw.line((36,91,W-36,91),fill=(48,53,64),width=1)
    draw.text((36,H-99),f'{id:03d}   {recipe["name"]}',font=font,fill=(244,238,227))
    draw.text((36,H-67),recipe['category']+'  ·  выход: реверс',font=small,fill=(143,150,164))

@@ -8,7 +8,7 @@ MAGIC=b'SUNMTX1\0'
 MAX_BYTES=128*1024*1024
 
 def metadata(data:bytes)->tuple[dict,list[float],int,int]:
-    if len(data)<160 or data[:8]!=MAGIC:raise ValueError('Это не файл SUNIMO .stxt')
+    if len(data)<160 or data[:8]!=MAGIC:raise ValueError('Это не файл титров .stxt')
     version,ml,count,w,h,cn=struct.unpack_from('<6I',data,8)
     if version not in (1,2,3) or cn!=32 or ml>2*1024*1024 or count>512 or 160+ml>len(data):raise ValueError('Неверный заголовок .stxt')
     cfg=list(struct.unpack_from('<32f',data,32))
@@ -39,7 +39,7 @@ def mlt_document(scene_path:Path,cfg:list[float],w:int,h:int)->bytes:
     num,den=int(cfg[23]),int(cfg[24]); fps=num/den
     frames=max(1,math.ceil(cfg[0]*fps-1e-5)); end=frames-1
     root=ET.Element('mlt',{'producer':'main','version':'7.0.0','LC_NUMERIC':'C'})
-    ET.SubElement(root,'profile',{'description':'SUNIMO Text','width':str(w),'height':str(h),'frame_rate_num':str(num),'frame_rate_den':str(den),'progressive':'1','sample_aspect_num':'1','sample_aspect_den':'1','display_aspect_num':str(w),'display_aspect_den':str(h),'colorspace':'709'})
+    ET.SubElement(root,'profile',{'description':'FactMontage Text','width':str(w),'height':str(h),'frame_rate_num':str(num),'frame_rate_den':str(den),'progressive':'1','sample_aspect_num':'1','sample_aspect_den':'1','display_aspect_num':str(w),'display_aspect_den':str(h),'colorspace':'709'})
     p=ET.SubElement(root,'producer',{'id':'text','in':'0','out':str(end)})
     def prop(parent,name,value):ET.SubElement(parent,'property',{'name':name}).text=str(value)
     for k,v in {'mlt_service':'color','resource':'0x00000000','mlt_image_format':'rgba','length':frames,'eof':'pause'}.items():prop(p,k,v)

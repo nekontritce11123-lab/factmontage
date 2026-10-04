@@ -21,7 +21,7 @@ class App:
     def close(self):self.native.close()
 
 class Handler(BaseHTTPRequestHandler):
-    server_version='SUNIMOText/0.2'
+    server_version='FactMontageText/0.2'
     def log_message(self,format,*args):
         if args and str(args[1] if len(args)>1 else '') not in ('200','204'):super().log_message(format,*args)
     @property
@@ -113,7 +113,7 @@ class Handler(BaseHTTPRequestHandler):
         except Exception as e:self.js({'error':f'Ошибка сервера: {e}'},500)
 
 def main():
-    p=argparse.ArgumentParser(description='SUNIMO Text Studio — локальный редактор титров')
+    p=argparse.ArgumentParser(description='FactMontage Text: локальный редактор титров')
     p.add_argument('--port',type=int,default=8767);p.add_argument('--no-browser',action='store_true');p.add_argument('--export-dir',type=Path,default=Path.home()/'Videos'/'SUNIMO Text')
     args=p.parse_args()
     try:
@@ -124,7 +124,7 @@ def main():
         return 1
     server.daemon_threads=True;server.app=app
     url=f'http://127.0.0.1:{server.server_port}'
-    print('SUNIMO Text Studio:',url,flush=True);print('Экспорт:',app.export_root,flush=True)
+    print('FactMontage Text:',url,flush=True);print('Экспорт:',app.export_root,flush=True)
     if not args.no_browser:webbrowser.open(url)
     try:server.serve_forever()
     except KeyboardInterrupt:pass

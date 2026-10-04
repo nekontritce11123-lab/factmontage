@@ -328,7 +328,8 @@ def main(baseline=False, output=None):
     (out/(APP_ID+'.json')).write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+'\n', encoding='utf-8', newline='\n')
     changes = [(ROOT.parent/name, name) for name in ('README.md', 'README_RU.md', 'LICENSE', 'THIRD_PARTY_NOTICES.md', '.gitattributes', '.gitignore', 'dev',
                'Studio/README_RU.md', 'Studio/modules.json', 'docs/BUILD.md', 'docs/BUILD_RU.md',
-               'docs/INSTALL.md', 'docs/INSTALL_RU.md',
+               'docs/INSTALL.md', 'docs/INSTALL_RU.md', 'docs/PROJECTS.md', 'docs/PROJECTS_RU.md',
+               'docs/RELEASE_NOTES.md', 'docs/RELEASE_NOTES_RU.md', 'docs/TESTING.md',
                'Studio/upstream/sources.json', 'Studio/upstream/org.kde.kdenlive.json', 'Studio/upstream/'+patch)]
     for folder in ('overlay', 'scripts', 'tests', 'previews', 'patches', 'branding'):
         changes += [(p, p.relative_to(ROOT.parent).as_posix()) for p in sorted((ROOT/folder).rglob('*'))

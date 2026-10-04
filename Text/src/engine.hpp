@@ -91,7 +91,7 @@ struct Scene {
     static std::shared_ptr<Scene> load(const void* data,size_t size){
         if(size>128u*1024u*1024u)throw std::runtime_error("STXT exceeds 128 MiB limit");
         Reader r(data,size);char magic[8];r.take(magic,8);
-        if(std::memcmp(magic,"SUNMTX1\0",8))throw std::runtime_error("Not a SUNIMO Text scene");
+        if(std::memcmp(magic,"SUNMTX1\0",8))throw std::runtime_error("Not a FactMontage Text scene");
         uint32_t version=r.u();if(version!=1&&version!=2&&version!=3)throw std::runtime_error("Unsupported STXT version");
         auto s=std::make_shared<Scene>();uint32_t ml=r.u(),count=r.u();s->rw=r.u();s->rh=r.u();
         if(r.u()!=32||ml>2*1024*1024||count>512||s->rw<64||s->rw>7680||s->rh<64||s->rh>7680)throw std::runtime_error("Invalid STXT header");

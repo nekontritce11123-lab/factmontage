@@ -29,7 +29,7 @@ def main():
    for index,(id,alone) in enumerate(scenes):
     recipe=catalog[id];life=recipe['life']
     bg=Image.new('RGBA',(W,H),(17,20,27,255));draw=ImageDraw.Draw(bg)
-    draw.text((34,28),'SUNIMO / TEXT STUDIO 0.2',font=title,fill=(246,240,230))
+    draw.text((34,28),'FactMontage / Text',font=title,fill=(246,240,230))
     draw.text((34,61),'Появление → свой характер жизни → исчезновение',font=small,fill=(163,169,184))
     draw.line((34,94,W-34,94),fill=(48,53,64))
     heading='БЕЗ ВХОДА И ВЫХОДА' if alone else f'{id:03d}  {recipe["name"]}'

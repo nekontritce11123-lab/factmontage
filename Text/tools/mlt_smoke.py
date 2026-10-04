@@ -13,10 +13,10 @@ def main():
   command=[shutil.which('melt') or 'melt'];env={**os.environ,'QT_QPA_PLATFORM':'offscreen','FREI0R_PATH':str(ROOT/'bin')+':'+os.environ.get('FREI0R_PATH','/usr/lib/frei0r-1')}
  else:
   if not shutil.which('flatpak'):raise RuntimeError('Flatpak не найден')
-  command=['flatpak','run','--env=QT_QPA_PLATFORM=offscreen','--command=melt','org.kde.kdenlive'];env=None
+  command=['flatpak','run','--env=QT_QPA_PLATFORM=offscreen','--command=melt','local.VideoStudio.Kdenlive'];env=None
  query=subprocess.run(command+['-query','filter=frei0r.sunimo_text_studio'],text=True,capture_output=True,env=env,timeout=30)
  output=query.stdout+query.stderr;print(output)
- if query.returncode or 'SUNIMO Text Studio' not in output:raise RuntimeError('MLT не подтвердил загрузку фильтра. Проверьте FREI0R_PATH, зависимости .so и наличие melt в сборке Kdenlive.')
+ if query.returncode or 'FactMontage Text' not in output:raise RuntimeError('MLT не подтвердил загрузку фильтра. Проверьте FREI0R_PATH, зависимости .so и наличие melt в сборке FactMontage.')
  base=Path.home()/'Videos/SUNIMO Text';base.mkdir(parents=True,exist_ok=True)
  with tempfile.TemporaryDirectory(prefix='smoke-',dir=base) as tmp:
   folder=Path(tmp);scene=folder/'test.stxt';mlt=folder/'test.mlt';out=folder/'test.mov'
@@ -27,7 +27,7 @@ def main():
   result=subprocess.run(args,env=env,capture_output=True,text=True,timeout=120)
   print(result.stdout[-2000:]);print(result.stderr[-4000:])
   if result.returncode or not out.is_file() or out.stat().st_size<1000:raise RuntimeError('MLT обнаружил фильтр, но контрольный рендер не прошёл.')
-  dest=base/'SUNIMO_smoke.mov';shutil.copy2(out,dest);print('Контрольный ролик:',dest)
+  dest=base/'FactMontage_smoke.mov';shutil.copy2(out,dest);print('Контрольный ролик:',dest)
   print('Откройте его поверх цветного фона и проверьте буквы/прозрачность. Наличие файла само по себе не доказывает правильную картинку.')
 if __name__=='__main__':
  try:main()

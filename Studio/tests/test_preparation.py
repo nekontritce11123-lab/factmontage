@@ -304,6 +304,8 @@ class PreparationTests(unittest.TestCase):
             with tarfile.open(Path(folder)/'studio-changes-source.tar.gz') as bundle:
                 changes_files = {item.name for item in bundle.getmembers() if item.isfile()}
             self.assertIn('Studio/patches/whisper-vad-json-timestamps.patch', changes_files)
+            for name in ('PROJECTS.md', 'PROJECTS_RU.md', 'RELEASE_NOTES.md', 'RELEASE_NOTES_RU.md', 'TESTING.md'):
+                self.assertIn('docs/' + name, changes_files)
             timing_patch = next(m for m in studio['modules'] if m['name'] == 'whisper-cpp')['sources'][1]
             self.assertEqual(timing_patch['path'], 'whisper-vad-json-timestamps.patch')
             self.assertEqual(timing_patch['sha256'], prepare.sha(Path(folder)/timing_patch['path']))
