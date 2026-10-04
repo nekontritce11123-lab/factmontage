@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="graphite" x2="1" y2="1"><stop stop-color="#172130"/><stop offset="1" stop-color="#0d1117"/></linearGradient>
+    <linearGradient id="blue" x2="1"><stop stop-color="#4081e8"/><stop offset="1" stop-color="#80b4ff"/></linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#graphite)"/>
+  <path d="M1020 0v640M1120 0v640M1220 0v640" stroke="#253142" stroke-width="1" opacity=".7"/>
+  <rect x="72" y="72" width="112" height="112" rx="24" fill="#111823" stroke="#2c3e56"/>
+  <path d="M92 101h30v10h-19v10h17v10h-17v22H92z" fill="#69a8ff"/>
+  <path d="M130 153v-52h11l12 20 12-20h11v52h-11v-32l-12 19-12-19v32z" fill="#e6edf7"/>
+  <text x="72" y="300" font-family="Segoe UI,Arial,sans-serif" font-weight="700" font-size="88" fill="#f0f5fc">FactMontage</text>
+  <text x="76" y="357" font-family="Segoe UI,Arial,sans-serif" font-size="29" fill="#b5c4d9">A modified Kdenlive build for Linux</text>
+  <text x="76" y="404" font-family="Segoe UI,Arial,sans-serif" font-size="29" fill="#b5c4d9">with an integrated editing panel.</text>
+  <rect x="76" y="480" width="194" height="40" rx="20" fill="#1e344f"/>
+  <text x="173" y="507" text-anchor="middle" font-family="Segoe UI,Arial,sans-serif" font-size="19" fill="#a2c9ff">Linux x86-64</text>
+  <text x="76" y="574" font-family="Segoe UI,Arial,sans-serif" font-size="19" fill="#7e91aa">github.com/nekontritce11123-lab/factmontage</text>
+  <g transform="translate(946,170)">
+    <rect width="268" height="276" rx="18" fill="#121a25" stroke="#2c3e56"/>
+    <rect x="24" y="25" width="220" height="118" rx="9" fill="#1d2e45"/>
+    <rect x="41" y="45" width="146" height="78" rx="6" fill="url(#blue)"/>
+    <path d="M24 178h220M24 214h220M24 250h220" stroke="#2c3e56"/>
+    <rect x="24" y="161" width="87" height="25" rx="4" fill="#427bc7"/>
+    <rect x="116" y="161" width="74" height="25" rx="4" fill="#6999db"/>
+    <rect x="24" y="197" width="166" height="25" rx="4" fill="#32527c"/>
+    <rect x="54" y="233" width="190" height="25" rx="4" fill="#243b59"/>
+    <path d="M155 155v110" stroke="#a9cfff" stroke-width="2"/>
+  </g>
+</svg>

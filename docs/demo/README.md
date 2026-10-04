@@ -1,37 +1,27 @@
-# Публичное демо FactMontage
+# FactMontage demo project
 
-Демо создаёт один настоящий проект Kdenlive с девятью последовательными фрагментами, синей нижней дорожкой, оригинальным тоном и отдельной нативной надписью. Восемь разделов применяются через существующую панель. Файлы проекта и снимки создаются вне исходников.
+The demo uses original procedural video, a chroma key scene, a synthesized tone and native text. All eight panel sections are applied in one Kdenlive project. The media and project are created outside the source tree.
 
-Материалы собственные: процедурная геометрия, хромакей, синтезированный тон и короткая надпись. Фотографий, частных QA-видео, записанной музыки и загрузок нет. Описание происхождения и права находятся в `SOURCES.json`; генератор сохраняет реальные SHA256 и команды в `generated-sources.json`. Хромакей демонстрирует только удаление однотонного фона. Human segmentation здесь не проверяется.
+[SOURCES.json](SOURCES.json) records their origin and CC0 dedication. The generator records file checksums and the exact media commands in `generated-sources.json`. Screenshots show the real application; CC0 does not change the licences of Kdenlive or its icons.
 
-## Подключение в существующую QA-сборку
+## Generate the media
 
-Скопировать `Studio/tests/public_demo.hpp` рядом с `studioregressiontest.cpp` в подготовленных исходниках Kdenlive и включить его **в конце** `Studio/tests/studioregressiontest.cpp`:
-
-```cpp
-#include "public_demo.hpp"
-```
-
-В `Studio/scripts/prepare.py` добавить копирование header рядом с основным тестом и отдельный file source манифеста с `dest: tests`. В `Studio/scripts/host_dev.py` добавить `files['tests/public_demo.hpp'] = root / 'Studio/tests/public_demo.hpp'`. В `Studio/scripts/dev.py` учитывать изменение этого header среди изменений тестового runner. Эти файлы helper не меняет. Дополнительные библиотеки/новый target не нужны: fixture использует зависимости уже существующего `studioregressiontest`, включая KWidgetsAddons и native GUI.
-
-## Подготовка материалов
-
-Нужны Python 3 и ffmpeg с `libx264`, `zoompan` и `lavfi`. Генератор использует стандартную библиотеку Python; pip и сеть не нужны. Каталог результата должен быть пустым. Повторный запуск не перезаписывает проект или доказательства.
+Use Python 3 and ffmpeg with libx264, zoompan and lavfi. No Python packages or downloads are needed. The destination must be empty.
 
 ```sh
-python3 docs/demo/create_demo.py /tmp/factmontage-public-demo --ffmpeg /app/bin/ffmpeg
+python3 docs/demo/create_demo.py /tmp/factmontage-demo --ffmpeg /app/bin/ffmpeg
 ```
 
-Видео: SDR BT.709, yuv420p, 1920×1080, 60 fps, по 360 кадров; WAV: PCM 48 kHz, шесть секунд. Для обычной host-сборки можно использовать `--ffmpeg ffmpeg`. Команда не собирает и не устанавливает приложение.
+For a host build, use `--ffmpeg ffmpeg`. The three videos are SDR BT.709, yuv420p, 1920×1080 at 60 fps, six seconds each. The WAV is a six-second 440 Hz tone, PCM at 48 kHz.
 
-## Настоящий тёмный интерфейс
+## Capture the real dark workspace
 
-Нужна уже подготовленная QA-сборка FactMontage с актуальными движками, ресурсами панели, `studio-audio`, `ffmpeg`, `melt`, нативным Text и штатной цветовой схемой Breeze Dark. Runner запускать отдельным процессом и только с данным тегом. На Linux нужен X11: настоящий экран или Xvfb размером минимум 1920×1200; Qt xcb и рабочий OpenGL/software Mesa. Offscreen не подходит для снимка окна с нативным монитором.
+The existing Kdenlive regression runner includes the opt-in `[FactMontagePublication]` fixture. Run it alone in a fresh process, using the current FactMontage build and its normal MLT, Qt and resource paths.
 
-Пример для уже запущенного QA-окружения с установленными путями MLT/Qt/XDG:
+A real X11 session or Xvfb at 1920×1200 is required. The fixture selects Breeze Dark through the application's theme menu and checks the palette. Native screen capture includes the monitor's video surface.
 
 ```sh
-export FACTMONTAGE_DEMO_ROOT=/tmp/factmontage-public-demo
+export FACTMONTAGE_DEMO_ROOT=/tmp/factmontage-demo
 export QT_QPA_PLATFORM=xcb
 export QT_SCALE_FACTOR=1
 export STUDIO_PREFIX=/app
@@ -40,14 +30,14 @@ timeout 240s xvfb-run -a -s '-screen 0 1920x1200x24' \
   /path/to/studioregressiontest '[FactMontagePublication]' --reporter compact
 ```
 
-`/path/to/studioregressiontest` заменить настоящим runner этой сборки. Для Flatpak запускать команду внутри существующего build/runtime окружения и сохранить тот же внешний writable каталог результата. Не устанавливать отдельный редактор и не менять официальный Kdenlive. Если runner требует дополнительные XDG/MLT-переменные, использовать его существующую QA-обвязку. Нужные пакеты Xvfb/Breeze/Qt должны быть подготовлены явно заранее; helper ничего не скачивает.
+Replace the runner path with the one from the prepared build. In a Flatpak SDK environment, use the existing QA wrapper and expose the demo directory to it. See the [build guide](../BUILD.md).
 
-Fixture активирует Breeze Dark через настоящее меню тем и проверяет тёмную палитру. Через native actions открывает Project Monitor и правую панель FactMontage. Применяет Карточки, Камеру, хромакей, переход «Через расфокус», «Глубокие края», Цвет, обработку громкости и Text. Сохраняет `FactMontage-demo.kdenlive`, реальные managed WAV/STXT и `capture-evidence.json`.
+The fixture saves `FactMontage-demo.kdenlive`, its managed WAV and STXT assets, nine PNG screenshots and `capture-evidence.json`. It checks real panel actions, effect ownership, native save, monitor frames and the dark palette.
 
-В `screenshots/` должны появиться `workspace-dark.png`, `cards-dark.png`, `camera-dark.png`, `background-dark.png`, `transitions-dark.png`, `effects-dark.png`, `colour-dark.png`, `audio-dark.png`, `text-dark.png`. Снимок захватывается с настоящего X11-окна, включая поверхность монитора; `QWidget::grab` может пропустить native QQuickView. Обработка снимков, вставка видеокадра и синтетический UI не используются.
+## Review the captures
 
-## Проверка перед публикацией
+Open every image before publishing it. Each must show the dark workspace, visible video, timeline and the relevant FactMontage section. The background image must show the orange foreground and white bar over the blue lower layer. The transition must show both sources during the mix.
 
-Открыть каждый снимок и подтвердить: настоящий тёмный интерфейс; монитор с видимым материалом; таймлайн; правая общая панель нужного раздела. У фона должны быть видны оранжевая фигура, белая полоса и синий нижний слой. У перехода должен быть видимый промежуточный кадр двух источников. У звука доказательство применения видно по настоящему результату на аудиодорожке; тон не является примером реставрации человеческого голоса. Снять снимки заново штатным захватом при пустом/чёрном native monitor; никогда не подставлять туда кадр.
+The background demo uses chroma key. It does not validate person segmentation. The tone demonstrates the loudness workflow; it does not demonstrate voice restoration.
 
-Успех fixture подтверждает UI-действия, появление ожидаемых экземпляров в модели, сохранение и позицию монитора. Он не заменяет визуальную проверку изображений, Save/Reopen, Undo/Redo, экспорт, Flatpak install/update/rollback или Steam Deck acceptance. До отдельного запуска helper имеет статус NOT RUN. Для доказательств фиксировать SHA исходников, версию ffmpeg/MLT и SHA256 runner и новых артефактов.
+These captures do not replace Undo/Redo, Save/Reopen, Save As, export, installation or Steam Deck acceptance. Those checks need separate evidence from the same candidate.

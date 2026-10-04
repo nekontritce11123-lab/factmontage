@@ -4,6 +4,7 @@
 #include "mainwindow.h"
 #include "monitor/monitor.h"
 #include "monitor/monitormanager.h"
+#include "monitor/scopes/sharedframe.h"
 #include "timeline2/view/timelinewidget.h"
 #include <KActionMenu>
 #include <QMenu>
@@ -191,9 +192,14 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
         } else select(clip);
         navigate(page);
         raiseDock(QStringLiteral("projectmonitor")); raiseDock(QStringLiteral("video_studio"));
-        timeline->controller()->setPosition(position);
         REQUIRE(pCore->monitorManager()->activateMonitor(Kdenlive::ProjectMonitor));
-        pCore->monitorManager()->projectMonitor()->slotSeekPosition(position);
+        bool frameReady = false;
+        const auto frameConnection = QObject::connect(pCore->monitorManager(), &MonitorManager::frameDisplayed, window,
+            [&](const SharedFrame &frame) { if (frame.get_position() == position) frameReady = true; });
+        const auto disconnectFrame = qScopeGuard([&] { QObject::disconnect(frameConnection); });
+        timeline->controller()->setPosition(position);
+        pCore->monitorManager()->projectMonitor()->processSeek(position, true);
+        REQUIRE(studioWait([&] { return frameReady; }, 10000));
         QElapsedTimer settle; settle.start();
         REQUIRE(studioWait([&] { return settle.elapsed() >= 1800; }, 4000));
         REQUIRE(panel->isVisible());

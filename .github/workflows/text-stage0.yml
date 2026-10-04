@@ -35,8 +35,9 @@ jobs:
         uses: jurplel/install-qt-action@a9c63c7c123f3069cff414e7e482d95dfa9d8125 # v4
         with:
           version: '6.8.3'
-          archives: qtbase
+          archives: qtbase icu
           cache: true
+          cache-key-prefix: factmontage-qt-icu
       - name: Prepare native test dependencies (separate from FAST)
         id: prepare
         run: |
