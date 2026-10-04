@@ -1188,6 +1188,13 @@ void SubtitleModel::deleteSubtitleStyle''')
     connect(m_timelineTabs, &TimelineTabs::studioSelectionChanged, studio, &StudioPanel::refreshSelection, Qt::QueuedConnection);
     connect(m_timelineTabs, &QTabWidget::currentChanged, studio, [studio] { studio->refreshSelection(); }, Qt::QueuedConnection);
 ''' + anchor)
+    replace('src/mainwindow.cpp', '    case QEvent::ApplicationPaletteChange:\n        if (m_assetPanel) {',
+            '''    case QEvent::ApplicationPaletteChange:
+        if (m_studioPanel) {
+            m_studioPanel->setPalette(qApp->palette());
+            m_studioPanel->setStyleSheet(m_studioPanel->styleSheet());
+        }
+        if (m_assetPanel) {''')
     replace('src/timeline2/view/timelinetabs.hpp', '    void fitZoom();', '    void fitZoom();\n    void studioSelectionChanged();')
     source = 'src/timeline2/view/timelinetabs.cpp'
     anchor = '    connect(timeline->controller(), &TimelineController::showItemEffectStack, this, &TimelineTabs::showItemEffectStack);'
