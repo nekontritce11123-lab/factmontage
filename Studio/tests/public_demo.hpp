@@ -228,7 +228,7 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
     QPointer<MainWindow> closingWindow(window);
     REQUIRE(window->close());
     QApplication::processEvents();
-    REQUIRE(!closingWindow || !closingWindow->isVisible());
+    REQUIRE((!closingWindow || !closingWindow->isVisible()));
     QFile manifest(folder.filePath(QStringLiteral("capture-evidence.json"))); REQUIRE(manifest.open(QIODevice::WriteOnly));
     const QJsonObject report{{QStringLiteral("project"), project}, {QStringLiteral("screenshots"), evidence},
         {QStringLiteral("background"), QStringLiteral("chroma key only; human segmentation NOT RUN")},
