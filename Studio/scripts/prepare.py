@@ -320,7 +320,7 @@ def main(baseline=False, output=None):
     module['post-install'] += [
         "sed -i 's/^Name=.*/Name=FactMontage/; /^Name\\[/d' /app/share/applications/org.kde.kdenlive.desktop",
         "find /app/share/icons/hicolor -type f -path '*/apps/kdenlive.png' -delete",
-        'install -Dm644 factmontage.svg /app/share/icons/hicolor/scalable/apps/kdenlive.svg'
+        'install -Dm644 /run/build/kdenlive/factmontage.svg /app/share/icons/hicolor/scalable/apps/kdenlive.svg'
     ]
     # Keep the extension mount point in the exported app, including resumed builds.
     manifest['modules'].append(dict(name='studio-extension-anchor', buildsystem='simple',
