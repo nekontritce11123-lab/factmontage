@@ -197,6 +197,7 @@ def prepare(root: Path, host_build: Path) -> dict:
     files['src/assets/studio/text/styles.hpp'] = root / 'Text/qt/styles.hpp'
     files['tests/studioregressiontest.cpp'] = root / 'Studio/tests/studioregressiontest.cpp'
     files['tests/public_demo.hpp'] = root / 'Studio/tests/public_demo.hpp'
+    files['factmontage.svg'] = root / 'Studio/branding/factmontage.svg'
     files['studio-integrate.py'] = integration
     changed = sync_files(cache, build_source, files, pristine, patches)
     runtime_files = {

@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import stat
+import tarfile
 from pathlib import Path
 
 
@@ -39,6 +40,14 @@ def verify(work, level):
     return receipt
 
 
+def verify_upstream_archive(prepared_sources, upstream_archive):
+    with tarfile.open(prepared_sources) as archive:
+        lock = json.loads(archive.extractfile('Studio/upstream/sources.json').read())
+    actual = hashlib.sha256(upstream_archive.read_bytes()).hexdigest()
+    if actual != lock['archive_sha256'].lower():
+        raise ValueError('Pinned Kdenlive source archive differs from the verified lock')
+
+
 def record(work, level):
     if level == 'tests':
         verify(work, 'build')
@@ -56,10 +65,15 @@ if __name__ == '__main__':
     parser.add_argument('action', choices=('begin', 'record', 'verify'))
     parser.add_argument('level', choices=('build', 'tests'))
     parser.add_argument('work', type=Path)
+    parser.add_argument('--upstream-archive', type=Path)
     args = parser.parse_args()
+    if args.upstream_archive and args.action != 'verify':
+        parser.error('--upstream-archive requires verify')
     if args.action == 'begin':
         (args.work/'build-started.json').write_text(json.dumps(inventory(args.work/'studio-input')), encoding='utf-8')
         for name in ('build-verified.json', 'tests-verified.json'):
             (args.work/name).unlink(missing_ok=True)
     else:
         (record if args.action == 'record' else verify)(args.work, args.level)
+        if args.upstream_archive:
+            verify_upstream_archive(args.work/'studio-input/studio-changes-source.tar.gz', args.upstream_archive)

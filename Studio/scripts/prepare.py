@@ -71,8 +71,9 @@ def text_source_files():
     """Keep the Text source archive buildable with tests and the Qt compiler."""
     text = ROOT.parent/'Text'
     files = [(text/name, name) for name in
-             ('CMakeLists.txt', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'README_RU.md', 'plugin.json')]
-    files.append((text/'web/catalog.json', 'web/catalog.json'))
+             ('CMakeLists.txt', 'LICENSE', 'THIRD_PARTY_NOTICES.md', 'README_RU.md', 'plugin.json', 'studio.py')]
+    files += [(path, path.relative_to(text).as_posix()) for path in sorted((text/'web').rglob('*'))
+              if path.is_file() and '__pycache__' not in path.parts]
     files += [(text/'docs'/name, 'docs/'+name) for name in ('CATALOG_RU.md', 'LIFE_CATALOG_RU.md')]
     for folder in ('src', 'kdenlive', 'qt', 'tests', 'examples', 'scripts', 'tools', 'licenses'):
         files += [(path, path.relative_to(text).as_posix()) for path in sorted((text/folder).rglob('*'))
@@ -318,6 +319,7 @@ def main(baseline=False, output=None):
     # Existing upstream patch is relative to the manifest location.
     module['post-install'] += [
         "sed -i 's/^Name=.*/Name=FactMontage/; /^Name\\[/d' /app/share/applications/org.kde.kdenlive.desktop",
+        "find /app/share/icons/hicolor -type f -path '*/apps/kdenlive.png' -delete",
         'install -Dm644 factmontage.svg /app/share/icons/hicolor/scalable/apps/kdenlive.svg'
     ]
     # Keep the extension mount point in the exported app, including resumed builds.

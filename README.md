@@ -42,7 +42,7 @@ The current panel is in **Russian**. The first release targets **Linux x86-64**.
     <td><a href="docs/screenshots/transitions-dark.png"><img src="docs/screenshots/transitions-dark.png" alt="An applied transition"></a><br><b>Transitions</b> · An applied transition</td>
   </tr>
   <tr>
-    <td><a href="docs/screenshots/effects-dark.png"><img src="docs/screenshots/effects-dark.png" alt="Lens treatment"></a><br><b>Effects</b> · Lens treatment</td>
+    <td><a href="docs/screenshots/effects-dark.png"><img src="docs/screenshots/effects-dark.png" alt="An applied effect preset"></a><br><b>Effects</b> · An applied preset</td>
     <td><a href="docs/screenshots/colour-dark.png"><img src="docs/screenshots/colour-dark.png" alt="An adjusted SDR frame"></a><br><b>Colour</b> · An adjusted SDR frame</td>
   </tr>
   <tr>

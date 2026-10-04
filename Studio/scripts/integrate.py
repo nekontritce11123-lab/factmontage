@@ -1198,6 +1198,11 @@ void SubtitleModel::deleteSubtitleStyle''')
             'aboutData.setDesktopFileName(QStringLiteral("local.VideoStudio.Kdenlive"));')
     replace('src/main.cpp', 'QByteArray("kdenlive"), i18n("Kdenlive"),',
             'QByteArray("kdenlive"), QStringLiteral("FactMontage (Kdenlive)"),')
+    replace('src/icons.qrc', '<file alias="kdenlive.png">../data/icons/48-apps-kdenlive.png</file>',
+            '<file alias="kdenlive.png">../data/icons/48-apps-kdenlive.png</file>\n'
+            '        <file alias="factmontage.svg">../factmontage.svg</file>')
+    replace('src/main.cpp', 'app.setWindowIcon(QIcon(QStringLiteral(":/pics/kdenlive.png")));',
+            'app.setWindowIcon(QIcon(QStringLiteral(":/pics/factmontage.svg")));')
     replace('src/main.cpp', '    KDBusService programDBusService;', '''    // Register only our sandbox's service name. Keep legacy resource/config
     // lookup names after registration; Flatpak provides a separate config root.
     const auto resourceName = QCoreApplication::applicationName();

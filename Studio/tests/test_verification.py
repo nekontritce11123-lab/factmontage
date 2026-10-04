@@ -1,5 +1,8 @@
 import importlib.util
+import hashlib
+import io
 import json
+import tarfile
 import tempfile
 import unittest
 from pathlib import Path
@@ -10,6 +13,22 @@ spec.loader.exec_module(verification)
 
 
 class VerificationTests(unittest.TestCase):
+    def test_corresponding_upstream_archive_rejects_a_tampered_copy(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            upstream = root / 'kdenlive.tar.xz'
+            upstream.write_bytes(b'pinned upstream')
+            lock = json.dumps({'archive_sha256': hashlib.sha256(upstream.read_bytes()).hexdigest()}).encode()
+            prepared = root / 'verified-changes.tar.gz'
+            with tarfile.open(prepared, 'w:gz') as archive:
+                entry = tarfile.TarInfo('Studio/upstream/sources.json')
+                entry.size = len(lock)
+                archive.addfile(entry, io.BytesIO(lock))
+            verification.verify_upstream_archive(prepared, upstream)
+            upstream.write_bytes(b'replaced after the build')
+            with self.assertRaisesRegex(ValueError, 'Pinned Kdenlive source archive'):
+                verification.verify_upstream_archive(prepared, upstream)
+
     def test_changed_source_or_binary_invalidates_evidence(self):
         with tempfile.TemporaryDirectory() as folder:
             work = Path(folder)

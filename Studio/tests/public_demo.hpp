@@ -182,7 +182,7 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
     REQUIRE(model->getCurrentSelection().size() == 1);
     const int title = *model->getCurrentSelection().begin();
     effect(title, QStringLiteral("sunimo_text_studio"));
-    REQUIRE(pCore->projectManager()->saveFileAs(project, true, true));
+    REQUIRE(pCore->projectManager()->saveFile());
     timeline->slotFitZoom();
     QJsonArray evidence;
     const auto capture = [&](const QString &name, const QString &page, int clip, int position) {
@@ -198,7 +198,7 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
             [&](const SharedFrame &frame) { if (frame.get_position() == position) frameReady = true; });
         const auto disconnectFrame = qScopeGuard([&] { QObject::disconnect(frameConnection); });
         timeline->controller()->setPosition(position);
-        pCore->monitorManager()->projectMonitor()->processSeek(position, true);
+        pCore->monitorManager()->projectMonitor()->requestSeek(position);
         REQUIRE(studioWait([&] { return frameReady; }, 10000));
         QElapsedTimer settle; settle.start();
         REQUIRE(studioWait([&] { return settle.elapsed() >= 1800; }, 4000));
@@ -210,7 +210,7 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
         REQUIRE_FALSE(screenshot.isNull()); REQUIRE(screenshot.width() >= 1600); REQUIRE(screenshot.height() >= 1000);
         const QString destination = QDir(output).filePath(name + QStringLiteral("-dark.png"));
         REQUIRE(screenshot.save(destination));
-        evidence.append(QJsonObject{{QStringLiteral("file"), name + QStringLiteral("-dark.png")},
+        evidence.append(QJsonObject{{QStringLiteral("file"), QString(name + QStringLiteral("-dark.png"))},
             {QStringLiteral("page"), page}, {QStringLiteral("frame"), position}, {QStringLiteral("clip"), clip},
             {QStringLiteral("capture"), QStringLiteral("native X11 window")}});
     };
@@ -223,10 +223,16 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
     capture(QStringLiteral("audio"), QStringLiteral("Звук"), audio, 1800);
     capture(QStringLiteral("text"), QStringLiteral("Текст"), title, 2040);
     capture(QStringLiteral("workspace"), QStringLiteral("Карточки"), clips[0], 120);
+    REQUIRE(pCore->projectManager()->saveFile());
+    REQUIRE(studioWait([] { return pCore->taskManager.backgroundIdle(); }, 15000));
+    QPointer<MainWindow> closingWindow(window);
+    REQUIRE(window->close());
+    QApplication::processEvents();
+    REQUIRE(!closingWindow || !closingWindow->isVisible());
     QFile manifest(folder.filePath(QStringLiteral("capture-evidence.json"))); REQUIRE(manifest.open(QIODevice::WriteOnly));
     const QJsonObject report{{QStringLiteral("project"), project}, {QStringLiteral("screenshots"), evidence},
         {QStringLiteral("background"), QStringLiteral("chroma key only; human segmentation NOT RUN")},
-        {QStringLiteral("checks"), QStringLiteral("real panel actions, model ownership, native save, monitor seek, dark palette")},
+        {QStringLiteral("checks"), QStringLiteral("real panel actions, model ownership, native save, monitor frames, dark palette, normal window close")},
         {QStringLiteral("limitations"), QStringLiteral("visual screenshot review, Save/Reopen, Undo/Redo, export and Deck acceptance are separate checks")}};
     REQUIRE(manifest.write(QJsonDocument(report).toJson()) > 0);
     qInfo().noquote() << "Public demo:" << project << "screenshots:" << output;

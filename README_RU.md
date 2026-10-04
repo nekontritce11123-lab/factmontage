@@ -42,7 +42,7 @@
     <td><a href="docs/screenshots/transitions-dark.png"><img src="docs/screenshots/transitions-dark.png" alt="Применённый переход"></a><br><b>Переходы</b> · Применённый переход</td>
   </tr>
   <tr>
-    <td><a href="docs/screenshots/effects-dark.png"><img src="docs/screenshots/effects-dark.png" alt="Обработка линзой"></a><br><b>Эффекты</b> · Обработка линзой</td>
+    <td><a href="docs/screenshots/effects-dark.png"><img src="docs/screenshots/effects-dark.png" alt="Применённый шаблон эффекта"></a><br><b>Эффекты</b> · Применённый шаблон</td>
     <td><a href="docs/screenshots/colour-dark.png"><img src="docs/screenshots/colour-dark.png" alt="Коррекция SDR"></a><br><b>Цвет</b> · Коррекция SDR</td>
   </tr>
   <tr>

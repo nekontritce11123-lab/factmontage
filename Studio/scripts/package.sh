@@ -10,7 +10,7 @@ out="$dist/$version"
 test ! -e "$out" || { echo "Candidate already exists: $out" >&2; exit 1; }
 test -x "$work/studio/files/bin/kdenlive" || { echo 'Build Studio first.' >&2; exit 1; }
 test -f "$work/studio/metadata.debuginfo" -a -d "$work/studio/files/lib/debug" || { echo 'Separate debug files are required.' >&2; exit 1; }
-python3 "$root/Studio/scripts/verification.py" verify tests "$work"
+python3 "$root/Studio/scripts/verification.py" verify tests "$work" --upstream-archive "$root/Studio/upstream/kdenlive-26.08.0.tar.xz"
 mkdir -p "$dist"
 stage="$(mktemp -d "$dist/.package-$version.XXXXXX")"
 trap 'rm -rf -- "$stage"' EXIT
@@ -23,9 +23,10 @@ cp "$work/studio-input/card3d-source.tar.gz" "$work/studio-input/studio-camera-s
 cp "$work/studio-input/studio-changes-source.tar.gz" "$stage/"
 cp "$root/Studio/upstream/kdenlive-26.08.0.tar.xz" "$stage/"
 cp "$work/studio/files/share/studio-background/models/pp_humansegv2_lite_portrait_static.onnx" "$stage/"
-cp "$root/Background/SOURCES.json" "$stage/BACKGROUND_SOURCES.json"
-cp "$root/Subtitles/SOURCES.json" "$stage/SUBTITLE_SOURCES.json"
-cp "$root/LICENSE" "$root/THIRD_PARTY_NOTICES.md" "$stage/"
+tar -xOf "$work/studio-input/studio-background-source.tar.gz" SOURCES.json > "$stage/BACKGROUND_SOURCES.json"
+tar -xOf "$work/studio-input/studio-subtitles-source.tar.gz" SOURCES.json > "$stage/SUBTITLE_SOURCES.json"
+tar -xOf "$work/studio-input/studio-changes-source.tar.gz" LICENSE > "$stage/LICENSE"
+tar -xOf "$work/studio-input/studio-changes-source.tar.gz" THIRD_PARTY_NOTICES.md > "$stage/THIRD_PARTY_NOTICES.md"
 cp "$work/tests-verified.json" "$stage/VERIFICATION.json"
 cp -R "$work/test-results" "$stage/TEST_RESULTS"
 tar -xOf "$work/studio-input/studio-changes-source.tar.gz" Studio/upstream/sources.json > "$stage/VERSIONS.json"

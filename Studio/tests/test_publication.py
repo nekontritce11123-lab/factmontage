@@ -21,7 +21,8 @@ class PublicSourceTests(unittest.TestCase):
             for name in ('LICENSE', 'README.md', 'README_RU.md', 'THIRD_PARTY_NOTICES.md',
                          'Studio/overlay/studiopanel.cpp', 'Studio/scripts/prepare.py',
                          'Studio/patches/whisper-vad-json-timestamps.patch',
-                         'Background/scripts/export_humanseg_onnx.py', 'Studio/tests/test_publication.py'):
+                         'Background/scripts/export_humanseg_onnx.py', 'Studio/tests/test_publication.py',
+                         'Text/studio.py', 'Text/web/index.html', 'Studio/tests/public_demo.hpp'):
                 self.assertIn(name, files)
                 self.assertEqual((target / name).read_bytes(), (ROOT / name).read_bytes())
             forbidden = {'.git', '.beads', '.build', 'archive', 'releases'}
