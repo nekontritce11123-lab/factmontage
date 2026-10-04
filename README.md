@@ -63,7 +63,7 @@ FactMontage installs as `local.VideoStudio.Kdenlive`, alongside the official Kde
 
 ## Start editing
 
-1. Launch FactMontage and create a project. The first release is tested with SDR, 8-bit, 1920×1080 footage at 60 fps.
+1. Launch FactMontage and create a project. The first release targets SDR, 8-bit, 1920×1080 footage at 60 fps.
 2. Add clips to Kdenlive's timeline and select the clip you want to edit.
 3. Open **FactMontage** from the **View** menu if its panel is hidden. Choose a section, adjust its controls and apply the result.
 4. Use Kdenlive's Undo/Redo, project save and render controls. For a slower machine, try preview resolution 1:2 or 1:4.
