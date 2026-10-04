@@ -287,10 +287,12 @@ def main(baseline=False, output=None):
     shutil.copy2(ROOT.parent/'Text/qt/styles.hpp', out/'overlay/text/styles.hpp')
     shutil.copy2(ROOT/'scripts/integrate.py', out/'studio-integrate.py')
     shutil.copy2(ROOT/'tests/studioregressiontest.cpp', out/'studioregressiontest.cpp')
+    shutil.copy2(ROOT/'tests/public_demo.hpp', out/'public_demo.hpp')
     shutil.copy2(ROOT/'branding/factmontage.svg', out/'factmontage.svg')
     module['sources'] += [dict(type='dir', path='overlay', dest='src/assets/studio'),
                           dict(type='file', path='studio-integrate.py'),
                           dict(type='file', path='studioregressiontest.cpp', dest='tests'),
+                          dict(type='file', path='public_demo.hpp', dest='tests'),
                           dict(type='file', path='factmontage.svg'),
                           dict(type='shell', commands=['python3 studio-integrate.py'])]
     module['run-tests'] = True

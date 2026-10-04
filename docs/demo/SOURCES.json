@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "license": "CC0-1.0",
+  "authors": "FactMontage project contributors",
+  "assets": [
+    {"name": "warm.mp4", "source": "create_demo.py: original gradient and geometric shapes, procedural zoom"},
+    {"name": "blue.mp4", "source": "create_demo.py: original blue gradient and geometric shapes, procedural zoom"},
+    {"name": "key.mp4", "source": "create_demo.py: original orange circle and white rectangle on a green field"},
+    {"name": "tone.wav", "source": "ffmpeg lavfi sine: 440 Hz, 48000 Hz PCM, six seconds"},
+    {"name": "Blue base", "source": "Native Kdenlive color producer #1b3e78"},
+    {"name": "Text", "source": "Original short text: FactMontage / Native text"}
+  ],
+  "rights": "The original procedural materials described here are dedicated to the public domain under CC0-1.0. No third-party photographs, private QA footage, music recordings, or downloaded models are used.",
+  "scope": "Background demonstration uses chroma key. It does not demonstrate or validate human segmentation. Screenshots show the actual Kdenlive application; this license does not relicense Kdenlive, its icons, or third-party software.",
+  "actual_asset_hashes": "generated-sources.json created beside the demo project"
+}

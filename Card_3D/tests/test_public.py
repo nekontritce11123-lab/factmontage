@@ -40,7 +40,7 @@ class PublicTests(unittest.TestCase):
         p = self.new(); info = Info()
         p.lib.f0r_get_plugin_info.argtypes = [C.POINTER(Info)]
         p.lib.f0r_get_plugin_info(C.byref(info))
-        self.assertEqual((info.name, info.num_params, info.color_model), (b'Card 3D', 18, 1))
+        self.assertEqual((info.name, info.num_params, info.color_model), (b'FactMontage Cards', 18, 1))
         p.lib.f0r_get_param_info.argtypes = [C.POINTER(ParamInfo), C.c_int]
         for n, name in enumerate(('STYLE', 'ENTRANCE', 'CORNER', 'PLACEMENT', 'SIZE', 'DURATION', 'MOTION', 'SOURCE', 'ROUNDING', 'BACKGROUND', 'SHADOW', 'POSITION_MODE', 'X', 'Y', 'EXIT_ENABLED', 'EXIT_ANIMATION', 'EXIT_DURATION', 'EXIT_AT')):
             item = ParamInfo(); p.lib.f0r_get_param_info(C.byref(item), n)

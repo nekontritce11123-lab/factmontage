@@ -38,7 +38,7 @@ int main(int argc, char **argv)
     f0r_plugin_info_t info{};
     getInfo(&info);
     assert(info.plugin_type == F0R_PLUGIN_TYPE_MIXER2 && info.color_model == F0R_COLOR_MODEL_RGBA8888);
-    assert(info.num_params == 7 && std::strcmp(info.name, "SUNIMO Smooth Transitions") == 0);
+    assert(info.num_params == 7 && std::strcmp(info.name, "FactMontage Transitions") == 0);
     const char *names[] = {"Progress", "Style", "Strength", "Direction", "Softness", "Center", "Quality"};
     for (int index = 0; index < 7; ++index) {
         f0r_param_info_t parameter{};

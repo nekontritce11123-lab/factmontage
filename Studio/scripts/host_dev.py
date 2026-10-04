@@ -196,6 +196,7 @@ def prepare(root: Path, host_build: Path) -> dict:
     files['src/assets/studio/text/scenecompiler.hpp'] = root / 'Text/qt/scenecompiler.hpp'
     files['src/assets/studio/text/styles.hpp'] = root / 'Text/qt/styles.hpp'
     files['tests/studioregressiontest.cpp'] = root / 'Studio/tests/studioregressiontest.cpp'
+    files['tests/public_demo.hpp'] = root / 'Studio/tests/public_demo.hpp'
     files['studio-integrate.py'] = integration
     changed = sync_files(cache, build_source, files, pristine, patches)
     runtime_files = {
@@ -217,7 +218,7 @@ def prepare(root: Path, host_build: Path) -> dict:
                 'baseline_manifest_sha256': baseline_hash, 'cmake': cmake, 'host_build': str(host_build)}
     fingerprint = hashlib.sha256(json.dumps(evidence, sort_keys=True).encode()).hexdigest()
     app_evidence = dict(evidence, source_files={name: value for name, value in hashes.items()
-                                              if name not in ('tests/studioregressiontest.cpp', 'studio-integrate.py')})
+                                              if name not in ('tests/studioregressiontest.cpp', 'tests/public_demo.hpp', 'studio-integrate.py')})
     app_evidence.pop('runtime_files')
     app_fingerprint = hashlib.sha256(json.dumps(app_evidence, sort_keys=True).encode()).hexdigest()
     return {'work': work, 'build': host_build, 'manifest': manifest.relative_to(work).as_posix(),

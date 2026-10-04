@@ -5448,3 +5448,5 @@ TEST_CASE("Eight Studio categories fit supported panel widths", "[StudioUI]")
         panel.hide();
     }
 }
+
+#include "public_demo.hpp"

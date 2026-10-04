@@ -27,7 +27,7 @@ concurrency:
 jobs:
   boundaries:
     runs-on: ubuntu-24.04
-    timeout-minutes: 8
+    timeout-minutes: 12
     env:
       QT_QPA_PLATFORM: offscreen
       PYTHONDONTWRITEBYTECODE: '1'
@@ -35,10 +35,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           persist-credentials: false
-      - name: Prepare Linux Qt and MLT (not the release SDK)
+      - name: Qt 6.8 test environment (separate from the release SDK)
+        uses: jurplel/install-qt-action@a9c63c7c123f3069cff414e7e482d95dfa9d8125 # v4
+        with:
+          version: '6.8.3'
+          archives: qtbase
+          cache: true
+      - name: Prepare Linux MLT dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y --no-install-recommends cmake ninja-build g++ pkg-config libpng-dev zlib1g-dev libssl-dev qt6-base-dev libmlt-dev
+          sudo apt-get install -y --no-install-recommends cmake ninja-build g++ pkg-config libpng-dev zlib1g-dev libssl-dev libmlt-dev
       - name: Qt shaped text and Linux resources
         run: |
           cmake -S Text -B .build/qt-text -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo -DSTXT_BUILD_QT_COMPILER=ON

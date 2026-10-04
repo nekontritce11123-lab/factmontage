@@ -65,6 +65,7 @@ def change_scopes(paths: list[str], modules: dict) -> tuple[list[str], bool, boo
             selected.update(modules)
             tooling = True
         elif path.startswith('Studio/overlay/') or path in ('Studio/tests/studioregressiontest.cpp',
+                                                           'Studio/tests/public_demo.hpp',
                                                            'Studio/scripts/integrate.py', 'Studio/scripts/build.sh'):
             host = True
         elif path.startswith(('Studio/scripts/', 'Studio/tests/test_')):

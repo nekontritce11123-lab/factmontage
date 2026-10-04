@@ -1,7 +1,7 @@
 name: Text stage 0 source diagnostics
 on:
   push:
-    branches: ['codex/text-subtitles-staged-plan']
+    branches: [main, 'codex/**']
     paths:
       - 'Text/**'
       - 'Subtitles/**'
@@ -31,11 +31,17 @@ jobs:
         with:
           persist-credentials: false
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-      - name: Prepare Qt test environment (separate from FAST)
+      - name: Qt 6.8 test environment (separate from the release SDK)
+        uses: jurplel/install-qt-action@a9c63c7c123f3069cff414e7e482d95dfa9d8125 # v4
+        with:
+          version: '6.8.3'
+          archives: qtbase
+          cache: true
+      - name: Prepare native test dependencies (separate from FAST)
         id: prepare
         run: |
           timeout 120 sudo apt-get update -qq
-          timeout 300 sudo apt-get install -y --no-install-recommends cmake ninja-build g++ pkg-config qt6-base-dev python3-numpy python3-pil fonts-dejavu-core
+          timeout 300 sudo apt-get install -y --no-install-recommends cmake ninja-build g++ pkg-config python3-numpy python3-pil fonts-dejavu-core
           mkdir -p .build/reports/stage0-environment
           {
             git rev-parse HEAD
@@ -45,7 +51,7 @@ jobs:
             c++ --version
             python3 --version
             pkg-config --modversion Qt6Core Qt6Gui
-            dpkg-query -W cmake ninja-build g++ qt6-base-dev python3-numpy python3-pil fonts-dejavu-core
+            dpkg-query -W cmake ninja-build g++ python3-numpy python3-pil fonts-dejavu-core
             sha256sum Text/qt/scenecompiler.hpp Text/src/plugin.cpp Text/src/engine.hpp Text/web/catalog.json
           } > .build/reports/stage0-environment/versions.txt
       - name: Evidence collector unit tests
@@ -61,7 +67,7 @@ jobs:
           timeout 60 python3 -m unittest discover -s Text/tests -p test_deck_clock_proxy.py -v 2>&1 | tee .build/reports/stage0-deck-tools/proxy-tests.log
           timeout 30 cc -O2 -shared -fPIC -Wall -Wextra -Werror Text/tools/deck_clock_proxy.c -ldl -o .build/reports/stage0-deck-tools/sunimo_text_studio.so
           sha256sum .build/reports/stage0-deck-tools/sunimo_text_studio.so > .build/reports/stage0-deck-tools/proxy.sha256
-          git archive --format=tar.gz --output=.build/reports/stage0-deck-tools/source.tar.gz HEAD Text Subtitles Studio docs dev AGENTS.md .gitignore .gitattributes
+          git archive --format=tar.gz --output=.build/reports/stage0-deck-tools/source.tar.gz HEAD Text Subtitles Studio docs dev .gitignore .gitattributes
           git rev-parse HEAD > .build/reports/stage0-deck-tools/source-revision.txt
       - name: Existing Text FAST baseline
         if: ${{ !cancelled() && steps.prepare.outcome == 'success' }}

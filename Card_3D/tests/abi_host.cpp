@@ -37,7 +37,7 @@ int main(int argc,char** argv){
     assert(init());f0r_plugin_info_t metadata{};info(&metadata);
     assert(metadata.num_params==18&&metadata.plugin_type==F0R_PLUGIN_TYPE_FILTER);
     assert(metadata.color_model==F0R_COLOR_MODEL_RGBA8888&&metadata.frei0r_version==1);
-    assert(std::strcmp(metadata.name,"Card 3D")==0);
+    assert(std::strcmp(metadata.name,"FactMontage Cards")==0);
     auto instance=construct(64,64);assert(instance);
     const char* names[]={"STYLE","ENTRANCE","CORNER","PLACEMENT","SIZE","DURATION","MOTION","SOURCE","ROUNDING","BACKGROUND","SHADOW","POSITION_MODE","X","Y","EXIT_ENABLED","EXIT_ANIMATION","EXIT_DURATION","EXIT_AT"};
     const double defaults[]={0,.25,1./3,1./6,.68,.34,.5,0,.2,0,.35,0,0,.5,1,0,.34,0};

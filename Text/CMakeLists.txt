@@ -37,7 +37,7 @@ endif()
 # Opt-in compiler: the render plugin itself stays free of Qt/font dependencies.
 option(STXT_BUILD_QT_COMPILER "Build native Qt scene compiler and shaping tests" OFF)
 if(STXT_BUILD_QT_COMPILER)
-  find_package(Qt6 REQUIRED COMPONENTS Core Gui)
+  find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui)
   add_executable(studio-text-compile qt/compile_main.cpp)
   target_link_libraries(studio-text-compile PRIVATE Qt6::Core Qt6::Gui)
   install(TARGETS studio-text-compile RUNTIME DESTINATION bin)
