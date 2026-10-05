@@ -18,6 +18,10 @@ DOCUMENTS = (
     'BUILD.md', 'BUILD_RU.md', 'INSTALL.md', 'INSTALL_RU.md', 'PROJECTS.md', 'PROJECTS_RU.md',
     'RELEASE_NOTES.md', 'RELEASE_NOTES_RU.md', 'TESTING.md',
 )
+SCREENSHOTS = (
+    'workspace-dark.png', 'cards-dark.png', 'camera-dark.png', 'background-dark.png',
+    'transitions-dark.png', 'effects-dark.png', 'colour-dark.png', 'audio-dark.png', 'text-dark.png',
+)
 
 
 def validate_name(name):
@@ -55,10 +59,14 @@ def export_sources(target):
         path = ROOT / module / 'README_RU.md'
         if path.is_file():
             files[module + '/README_RU.md'] = path.read_bytes()
-    for directory in ('docs/assets', 'docs/screenshots', 'docs/demo', '.github/ISSUE_TEMPLATE', '.github/workflows', 'Text/web'):
+    for directory in ('docs/assets', 'docs/demo', '.github/ISSUE_TEMPLATE', '.github/workflows', 'Text/web'):
         for path in sorted((ROOT / directory).rglob('*')):
             if path.is_file() and path.suffix.lower() in {'.md', '.svg', '.png', '.json', '.py', '.yml', '.yaml', '.js', '.css', '.html'}:
                 files[path.relative_to(ROOT).as_posix()] = path.read_bytes()
+    for name in SCREENSHOTS:
+        path = ROOT / 'docs/screenshots' / name
+        if path.is_file():
+            files['docs/screenshots/' + name] = path.read_bytes()
     forbidden = {'.git', '.beads', '.build', 'archive', 'releases'}
     if any(PurePosixPath(name).parts[0] in forbidden for name in files):
         raise ValueError('Private state entered the public source export')

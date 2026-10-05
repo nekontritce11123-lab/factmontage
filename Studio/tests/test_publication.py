@@ -29,6 +29,8 @@ class PublicSourceTests(unittest.TestCase):
             self.assertFalse(any(Path(name).parts[0] in forbidden for name in files))
             self.assertNotIn('docs/TEST_REPORT_RU.md', files)
             self.assertNotIn('docs/STATUS.md', files)
+            self.assertFalse(any(name.startswith('docs/screenshots/rc') or name.startswith('docs/screenshots/current-')
+                                 for name in files), 'Historical captures must stay in the development repository')
             self.assertFalse(any(name.endswith(('.flatpak', '.dll', '.so', '.exe')) for name in files))
 
     def test_existing_destination_is_never_overwritten(self):
