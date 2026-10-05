@@ -990,6 +990,25 @@ const std::pair<QString, QString> ProjectItemModel::sceneList(''')
             'target_link_libraries(studioregressiontest kdenliveLibplugin)\n'
             'qt_add_resources(studio_test_gui_SRCS ${CMAKE_SOURCE_DIR}/src/icons.qrc ${CMAKE_SOURCE_DIR}/src/uiresources.qrc)\n'
             'target_sources(studioregressiontest PRIVATE ${studio_test_gui_SRCS})')
+    replace('tests/TestMain.cpp', '#include <QString>', '#include <QString>\n#include <QVariant>')
+    replace('tests/TestMain.cpp', '''    pCore->cleanup();
+    pCore->mediaUnavailable.reset();
+
+    // global clean-up...
+    // delete repo;
+    pCore->projectItemModel()->clean();
+    pCore->cleanup();''', '''    if (qApp->property("studioGuiShutdownComplete").toBool()) {
+        // An opt-in GUI fixture closed MainWindow through its normal shutdown.
+        // Its widgets and MLT factory are gone; follow the native app teardown.
+        Core::clean();
+    } else {
+        pCore->cleanup();
+        pCore->mediaUnavailable.reset();
+
+        // Keep the upstream cleanup for ordinary model-only tests.
+        pCore->projectItemModel()->clean();
+        pCore->cleanup();
+    }''')
     # Keep the friendly XML entry; the generated MLT entry has no curated UI.
     replace('src/effects/effectsrepository.cpp', '    init();', '''    init();
     if (exists(QStringLiteral("card3d"))) {

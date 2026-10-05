@@ -156,7 +156,7 @@ class PreparationTests(unittest.TestCase):
                     *[f'src/jobs/{name}task.cpp' for name in ('melt', 'filter', 'transcode', 'stabilize', 'speed', 'cut', 'scenesplit', 'mask', 'customjob')],
                     'src/bin/projectclip.cpp', 'src/kdenlivesettings.kcfg', 'src/monitor/monitor.h', 'src/monitor/monitor.cpp', 'src/monitor/videowidget.cpp', 'src/timeline2/view/timelinecontroller.h', 'src/timeline2/view/timelinecontroller.cpp',
                     'src/timeline2/view/previewmanager.h', 'src/timeline2/view/previewmanager.cpp', 'src/dialogs/renderwidget.cpp',
-                    'renderer/kdenlive_render.cpp', 'src/icons.qrc']:
+                    'renderer/kdenlive_render.cpp', 'src/icons.qrc', 'tests/TestMain.cpp']:
                 dest = Path(folder)/relative
                 dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(source/relative, dest)

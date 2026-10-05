@@ -37,6 +37,9 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
     REQUIRE(studioWait([] { return pCore->currentDoc() && pCore->window()->getCurrentTimeline()
         && pCore->window()->getCurrentTimeline()->model(); }, 15000));
     auto *window = pCore->window();
+    QObject::connect(window, &QObject::destroyed, qApp, [] {
+        qApp->setProperty("studioGuiShutdownComplete", true);
+    });
     auto *timeline = window->getCurrentTimeline();
     auto model = timeline->model();
     REQUIRE(std::abs(pCore->getCurrentFps() - 60.0) < .001);
@@ -124,29 +127,39 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
     const QString project = folder.filePath(QStringLiteral("FactMontage-demo.kdenlive"));
     REQUIRE_FALSE(QFileInfo::exists(project));
     REQUIRE(pCore->projectManager()->saveFileAs(project)); // Text/audio assets need a saved project.
+    const auto showPanel = [&] {
+        // The stock clip selection handler may raise the neighbouring effects tab.
+        raiseDock(QStringLiteral("video_studio"));
+        REQUIRE(panel->isVisible());
+    };
     const auto select = [&](int id) {
         REQUIRE(model->requestSetSelection({id}));
         QApplication::processEvents(); panel->refreshSelection(); QApplication::processEvents();
+        showPanel();
     };
     const auto navigate = [&](const QString &name) {
+        showPanel();
         QToolButton *navigation = nullptr;
         for (auto *button : panel->findChildren<QToolButton *>())
             if (button->property("studioNav").toBool() && button->text() == name) navigation = button;
         REQUIRE(navigation); navigation->click(); QApplication::processEvents(); panel->refreshSelection();
     };
     const auto choice = [&](const QString &name) {
+        showPanel();
         QToolButton *target = nullptr;
         for (auto *button : panel->findChildren<QToolButton *>())
             if (button->property("studioBaseText").toString() == name) target = button;
         REQUIRE(target); target->click(); QApplication::processEvents();
     };
     const auto spin = [&](const QString &name, double value) {
+        showPanel();
         QDoubleSpinBox *target = nullptr;
         for (auto *widget : panel->findChildren<QDoubleSpinBox *>())
             if (widget->accessibleName() == name) target = widget;
         REQUIRE(target); target->setValue(value); QApplication::processEvents();
     };
     const auto primary = [&] {
+        showPanel();
         QPushButton *target = nullptr;
         for (auto *button : panel->findChildren<QPushButton *>())
             if (button->property("studioPrimary").toBool() && button->isVisible() && button->isEnabled()) { REQUIRE_FALSE(target); target = button; }
@@ -245,7 +258,7 @@ TEST_CASE("FactMontage public demo uses the native dark workspace", "[FactMontag
     REQUIRE(window->close());
     windowClosed = true; // MainWindow has already destroyed ProjectManager; do not call it from the guard.
     QApplication::processEvents();
-    REQUIRE((!closingWindow || !closingWindow->isVisible()));
+    REQUIRE(!closingWindow);
     QFile manifest(folder.filePath(QStringLiteral("capture-evidence.json"))); REQUIRE(manifest.open(QIODevice::WriteOnly));
     const QJsonObject report{{QStringLiteral("project"), project}, {QStringLiteral("screenshots"), evidence},
         {QStringLiteral("background"), QStringLiteral("chroma key only; human segmentation NOT RUN")},
