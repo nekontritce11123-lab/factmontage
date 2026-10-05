@@ -1191,8 +1191,8 @@ void SubtitleModel::deleteSubtitleStyle''')
     replace('src/mainwindow.cpp', '    case QEvent::ApplicationPaletteChange:\n        if (m_assetPanel) {',
             '''    case QEvent::ApplicationPaletteChange:
         if (m_studioPanel) {
-            m_studioPanel->setPalette(qApp->palette());
-            m_studioPanel->setStyleSheet(m_studioPanel->styleSheet());
+            QEvent paletteEvent(QEvent::ApplicationPaletteChange);
+            QCoreApplication::sendEvent(m_studioPanel, &paletteEvent);
         }
         if (m_assetPanel) {''')
     replace('src/timeline2/view/timelinetabs.hpp', '    void fitZoom();', '    void fitZoom();\n    void studioSelectionChanged();')

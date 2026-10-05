@@ -260,7 +260,8 @@ class PreparationTests(unittest.TestCase):
                 self.assertLess(shutdown.index('delete m_studioPanel.data();'), shutdown.index('pCore->prepareShutdown();'))
                 self.assertLess(shutdown.index('delete m_studioPanel.data();'), shutdown.index('Mlt::Factory::close();'))
                 self.assertIn('m_studioPanel = studio;', mainwindow)
-                self.assertIn('m_studioPanel->setPalette(qApp->palette());', mainwindow)
+                self.assertTrue('QCoreApplication::sendEvent(m_studioPanel, &paletteEvent);' in mainwindow,
+                                'MainWindow must forward application palette changes to the integrated panel')
                 self.assertIn('QPointer<StudioPanel> m_studioPanel;', Path('src/mainwindow.h').read_text(encoding='utf-8'))
                 self.assertIn('studioArchiveDocument', mainwindow)
                 document_source = Path(paths[15]).read_text(encoding='utf-8')

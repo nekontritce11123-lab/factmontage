@@ -5331,7 +5331,7 @@ TEST_CASE("Studio panel follows the host palette when its theme changes", "[Stud
     panel.resize(440, 700);
     panel.show();
     QApplication::processEvents();
-    for (const QColor &background : {QColor(35, 38, 41), QColor(239, 240, 241)}) {
+    for (const QColor &background : {QColor(35, 38, 41), QColor(239, 240, 241), QColor(35, 38, 41)}) {
         QPalette next = original;
         next.setColor(QPalette::Window, background);
         next.setColor(QPalette::Base, background);
@@ -5344,6 +5344,10 @@ TEST_CASE("Studio panel follows the host palette when its theme changes", "[Stud
         auto *target = panel.findChild<QLabel *>(QStringLiteral("studioTarget"));
         REQUIRE(target);
         REQUIRE(target->palette().color(QPalette::Base) == background);
+        const QImage targetImage = target->grab().toImage();
+        REQUIRE_FALSE(targetImage.isNull());
+        REQUIRE(targetImage.pixelColor(targetImage.width() - 4, targetImage.height() - 4).lightness()
+                == Approx(background.lightness()).margin(2));
         const QImage image = panel.grab().toImage();
         REQUIRE_FALSE(image.isNull());
         REQUIRE(image.pixelColor(2, 2).lightness() == Approx(background.lightness()).margin(2));

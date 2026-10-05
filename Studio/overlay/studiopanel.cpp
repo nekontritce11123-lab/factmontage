@@ -398,14 +398,15 @@ int transitionSoundClip(const std::shared_ptr<TimelineItemModel> &model, const Q
 }
 }
 
-void StudioPanel::changeEvent(QEvent *event)
+bool StudioPanel::event(QEvent *event)
 {
-    QWidget::changeEvent(event);
+    const bool handled = QWidget::event(event);
     if (event->type() == QEvent::ApplicationPaletteChange) {
         setPalette(QApplication::palette());
         // Qt stylesheets retain palette roles resolved before the host changed its theme.
         setStyleSheet(styleSheet());
     }
+    return handled;
 }
 
 StudioPanel::StudioPanel(QWidget *parent) : QWidget(parent)

@@ -80,7 +80,7 @@ def panel_text():
         styles.append(dict(value=index, code=STYLE_CODES[index], name=name,
                            preview=f"transition_{index:02d}", animated=True,
                            strength=strength, direction=direction, softness=softness))
-    sounds = [dict(value="", name="Автоматически — звук этого перехода")]
+    sounds = [dict(value="", name="Автоматически: звук этого перехода")]
     for index, (name, *_flags) in enumerate(STYLES):
         sounds.append(dict(value=f"transition_{index:02d}.wav", name=name))
         if index == 2:
